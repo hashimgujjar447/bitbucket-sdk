@@ -15,8 +15,8 @@
     },
     "kit": {
       "author": {
-        "name": "",
-        "url": ""
+        "name": "Muhammad Hashim",
+        "url": "https://github.com/hashimgujjar447"
       },
       "config": {
         "docs_order": [
@@ -37638,12 +37638,12 @@
       },
       "publisher": {
         "name": "",
-        "security": "",
+        "security": "GitHub private vulnerability reporting for this repository, if enabled",
         "url": ""
       },
       "repo": {
         "host": "github.com",
-        "path": ""
+        "path": "hashimgujjar447/bitbucket-sdk"
       },
       "target": {
         "ts": {
@@ -37698,7 +37698,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@hashimgujjar447/bitbucket-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {
@@ -37753,5 +37753,5 @@
   "name-": "bitbucket-sdk",
   "name_": "bitbucket_sdk",
   "name__orig": "bitbucket-sdk",
-  "origin": "hashimgujjar447"
+  "origin": "voxgig-sdk"
 }

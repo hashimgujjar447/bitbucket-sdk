@@ -5,7 +5,7 @@
 
 
 name: 'bitbucket-sdk'
-origin: 'hashimgujjar447'
+origin: 'voxgig-sdk'
 def: 'bitbucket-swagger.json'
 
 

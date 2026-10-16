@@ -2,12 +2,10 @@
 
 ## Reporting a vulnerability
 
-Please report security issues using GitHub's private vulnerability reporting
-for this repository, if enabled. Otherwise contact the repository owner
-through the GitHub profile.
+Please report security issues to GitHub private vulnerability reporting for this repository, if enabled.
 
 Do not open public GitHub issues for suspected vulnerabilities. We aim to
-acknowledge reports as soon as possible.
+acknowledge reports within 3 business days.
 
 For non-security bugs, use the issue tracker: https://github.com/hashimgujjar447/bitbucket-sdk/issues
 

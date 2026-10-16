@@ -23,3 +23,18 @@
 # A published package name that does not follow the derivation:
 #
 #   main: kit: target: ts: publish: registry: package: '@scope/name'
+
+# Project identity is separate from `origin` (the Voxgig SDK origin).
+main: kit: {
+  repo: { path: 'hashimgujjar447/bitbucket-sdk' }
+  author: {
+    name: 'Muhammad Hashim'
+    url: 'https://github.com/hashimgujjar447'
+  }
+  publisher: {
+    security: 'GitHub private vulnerability reporting for this repository, if enabled'
+  }
+  target: ts: publish: registry: {
+    package: '@hashimgujjar447/bitbucket-sdk'
+  }
+}
