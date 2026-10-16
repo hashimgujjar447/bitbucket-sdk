@@ -1,4 +1,8 @@
-# Local config / secrets
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+.npmrc
 *.local.*
 *.local
 
@@ -9,10 +13,24 @@ node_modules
 # Logs
 *.log
 logs/
+npm-debug.log*
+
+# Local build / coverage output
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+.history/
 
 # OS
 .DS_Store
+Thumbs.db
+Desktop.ini
 
 # Editor
 *~
 *.swp
+*.swo
