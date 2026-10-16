@@ -1,0 +1,146 @@
+# Entity: paginated_project_deploy_key
+
+main: kit: entity: paginated_project_deploy_key: {
+
+  alias: field: {}
+
+  fields: {
+    added_on: {
+      fo: "date-time"
+      h: "Added On"
+      n: "added_on"
+      r: false
+      t: "`$STRING`"
+    }
+    comment: {
+      h: "Comment"
+      n: "comment"
+      r: false
+      sh: "The comment parsed from the deploy key (if present)"
+      t: "`$STRING`"
+    }
+    created_by: {
+      h: "Created By"
+      n: "created_by"
+      r: false
+      t: "`$ANY`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "The deploy key value."
+      t: "`$STRING`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: false
+      sh: "The user-defined label for the deploy key"
+      t: "`$STRING`"
+    }
+    last_used: {
+      fo: "date-time"
+      h: "Last Used"
+      n: "last_used"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: false
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_project_deploy_key"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/projects/{project_key}/deploy-keys"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_key"
+                or: "project_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/projects/{project_key}/deploy-keys"
+          q: {
+            exist: [
+              "project_key"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_key"
+            }
+            {
+              lit: "deploy-keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.workspace") path("$.main.kit.entity.project")]
+  ]
+
+}

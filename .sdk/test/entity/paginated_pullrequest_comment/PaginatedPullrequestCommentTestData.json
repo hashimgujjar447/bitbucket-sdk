@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "paginated_pullrequest_comment": {
+      "PAGINATED_PULLREQUEST_COMMENT00": {
+        "content": {},
+        "created_on": "s83",
+        "deleted": true,
+        "id": "PAGINATED_PULLREQUEST_COMMENT00",
+        "inline": {},
+        "links": {},
+        "parent": "s88",
+        "pending": false,
+        "pullrequest": "s8a",
+        "resolution": {},
+        "type": "s8c",
+        "updated_on": "s8d",
+        "user": "s8e",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PULLREQUEST_COMMENT01": {
+        "content": {},
+        "created_on": "s105",
+        "deleted": true,
+        "id": "PAGINATED_PULLREQUEST_COMMENT01",
+        "inline": {},
+        "links": {},
+        "parent": "s10a",
+        "pending": false,
+        "pullrequest": "s10c",
+        "resolution": {},
+        "type": "s10e",
+        "updated_on": "s10f",
+        "user": "s110",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PULLREQUEST_COMMENT02": {
+        "content": {},
+        "created_on": "s187",
+        "deleted": true,
+        "id": "PAGINATED_PULLREQUEST_COMMENT02",
+        "inline": {},
+        "links": {},
+        "parent": "s18c",
+        "pending": false,
+        "pullrequest": "s18e",
+        "resolution": {},
+        "type": "s190",
+        "updated_on": "s191",
+        "user": "s192",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pullrequest_comment": {
+      "paginated_pullrequest_comment_ref01": {
+        "content": {},
+        "created_on": "s209",
+        "deleted": true,
+        "inline": {},
+        "links": {},
+        "parent": "s20e",
+        "pending": false,
+        "pullrequest": "s210",
+        "resolution": {},
+        "type": "s212",
+        "updated_on": "s213",
+        "user": "s214"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

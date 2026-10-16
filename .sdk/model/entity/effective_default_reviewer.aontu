@@ -1,0 +1,97 @@
+# Entity: effective_default_reviewer
+
+main: kit: entity: effective_default_reviewer: {
+
+  alias: field: {}
+
+  fields: {
+    reviewer_type: {
+      h: "Reviewer Type"
+      n: "reviewer_type"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "effective_default_reviewer"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/effective-default-reviewers"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/effective-default-reviewers"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "effective-default-reviewers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

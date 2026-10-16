@@ -1,0 +1,121 @@
+# Entity: paginated_project_group_permission
+
+main: kit: entity: paginated_project_group_permission: {
+
+  alias: field: {}
+
+  fields: {
+    group: {
+      h: "Group"
+      n: "group"
+      r: false
+      t: "`$ANY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    permission: {
+      h: "Permission"
+      n: "permission"
+      r: false
+      t: "`$STRING`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: false
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_project_group_permission"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/projects/{project_key}/permissions-config/groups"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/projects/{project_key}/permissions-config/groups"
+          q: {
+            exist: [
+              "project_id"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              project_key: "project_id"
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "permissions-config"
+            }
+            {
+              lit: "groups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.workspace") path("$.main.kit.entity.project")]
+  ]
+
+}

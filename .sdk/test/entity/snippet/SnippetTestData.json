@@ -1,0 +1,157 @@
+{
+  "existing": {
+    "snippet": {
+      "SNIPPET00": {
+        "bitbucket-sdk_id": "BITBUCKET-SDK01",
+        "created_on": "s65",
+        "creator": "s66",
+        "id": "SNIPPET00",
+        "is_private": true,
+        "owner": "s69",
+        "scm": "s6a",
+        "title": "s6b",
+        "type": "s6c",
+        "updated_on": "s6d",
+        "encoded_id": "ENCODED01",
+        "node_id": "NODE01",
+        "path": "PATH01",
+        "workspace": "WORKSPACE01",
+        "revision": "REVISION01",
+        "comment_id": "COMMENT01"
+      },
+      "SNIPPET01": {
+        "bitbucket-sdk_id": "BITBUCKET-SDK01",
+        "created_on": "sc9",
+        "creator": "sca",
+        "id": "SNIPPET01",
+        "is_private": true,
+        "owner": "scd",
+        "scm": "sce",
+        "title": "scf",
+        "type": "sd0",
+        "updated_on": "sd1",
+        "encoded_id": "ENCODED01",
+        "node_id": "NODE01",
+        "path": "PATH01",
+        "workspace": "WORKSPACE01",
+        "revision": "REVISION01",
+        "comment_id": "COMMENT01"
+      },
+      "SNIPPET02": {
+        "bitbucket-sdk_id": "BITBUCKET-SDK01",
+        "created_on": "s12d",
+        "creator": "s12e",
+        "id": "SNIPPET02",
+        "is_private": true,
+        "owner": "s131",
+        "scm": "s132",
+        "title": "s133",
+        "type": "s134",
+        "updated_on": "s135",
+        "encoded_id": "ENCODED01",
+        "node_id": "NODE01",
+        "path": "PATH01",
+        "workspace": "WORKSPACE01",
+        "revision": "REVISION01",
+        "comment_id": "COMMENT01"
+      }
+    }
+  },
+  "new": {
+    "snippet": {
+      "snippet_ref01": {
+        "bitbucket-sdk_id": "BITBUCKET-SDK01",
+        "created_on": "s191",
+        "creator": "s192",
+        "is_private": true,
+        "owner": "s195",
+        "scm": "s196",
+        "title": "s197",
+        "type": "s198",
+        "updated_on": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /snippets/{workspace}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /snippets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/{node_id}/files/{path}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/{node_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/files/{path}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/{revision}/diff": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/{revision}/patch": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/watch": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /snippets/{workspace}/{encoded_id}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /snippets/{workspace}/{encoded_id}/{node_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /snippets/{workspace}/{encoded_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /snippets/{workspace}/{encoded_id}/watch": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /snippets/{workspace}/{encoded_id}/{node_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /snippets/{workspace}/{encoded_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /snippets/{workspace}/{encoded_id}/watch": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+# BasicPaginatedRepositoryFlow
+
+main: kit: flow: BasicPaginatedRepositoryFlow:
+{
+  entity: "paginated_repository",
+  kind: "basic",
+  name: "BasicPaginatedRepositoryFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_repository_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "paginated_repository_ref01",
+        srcdatavar: "paginated_repository_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_repository01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedRepositoryFlow"
+}

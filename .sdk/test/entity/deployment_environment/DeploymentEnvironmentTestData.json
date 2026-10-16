@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "deployment_environment": {
+      "DEPLOYMENT_ENVIRONMENT00": {
+        "id": "DEPLOYMENT_ENVIRONMENT00",
+        "name": "s29",
+        "type": "s2a",
+        "uuid": "s2b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEPLOYMENT_ENVIRONMENT01": {
+        "id": "DEPLOYMENT_ENVIRONMENT01",
+        "name": "s51",
+        "type": "s52",
+        "uuid": "s53",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEPLOYMENT_ENVIRONMENT02": {
+        "id": "DEPLOYMENT_ENVIRONMENT02",
+        "name": "s79",
+        "type": "s7a",
+        "uuid": "s7b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "deployment_environment": {
+      "deployment_environment_ref01": {
+        "name": "sa1",
+        "type": "sa2",
+        "uuid": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/environments/{environment_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

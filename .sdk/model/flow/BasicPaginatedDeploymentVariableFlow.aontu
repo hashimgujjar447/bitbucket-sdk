@@ -1,0 +1,28 @@
+# BasicPaginatedDeploymentVariableFlow
+
+main: kit: flow: BasicPaginatedDeploymentVariableFlow:
+{
+  entity: "paginated_deployment_variable",
+  kind: "basic",
+  name: "BasicPaginatedDeploymentVariableFlow",
+  step: [
+    {
+      m: {
+        environment_id: "environment01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_deployment_variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedDeploymentVariableFlow"
+}

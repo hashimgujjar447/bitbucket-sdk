@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "paginated_repository_group_permission": {
+      "PAGINATED_REPOSITORY_GROUP_PERMISSION00": {
+        "group": "s32",
+        "links": {},
+        "permission": "s34",
+        "repository": "s35",
+        "type": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPOSITORY_GROUP_PERMISSION01": {
+        "group": "s64",
+        "links": {},
+        "permission": "s66",
+        "repository": "s67",
+        "type": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPOSITORY_GROUP_PERMISSION02": {
+        "group": "s96",
+        "links": {},
+        "permission": "s98",
+        "repository": "s99",
+        "type": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_repository_group_permission": {
+      "paginated_repository_group_permission_ref01": {
+        "group": "sc8",
+        "links": {},
+        "permission": "sca",
+        "repository": "scb",
+        "type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/permissions-config/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "paginated_snippet": {
+      "PAGINATED_SNIPPET00": {
+        "id": "PAGINATED_SNIPPET00",
+        "next": "s47",
+        "page": 72,
+        "pagelen": 73,
+        "previous": "s4a",
+        "size": 75,
+        "values": []
+      },
+      "PAGINATED_SNIPPET01": {
+        "id": "PAGINATED_SNIPPET01",
+        "next": "s8d",
+        "page": 142,
+        "pagelen": 143,
+        "previous": "s90",
+        "size": 145,
+        "values": []
+      },
+      "PAGINATED_SNIPPET02": {
+        "id": "PAGINATED_SNIPPET02",
+        "next": "sd3",
+        "page": 212,
+        "pagelen": 213,
+        "previous": "sd6",
+        "size": 215,
+        "values": []
+      }
+    }
+  },
+  "new": {
+    "paginated_snippet": {
+      "paginated_snippet_ref01": {
+        "next": "s119",
+        "page": 282,
+        "pagelen": 283,
+        "previous": "s11c",
+        "size": 285,
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "GET /snippets/{workspace}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

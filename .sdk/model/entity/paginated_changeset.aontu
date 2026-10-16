@@ -1,0 +1,369 @@
+# Entity: paginated_changeset
+
+main: kit: entity: paginated_changeset: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: false
+      t: "`$ANY`"
+    }
+    committer: {
+      h: "Committer"
+      n: "committer"
+      r: false
+      t: "`$ANY`"
+    }
+    date: {
+      fo: "date-time"
+      h: "Date"
+      n: "date"
+      r: false
+      t: "`$STRING`"
+    }
+    hash: {
+      h: "Hash"
+      n: "hash"
+      r: false
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    next: {
+      fo: "uri"
+      h: "Next"
+      n: "next"
+      r: false
+      sh: "Link to the next page if it exists."
+      t: "`$STRING`"
+    }
+    page: {
+      h: "Page"
+      n: "page"
+      r: false
+      sh: "Page number of the current results."
+      t: "`$INTEGER`"
+    }
+    pagelen: {
+      h: "Pagelen"
+      n: "pagelen"
+      r: false
+      sh: "Current number of objects on the existing page."
+      t: "`$INTEGER`"
+    }
+    parents: {
+      h: "Parents"
+      n: "parents"
+      r: false
+      t: "`$ARRAY`"
+    }
+    previous: {
+      fo: "uri"
+      h: "Previous"
+      n: "previous"
+      r: false
+      sh: "Link to previous page if it exists."
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      sh: "Total number of objects in the response."
+      t: "`$INTEGER`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: false
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    values: {
+      h: "Values"
+      n: "values"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "paginated_changeset"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/commits/{revision}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "revision"
+                or: "revision"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/commits/{revision}"
+          q: {
+            exist: [
+              "repo_slug"
+              "revision"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commits"
+            }
+            {
+              var: "revision"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/commits"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/commits"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/commits"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/commits"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/commits/{revision}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "revision"
+                or: "revision"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/commits/{revision}"
+          q: {
+            exist: [
+              "repo_slug"
+              "revision"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commits"
+            }
+            {
+              var: "revision"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+  ]
+
+}

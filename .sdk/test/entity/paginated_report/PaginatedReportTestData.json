@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "paginated_report": {
+      "PAGINATED_REPORT00": {
+        "created_on": "s8c",
+        "data": [],
+        "details": "s8e",
+        "external_id": "EXTERNAL01",
+        "link": "s90",
+        "logo_url": "s91",
+        "remote_link_enabled": true,
+        "report_type": "s93",
+        "reporter": "s94",
+        "result": "s95",
+        "title": "s96",
+        "type": "s97",
+        "updated_on": "s98",
+        "uuid": "s99",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPORT01": {
+        "created_on": "s118",
+        "data": [],
+        "details": "s11a",
+        "external_id": "EXTERNAL01",
+        "link": "s11c",
+        "logo_url": "s11d",
+        "remote_link_enabled": true,
+        "report_type": "s11f",
+        "reporter": "s120",
+        "result": "s121",
+        "title": "s122",
+        "type": "s123",
+        "updated_on": "s124",
+        "uuid": "s125",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPORT02": {
+        "created_on": "s1a4",
+        "data": [],
+        "details": "s1a6",
+        "external_id": "EXTERNAL01",
+        "link": "s1a8",
+        "logo_url": "s1a9",
+        "remote_link_enabled": true,
+        "report_type": "s1ab",
+        "reporter": "s1ac",
+        "result": "s1ad",
+        "title": "s1ae",
+        "type": "s1af",
+        "updated_on": "s1b0",
+        "uuid": "s1b1",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_report": {
+      "paginated_report_ref01": {
+        "created_on": "s230",
+        "data": [],
+        "details": "s232",
+        "external_id": "EXTERNAL01",
+        "link": "s234",
+        "logo_url": "s235",
+        "remote_link_enabled": true,
+        "report_type": "s237",
+        "reporter": "s238",
+        "result": "s239",
+        "title": "s23a",
+        "type": "s23b",
+        "updated_on": "s23c",
+        "uuid": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/reports": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

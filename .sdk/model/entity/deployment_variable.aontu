@@ -1,0 +1,254 @@
+# Entity: deployment_variable
+
+main: kit: entity: deployment_variable: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "The unique name of the variable."
+      t: "`$STRING`"
+    }
+    secured: {
+      h: "Secured"
+      n: "secured"
+      r: false
+      sh: "If true, this variable will be treated as secured."
+      t: "`$BOOLEAN`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID identifying the variable."
+      t: "`$STRING`"
+    }
+    value: {
+      h: "Value"
+      n: "value"
+      r: false
+      sh: "The value of the variable."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "deployment_variable"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "key"
+            "secured"
+            "type"
+            "uuid"
+            "value"
+          ]
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "environment_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables"
+          q: {
+            exist: [
+              "environment_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              environment_uuid: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "deployments_config"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "variables"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "key"
+            "secured"
+            "type"
+            "uuid"
+            "value"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables/{variable_uuid}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "environment_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "variable_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables/{variable_uuid}"
+          q: {
+            exist: [
+              "environment_id"
+              "id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              environment_uuid: "environment_id"
+              variable_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "deployments_config"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "variables"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

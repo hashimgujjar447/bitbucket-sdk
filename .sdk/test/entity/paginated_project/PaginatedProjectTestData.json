@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "paginated_project": {
+      "PAGINATED_PROJECT00": {
+        "created_on": "s6e",
+        "description": "s6f",
+        "has_publicly_visible_repos": true,
+        "is_private": false,
+        "key": "s72",
+        "links": {},
+        "name": "s74",
+        "owner": "s75",
+        "type": "s76",
+        "updated_on": "s77",
+        "uuid": "s78",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT01": {
+        "created_on": "sdc",
+        "description": "sdd",
+        "has_publicly_visible_repos": true,
+        "is_private": false,
+        "key": "se0",
+        "links": {},
+        "name": "se2",
+        "owner": "se3",
+        "type": "se4",
+        "updated_on": "se5",
+        "uuid": "se6",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT02": {
+        "created_on": "s14a",
+        "description": "s14b",
+        "has_publicly_visible_repos": true,
+        "is_private": false,
+        "key": "s14e",
+        "links": {},
+        "name": "s150",
+        "owner": "s151",
+        "type": "s152",
+        "updated_on": "s153",
+        "uuid": "s154",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_project": {
+      "paginated_project_ref01": {
+        "created_on": "s1b8",
+        "description": "s1b9",
+        "has_publicly_visible_repos": true,
+        "is_private": false,
+        "key": "s1bc",
+        "links": {},
+        "name": "s1be",
+        "owner": "s1bf",
+        "type": "s1c0",
+        "updated_on": "s1c1",
+        "uuid": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

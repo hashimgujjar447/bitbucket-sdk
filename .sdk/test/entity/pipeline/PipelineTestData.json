@@ -1,0 +1,231 @@
+{
+  "existing": {
+    "pipeline": {
+      "PIPELINE00": {
+        "build_number": 150,
+        "build_seconds_used": 151,
+        "completed_on": "s98",
+        "configuration_sources": [],
+        "created_on": "s9a",
+        "creator": "s9b",
+        "id": "PIPELINE00",
+        "links": "s9d",
+        "repository": "s9e",
+        "state": "s9f",
+        "target": "sa0",
+        "trigger": "sa1",
+        "type": "sa2",
+        "uuid": "sa3",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "log_uuid": "LOG_UUID01",
+        "step_id": "STEP01",
+        "test_case_id": "TEST_CASE01",
+        "workspace_id": "WORKSPACE01",
+        "environment_id": "ENVIRONMENT01",
+        "variable_uuid": "VARIABLE_UUID01",
+        "cache_uuid": "CACHE_UUID01",
+        "known_host_uuid": "KNOWN_HOST_UUID01",
+        "runner_uuid": "RUNNER_UUID01",
+        "schedule_uuid": "SCHEDULE_UUID01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01"
+      },
+      "PIPELINE01": {
+        "build_number": 300,
+        "build_seconds_used": 301,
+        "completed_on": "s12e",
+        "configuration_sources": [],
+        "created_on": "s130",
+        "creator": "s131",
+        "id": "PIPELINE01",
+        "links": "s133",
+        "repository": "s134",
+        "state": "s135",
+        "target": "s136",
+        "trigger": "s137",
+        "type": "s138",
+        "uuid": "s139",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "log_uuid": "LOG_UUID01",
+        "step_id": "STEP01",
+        "test_case_id": "TEST_CASE01",
+        "workspace_id": "WORKSPACE01",
+        "environment_id": "ENVIRONMENT01",
+        "variable_uuid": "VARIABLE_UUID01",
+        "cache_uuid": "CACHE_UUID01",
+        "known_host_uuid": "KNOWN_HOST_UUID01",
+        "runner_uuid": "RUNNER_UUID01",
+        "schedule_uuid": "SCHEDULE_UUID01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01"
+      },
+      "PIPELINE02": {
+        "build_number": 450,
+        "build_seconds_used": 451,
+        "completed_on": "s1c4",
+        "configuration_sources": [],
+        "created_on": "s1c6",
+        "creator": "s1c7",
+        "id": "PIPELINE02",
+        "links": "s1c9",
+        "repository": "s1ca",
+        "state": "s1cb",
+        "target": "s1cc",
+        "trigger": "s1cd",
+        "type": "s1ce",
+        "uuid": "s1cf",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "log_uuid": "LOG_UUID01",
+        "step_id": "STEP01",
+        "test_case_id": "TEST_CASE01",
+        "workspace_id": "WORKSPACE01",
+        "environment_id": "ENVIRONMENT01",
+        "variable_uuid": "VARIABLE_UUID01",
+        "cache_uuid": "CACHE_UUID01",
+        "known_host_uuid": "KNOWN_HOST_UUID01",
+        "runner_uuid": "RUNNER_UUID01",
+        "schedule_uuid": "SCHEDULE_UUID01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01"
+      }
+    }
+  },
+  "new": {
+    "pipeline": {
+      "pipeline_ref01": {
+        "build_number": 600,
+        "build_seconds_used": 601,
+        "completed_on": "s25a",
+        "configuration_sources": [],
+        "created_on": "s25c",
+        "creator": "s25d",
+        "links": "s25f",
+        "repository": "s260",
+        "state": "s261",
+        "target": "s262",
+        "trigger": "s263",
+        "type": "s264",
+        "uuid": "s265",
+        "variables": []
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/stopPipeline": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/pipelines": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/logs/{log_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases/{test_case_uuid}/test_case_reasons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/log": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/pipelines-config/identity/oidc/keys.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables/{variable_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts/{known_host_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines-config/caches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines-config/runners/{runner_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines_config/variables/{variable_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/key_pair": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/pipelines-config/runners/{runner_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{selected_user}/pipelines_config/variables/{variable_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /teams/{username}/pipelines_config/variables/{variable_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/pipelines-config/variables/{variable_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

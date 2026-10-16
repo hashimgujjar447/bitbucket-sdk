@@ -1,0 +1,112 @@
+# Entity: paginated_pipeline_known_host
+
+main: kit: entity: paginated_pipeline_known_host: {
+
+  alias: field: {}
+
+  fields: {
+    hostname: {
+      h: "Hostname"
+      n: "hostname"
+      r: false
+      sh: "The hostname of the known host."
+      t: "`$STRING`"
+    }
+    public_key: {
+      h: "Public Key"
+      n: "public_key"
+      r: false
+      sh: "The public key of the known host."
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID identifying the known host."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_pipeline_known_host"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pipelines_config"
+            }
+            {
+              lit: "ssh"
+            }
+            {
+              lit: "known_hosts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "source": {
+      "SOURCE00": {
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "SOURCE00"
+      },
+      "SOURCE01": {
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "SOURCE01"
+      },
+      "SOURCE02": {
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "SOURCE02"
+      }
+    }
+  },
+  "new": {
+    "source": {
+      "source_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/src": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

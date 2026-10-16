@@ -1,0 +1,137 @@
+# Entity: pullrequest_mergeability_check
+
+main: kit: entity: pullrequest_mergeability_check: {
+
+  alias: field: {}
+
+  fields: {
+    blocking: {
+      h: "Blocking"
+      n: "blocking"
+      r: true
+      sh: "Whether this check is currently preventing the pull request from being merged."
+      t: "`$BOOLEAN`"
+    }
+    required: {
+      h: "Required"
+      n: "required"
+      r: true
+      sh: "Whether this check must pass for the pull request to be mergeable."
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "Whether this check passed."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "pullrequest_mergeability_check"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/mergeability/checks"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "pullrequest_id"
+                or: "pull_request_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/mergeability/checks"
+          q: {
+            exist: [
+              "pullrequest_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              pull_request_id: "pullrequest_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pullrequests"
+            }
+            {
+              var: "pullrequest_id"
+            }
+            {
+              lit: "mergeability"
+            }
+            {
+              lit: "checks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.pullrequest")]
+  ]
+
+}

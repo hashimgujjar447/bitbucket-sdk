@@ -1,0 +1,108 @@
+{
+  "existing": {
+    "paginated_changeset": {
+      "PAGINATED_CHANGESET00": {
+        "author": "s8c",
+        "committer": "s8d",
+        "date": "s8e",
+        "hash": "s8f",
+        "message": "s90",
+        "next": "s91",
+        "page": 146,
+        "pagelen": 147,
+        "parents": [],
+        "previous": "s95",
+        "size": 150,
+        "summary": {},
+        "type": "s98",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "revision": "REVISION01",
+        "workspace": "WORKSPACE01",
+        "id": "PAGINATED_CHANGESET00"
+      },
+      "PAGINATED_CHANGESET01": {
+        "author": "s118",
+        "committer": "s119",
+        "date": "s11a",
+        "hash": "s11b",
+        "message": "s11c",
+        "next": "s11d",
+        "page": 286,
+        "pagelen": 287,
+        "parents": [],
+        "previous": "s121",
+        "size": 290,
+        "summary": {},
+        "type": "s124",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "revision": "REVISION01",
+        "workspace": "WORKSPACE01",
+        "id": "PAGINATED_CHANGESET01"
+      },
+      "PAGINATED_CHANGESET02": {
+        "author": "s1a4",
+        "committer": "s1a5",
+        "date": "s1a6",
+        "hash": "s1a7",
+        "message": "s1a8",
+        "next": "s1a9",
+        "page": 426,
+        "pagelen": 427,
+        "parents": [],
+        "previous": "s1ad",
+        "size": 430,
+        "summary": {},
+        "type": "s1b0",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "revision": "REVISION01",
+        "workspace": "WORKSPACE01",
+        "id": "PAGINATED_CHANGESET02"
+      }
+    }
+  },
+  "new": {
+    "paginated_changeset": {
+      "paginated_changeset_ref01": {
+        "author": "s230",
+        "committer": "s231",
+        "date": "s232",
+        "hash": "s233",
+        "message": "s234",
+        "next": "s235",
+        "page": 566,
+        "pagelen": 567,
+        "parents": [],
+        "previous": "s239",
+        "size": 570,
+        "summary": {},
+        "type": "s23c",
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/commits/{revision}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/commits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/commits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/commits/{revision}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

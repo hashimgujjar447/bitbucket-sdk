@@ -1,0 +1,111 @@
+{
+  "existing": {
+    "report": {
+      "REPORT00": {
+        "created_on": "s96",
+        "data": [],
+        "details": "s98",
+        "external_id": "EXTERNAL01",
+        "id": "REPORT00",
+        "link": "s9b",
+        "logo_url": "s9c",
+        "remote_link_enabled": false,
+        "report_type": "s9e",
+        "reporter": "s9f",
+        "result": "sa0",
+        "title": "sa1",
+        "type": "sa2",
+        "updated_on": "sa3",
+        "uuid": "sa4",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "annotation_id": "ANNOTATION01"
+      },
+      "REPORT01": {
+        "created_on": "s12c",
+        "data": [],
+        "details": "s12e",
+        "external_id": "EXTERNAL01",
+        "id": "REPORT01",
+        "link": "s131",
+        "logo_url": "s132",
+        "remote_link_enabled": false,
+        "report_type": "s134",
+        "reporter": "s135",
+        "result": "s136",
+        "title": "s137",
+        "type": "s138",
+        "updated_on": "s139",
+        "uuid": "s13a",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "annotation_id": "ANNOTATION01"
+      },
+      "REPORT02": {
+        "created_on": "s1c2",
+        "data": [],
+        "details": "s1c4",
+        "external_id": "EXTERNAL01",
+        "id": "REPORT02",
+        "link": "s1c7",
+        "logo_url": "s1c8",
+        "remote_link_enabled": false,
+        "report_type": "s1ca",
+        "reporter": "s1cb",
+        "result": "s1cc",
+        "title": "s1cd",
+        "type": "s1ce",
+        "updated_on": "s1cf",
+        "uuid": "s1d0",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "annotation_id": "ANNOTATION01"
+      }
+    }
+  },
+  "new": {
+    "report": {
+      "report_ref01": {
+        "created_on": "s258",
+        "data": [],
+        "details": "s25a",
+        "external_id": "EXTERNAL01",
+        "link": "s25d",
+        "logo_url": "s25e",
+        "remote_link_enabled": false,
+        "report_type": "s260",
+        "reporter": "s261",
+        "result": "s262",
+        "title": "s263",
+        "type": "s264",
+        "updated_on": "s265",
+        "uuid": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

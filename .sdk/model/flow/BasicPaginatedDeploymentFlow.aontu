@@ -1,0 +1,27 @@
+# BasicPaginatedDeploymentFlow
+
+main: kit: flow: BasicPaginatedDeploymentFlow:
+{
+  entity: "paginated_deployment",
+  kind: "basic",
+  name: "BasicPaginatedDeploymentFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedDeploymentFlow"
+}

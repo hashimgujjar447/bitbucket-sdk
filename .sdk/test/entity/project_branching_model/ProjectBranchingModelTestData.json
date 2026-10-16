@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "project_branching_model": {
+      "PROJECT_BRANCHING_MODEL00": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s2b",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PROJECT_BRANCHING_MODEL01": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s53",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PROJECT_BRANCHING_MODEL02": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s7b",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "project_branching_model": {
+      "project_branching_model_ref01": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/branching-model": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

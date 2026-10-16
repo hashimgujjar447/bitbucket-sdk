@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "paginated_merge_queue": {
+      "PAGINATED_MERGE_QUEUE00": {
+        "name": "s28",
+        "state": "s29",
+        "type": "s2a",
+        "uuid": "s2b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_MERGE_QUEUE01": {
+        "name": "s50",
+        "state": "s51",
+        "type": "s52",
+        "uuid": "s53",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_MERGE_QUEUE02": {
+        "name": "s78",
+        "state": "s79",
+        "type": "s7a",
+        "uuid": "s7b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_merge_queue": {
+      "paginated_merge_queue_ref01": {
+        "name": "sa0",
+        "state": "sa1",
+        "type": "sa2",
+        "uuid": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/merge-queues": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

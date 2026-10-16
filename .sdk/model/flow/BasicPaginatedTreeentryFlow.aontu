@@ -1,0 +1,52 @@
+# BasicPaginatedTreeentryFlow
+
+main: kit: flow: BasicPaginatedTreeentryFlow:
+{
+  entity: "paginated_treeentry",
+  kind: "basic",
+  name: "BasicPaginatedTreeentryFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_treeentry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "paginated_treeentry_ref01",
+        srcdatavar: "paginated_treeentry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit: "commit01",
+        id: "paginated_treeentry01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_treeentry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedTreeentryFlow"
+}

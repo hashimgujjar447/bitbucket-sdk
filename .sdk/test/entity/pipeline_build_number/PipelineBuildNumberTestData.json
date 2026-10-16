@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "pipeline_build_number": {
+      "PIPELINE_BUILD_NUMBER00": {
+        "next": 20,
+        "type": "s15",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_BUILD_NUMBER00"
+      },
+      "PIPELINE_BUILD_NUMBER01": {
+        "next": 40,
+        "type": "s29",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_BUILD_NUMBER01"
+      },
+      "PIPELINE_BUILD_NUMBER02": {
+        "next": 60,
+        "type": "s3d",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_BUILD_NUMBER02"
+      }
+    }
+  },
+  "new": {
+    "pipeline_build_number": {
+      "pipeline_build_number_ref01": {
+        "next": 80,
+        "type": "s51"
+      }
+    }
+  },
+  "requests": {
+    "PUT /repositories/{workspace}/{repo_slug}/pipelines_config/build_number": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

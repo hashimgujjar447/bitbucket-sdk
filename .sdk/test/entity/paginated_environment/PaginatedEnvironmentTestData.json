@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "paginated_environment": {
+      "PAGINATED_ENVIRONMENT00": {
+        "name": "s1e",
+        "type": "s1f",
+        "uuid": "s20",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ENVIRONMENT01": {
+        "name": "s3c",
+        "type": "s3d",
+        "uuid": "s3e",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ENVIRONMENT02": {
+        "name": "s5a",
+        "type": "s5b",
+        "uuid": "s5c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_environment": {
+      "paginated_environment_ref01": {
+        "name": "s78",
+        "type": "s79",
+        "uuid": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

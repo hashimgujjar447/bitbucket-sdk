@@ -1,0 +1,130 @@
+# Entity: paginated_snippet
+
+main: kit: entity: paginated_snippet: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    next: {
+      fo: "uri"
+      h: "Next"
+      n: "next"
+      r: false
+      sh: "Link to the next page if it exists."
+      t: "`$STRING`"
+    }
+    page: {
+      h: "Page"
+      n: "page"
+      r: false
+      sh: "Page number of the current results."
+      t: "`$INTEGER`"
+    }
+    pagelen: {
+      h: "Pagelen"
+      n: "pagelen"
+      r: false
+      sh: "Current number of objects on the existing page."
+      t: "`$INTEGER`"
+    }
+    previous: {
+      fo: "uri"
+      h: "Previous"
+      n: "previous"
+      r: false
+      sh: "Link to previous page if it exists."
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      sh: "Total number of objects in the response."
+      t: "`$INTEGER`"
+    }
+    values: {
+      h: "Values"
+      n: "values"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "paginated_snippet"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /snippets/{workspace}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "role"
+                or: "role"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

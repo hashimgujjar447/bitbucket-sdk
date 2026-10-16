@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "paginated_pipeline_schedule_execution": {
+      "PAGINATED_PIPELINE_SCHEDULE_EXECUTION00": {
+        "type": "sa",
+        "repo_slug": "REPO_SLUG01",
+        "schedule_id": "SCHEDULE01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_SCHEDULE_EXECUTION01": {
+        "type": "s14",
+        "repo_slug": "REPO_SLUG01",
+        "schedule_id": "SCHEDULE01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_SCHEDULE_EXECUTION02": {
+        "type": "s1e",
+        "repo_slug": "REPO_SLUG01",
+        "schedule_id": "SCHEDULE01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline_schedule_execution": {
+      "paginated_pipeline_schedule_execution_ref01": {
+        "type": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}/executions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

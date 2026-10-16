@@ -1,0 +1,60 @@
+# BasicReportFlow
+
+main: kit: flow: BasicReportFlow:
+{
+  entity: "report",
+  kind: "basic",
+  name: "BasicReportFlow",
+  step: [
+    {
+      d: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "report_ref01",
+        srcdatavar: "report_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-report_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "report_ref01",
+        srcdatavar: "report_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit_id: "commit01",
+        id: "report01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-report_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicReportFlow"
+}

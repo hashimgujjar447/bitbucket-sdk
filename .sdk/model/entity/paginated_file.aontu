@@ -1,0 +1,183 @@
+# Entity: paginated_file
+
+main: kit: entity: paginated_file: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    next: {
+      fo: "uri"
+      h: "Next"
+      n: "next"
+      r: false
+      sh: "Link to the next page if it exists."
+      t: "`$STRING`"
+    }
+    page: {
+      h: "Page"
+      n: "page"
+      r: false
+      sh: "Page number of the current results."
+      t: "`$INTEGER`"
+    }
+    pagelen: {
+      h: "Pagelen"
+      n: "pagelen"
+      r: false
+      sh: "Current number of objects on the existing page."
+      t: "`$INTEGER`"
+    }
+    previous: {
+      fo: "uri"
+      h: "Previous"
+      n: "previous"
+      r: false
+      sh: "Link to previous page if it exists."
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      sh: "Total number of objects in the response."
+      t: "`$INTEGER`"
+    }
+    values: {
+      h: "Values"
+      n: "values"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "commit"
+      "path"
+    ]
+    sep: "/"
+  }
+
+  name: "paginated_file"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/filehistory/{commit}/{path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "rename"
+                or: "renames"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/filehistory/{commit}/{path}"
+          q: {
+            exist: [
+              "commit"
+              "path"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "filehistory"
+            }
+            {
+              var: "commit"
+            }
+            {
+              var: "path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

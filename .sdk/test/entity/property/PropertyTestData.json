@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "property": {
+      "PROPERTY00": {
+        "attributes": [],
+        "id": "PROPERTY00",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      },
+      "PROPERTY01": {
+        "attributes": [],
+        "id": "PROPERTY01",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      },
+      "PROPERTY02": {
+        "attributes": [],
+        "id": "PROPERTY02",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      }
+    }
+  },
+  "new": {
+    "property": {
+      "property_ref01": {
+        "attributes": []
+      }
+    }
+  },
+  "requests": {
+    "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{selected_user}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /users/{selected_user}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

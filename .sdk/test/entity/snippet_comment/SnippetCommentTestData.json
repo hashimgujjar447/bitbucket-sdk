@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "snippet_comment": {
+      "SNIPPET_COMMENT00": {
+        "id": "SNIPPET_COMMENT00",
+        "links": {},
+        "snippet": "s2a",
+        "type": "s2b",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "SNIPPET_COMMENT01": {
+        "id": "SNIPPET_COMMENT01",
+        "links": {},
+        "snippet": "s52",
+        "type": "s53",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "SNIPPET_COMMENT02": {
+        "id": "SNIPPET_COMMENT02",
+        "links": {},
+        "snippet": "s7a",
+        "type": "s7b",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "snippet_comment": {
+      "snippet_comment_ref01": {
+        "links": {},
+        "snippet": "sa2",
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /snippets/{workspace}/{encoded_id}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /snippets/{workspace}/{encoded_id}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /snippets/{workspace}/{encoded_id}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

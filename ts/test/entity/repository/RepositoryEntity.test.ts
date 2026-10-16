@@ -1,0 +1,205 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { BitbucketSdkSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('RepositoryEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when BITBUCKET_SDK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BITBUCKET_SDK_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = BitbucketSdkSDK.test()
+    const ent = testsdk.Repository()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = BitbucketSdkSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Repository().load({"repo_slug":1,"workspace":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.BITBUCKET_SDK_TEST_LIVE
+    for (const op of ['create', 'update', 'load', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'repository.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"created_on":{"a":true,"fo":"date-time","h":"Created On","n":"created_on","r":false,"t":"`$STRING`","key$":"created_on","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"t":"`$STRING`","key$":"description","index$":1},"fork_policy":{"a":true,"h":"Fork Policy","n":"fork_policy","r":false,"sh":"Controls the rules for forking this repository.","t":"`$STRING`","key$":"fork_policy","index$":2},"full_name":{"a":true,"h":"Full Name","n":"full_name","r":false,"sh":"The concatenation of the repository owner's username and the slugified name, e.g.","t":"`$STRING`","key$":"full_name","index$":3},"has_issues":{"a":true,"h":"Has Issues","n":"has_issues","r":false,"sh":"The issue tracker for this repository is enabled.","t":"`$BOOLEAN`","key$":"has_issues","index$":4},"has_wiki":{"a":true,"h":"Has Wiki","n":"has_wiki","r":false,"sh":"The wiki for this repository is enabled.","t":"`$BOOLEAN`","key$":"has_wiki","index$":5},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":6},"is_private":{"a":true,"h":"Is Private","n":"is_private","r":false,"t":"`$BOOLEAN`","key$":"is_private","index$":7},"language":{"a":true,"h":"Language","n":"language","r":false,"t":"`$STRING`","key$":"language","index$":8},"links":{"a":true,"h":"Links","n":"links","r":false,"t":"`$OBJECT`","key$":"links","index$":9},"mainbranch":{"a":true,"h":"Mainbranch","n":"mainbranch","r":false,"t":"`$ANY`","key$":"mainbranch","index$":10},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":11},"owner":{"a":true,"h":"Owner","n":"owner","r":false,"t":"`$ANY`","key$":"owner","index$":12},"parent":{"a":true,"h":"Parent","n":"parent","r":false,"t":"`$ANY`","key$":"parent","index$":13},"project":{"a":true,"h":"Project","n":"project","r":false,"t":"`$ANY`","key$":"project","index$":14},"scm":{"a":true,"h":"Scm","n":"scm","r":false,"t":"`$STRING`","key$":"scm","index$":15},"size":{"a":true,"h":"Size","n":"size","r":false,"t":"`$INTEGER`","key$":"size","index$":16},"type":{"a":true,"h":"Type","n":"type","r":true,"t":"`$STRING`","key$":"type","index$":17},"updated_on":{"a":true,"fo":"date-time","h":"Updated On","n":"updated_on","r":false,"t":"`$STRING`","key$":"updated_on","index$":18},"uuid":{"a":true,"h":"Uuid","n":"uuid","r":false,"sh":"The repository's immutable id.","t":"`$STRING`","key$":"uuid","index$":19}},"id":{"field":"id","name":"id","parts":["workspace","repo_slug"],"sep":"/"},"name":"repository","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["created_on","description","fork_policy","full_name","has_issues","has_wiki","is_private","language","links","mainbranch","name","owner","parent","project","scm","size","type","updated_on","uuid"],"co":{"id":"POST /repositories/{workspace}/{repo_slug}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"POST","o":"/repositories/{workspace}/{repo_slug}","q":{"exist":["repo_slug","workspace"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["created_on","description","fork_policy","full_name","has_issues","has_wiki","is_private","language","links","mainbranch","name","owner","parent","project","scm","size","type","updated_on","uuid"],"co":{"id":"POST /repositories/{workspace}/{repo_slug}/forks","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"POST","o":"/repositories/{workspace}/{repo_slug}/forks","q":{"exist":["repo_slug","workspace"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"},{"lit":"forks"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /repositories/{workspace}/{repo_slug}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/repositories/{workspace}/{repo_slug}","q":{"exist":["repo_slug","workspace"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"group_slug","or":"group_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}","q":{"exist":["group_slug","repo_slug","workspace"]},"r":{},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"},{"lit":"permissions-config"},{"lit":"groups"},{"var":"group_slug"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"selected_user_id","or":"selected_user_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}","q":{"exist":["repo_slug","selected_user_id","workspace"]},"r":{},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"},{"lit":"permissions-config"},{"lit":"users"},{"var":"selected_user_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"DELETE /repositories/{workspace}/{repo_slug}/hooks/{uid}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"uid","or":"uid","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/repositories/{workspace}/{repo_slug}/hooks/{uid}","q":{"exist":["repo_slug","uid","workspace"]},"r":{},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"},{"lit":"hooks"},{"var":"uid"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"DELETE /repositories/{workspace}/{repo_slug}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}],"query":[{"a":true,"k":"query","n":"redirect_to","or":"redirect_to","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/repositories/{workspace}/{repo_slug}","q":{"exist":["repo_slug","workspace"]},"r":{},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"bf":["created_on","description","fork_policy","full_name","has_issues","has_wiki","is_private","language","links","mainbranch","name","owner","parent","project","scm","size","type","updated_on","uuid"],"co":{"id":"PUT /repositories/{workspace}/{repo_slug}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"PUT","o":"/repositories/{workspace}/{repo_slug}","q":{"exist":["repo_slug","workspace"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"PUT /repositories/{workspace}/{repo_slug}/override-settings","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"repo_slug","or":"repo_slug","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"PUT","o":"/repositories/{workspace}/{repo_slug}/override-settings","q":{"exist":["repo_slug","workspace"]},"r":{},"s":[{"lit":"repositories"},{"var":"workspace"},{"var":"repo_slug"},{"lit":"override-settings"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"update"}},"relations":{"ancestors":[["$.main.kit.entity.user"]]},"key$":"repository","name__orig":"repository","Name":"Repository","name_":"repository","name-":"repository","NAME":"REPOSITORY","index$":93}, {"active":true,"entity":"repository","key$":"BasicRepositoryFlow","kind":"basic","name":"BasicRepositoryFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"repository_ref01"},"m":{"repo_slug":"repo_slug01","workspace":"workspace01"},"o":"create","s":[],"v":[]},{"a":true,"d":{"workspace":"workspace01"},"i":{"ref":"repository_ref01","srcdatavar":"repository_ref01_data","suffix":"_up0","textfield":"created_on"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-repository_ref01"}}],"v":[]},{"a":true,"d":{},"i":{"ref":"repository_ref01","srcdatavar":"repository_ref01_data","suffix":"_dt0"},"m":{"id":"repository01","workspace":"workspace01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-repository_ref01"}}]},{"a":true,"d":{},"i":{"ref":"repository_ref01","suffix":"_rm0"},"m":{"id":"repository01","workspace":"workspace01"},"o":"remove","s":[],"v":[]}]}, 'Repository', {"POST /repositories/{workspace}/{repo_slug}":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1},{"name":"_body","in":"body","description":"The repository that is to be created. Note that most object elements are optional. Elements \"owner\" and \"full_name\" are ignored as the URL implies them.","required":false,"schema":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{"type":{"type":"string","key$":"type"}},"required":["type"],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Repository","description":"A Bitbucket repository.","properties":{"links":{"type":"object","properties":{"self":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"html":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"avatar":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"pullrequests":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"commits":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"forks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"watchers":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"downloads":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"clone":{"type":"array","items":{}},"hooks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false}},"additionalProperties":false,"key$":"links"},"uuid":{"type":"string","description":"The repository's immutable id. This can be used as a substitute for the slug segment in URLs. Doing this guarantees your URLs will survive renaming of the repository by its owner, or even transfer of the repository to a different user.","key$":"uuid"},"full_name":{"type":"string","description":"The concatenation of the repository owner's username and the slugified name, e.g. \"evzijst/interruptingcow\". This is the same string used in Bitbucket URLs.","key$":"full_name"},"is_private":{"type":"boolean","key$":"is_private"},"parent":{"allOf":"[Circular *paths./repositories/{workspace}.get.responses.200.schema.properties.values.items.allOf]","x-ref":"#/definitions/repository","key$":"parent"},"scm":{"type":"string","enum":["git"],"key$":"scm"},"owner":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"owner"},"name":{"type":"string","key$":"name"},"description":{"type":"string","key$":"description"},"created_on":{"type":"string","format":"date-time","key$":"created_on"},"updated_on":{"type":"string","format":"date-time","key$":"updated_on"},"size":{"type":"integer","key$":"size"},"language":{"type":"string","key$":"language"},"has_issues":{"type":"boolean","description":"\nThe issue tracker for this repository is enabled. Issue Tracker\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_issues"},"has_wiki":{"type":"boolean","description":"\nThe wiki for this repository is enabled. Wiki\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_wiki"},"fork_policy":{"type":"string","description":"\nControls the rules for forking this repository.\n\n* **allow_forks**: unrestricted forking\n* **no_public_forks**: restrict forking to private forks (forks cannot\n  be made public later)\n* **no_forks**: deny all forking\n","enum":["allow_forks","no_public_forks","no_forks"],"key$":"fork_policy"},"project":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Project","description":"A Bitbucket project.\n            Projects are used by teams to organize repositories.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/project","key$":"project"},"mainbranch":{"allOf":[{"type":"object","title":"Ref","description":"A ref object, representing a branch or tag in a repository.","properties":{},"required":[],"additionalProperties":true,"x-ref":"#/definitions/ref"},{"type":"object","title":"Branch","description":"A branch object, representing a branch in a repository.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/branch","key$":"mainbranch"}},"additionalProperties":true}],"x-ref":"#/definitions/repository","index$":1},"index$":2}]},"POST /repositories/{workspace}/{repo_slug}/forks":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1},{"name":"_body","in":"body","description":"A repository object. This can be left blank.","required":false,"schema":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{"type":{"type":"string","key$":"type"}},"required":["type"],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Repository","description":"A Bitbucket repository.","properties":{"links":{"type":"object","properties":{"self":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"html":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"avatar":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"pullrequests":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"commits":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"forks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"watchers":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"downloads":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"clone":{"type":"array","items":{}},"hooks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false}},"additionalProperties":false,"key$":"links"},"uuid":{"type":"string","description":"The repository's immutable id. This can be used as a substitute for the slug segment in URLs. Doing this guarantees your URLs will survive renaming of the repository by its owner, or even transfer of the repository to a different user.","key$":"uuid"},"full_name":{"type":"string","description":"The concatenation of the repository owner's username and the slugified name, e.g. \"evzijst/interruptingcow\". This is the same string used in Bitbucket URLs.","key$":"full_name"},"is_private":{"type":"boolean","key$":"is_private"},"parent":{"allOf":"[Circular *paths./repositories/{workspace}.get.responses.200.schema.properties.values.items.allOf]","x-ref":"#/definitions/repository","key$":"parent"},"scm":{"type":"string","enum":["git"],"key$":"scm"},"owner":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"owner"},"name":{"type":"string","key$":"name"},"description":{"type":"string","key$":"description"},"created_on":{"type":"string","format":"date-time","key$":"created_on"},"updated_on":{"type":"string","format":"date-time","key$":"updated_on"},"size":{"type":"integer","key$":"size"},"language":{"type":"string","key$":"language"},"has_issues":{"type":"boolean","description":"\nThe issue tracker for this repository is enabled. Issue Tracker\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_issues"},"has_wiki":{"type":"boolean","description":"\nThe wiki for this repository is enabled. Wiki\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_wiki"},"fork_policy":{"type":"string","description":"\nControls the rules for forking this repository.\n\n* **allow_forks**: unrestricted forking\n* **no_public_forks**: restrict forking to private forks (forks cannot\n  be made public later)\n* **no_forks**: deny all forking\n","enum":["allow_forks","no_public_forks","no_forks"],"key$":"fork_policy"},"project":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Project","description":"A Bitbucket project.\n            Projects are used by teams to organize repositories.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/project","key$":"project"},"mainbranch":{"allOf":[{"type":"object","title":"Ref","description":"A ref object, representing a branch or tag in a repository.","properties":{},"required":[],"additionalProperties":true,"x-ref":"#/definitions/ref"},{"type":"object","title":"Branch","description":"A branch object, representing a branch in a repository.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/branch","key$":"mainbranch"}},"additionalProperties":true}],"x-ref":"#/definitions/repository","index$":1},"index$":2}]},"GET /repositories/{workspace}/{repo_slug}":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"DELETE /repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}":{"protocol":"http","parameters":[{"name":"group_slug","in":"path","description":"Slug of the requested group.","required":true,"type":"string","index$":0},{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"DELETE /repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"selected_user_id","in":"path","description":"This can either be the UUID of the account, surrounded by curly-braces, for\nexample: `{account UUID}`, OR an Atlassian Account ID.\n","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"DELETE /repositories/{workspace}/{repo_slug}/hooks/{uid}":{"protocol":"http","parameters":[{"name":"workspace","description":"This can either be the workspace ID (slug) or the workspace UUID surrounded by curly-braces, for example `{workspace UUID}`.","required":true,"in":"path","type":"string","index$":0},{"name":"repo_slug","description":"This can either be the repository slug or the UUID of the repository, surrounded by curly-braces, for example: `{repository UUID}`.","required":true,"in":"path","type":"string","index$":1},{"name":"uid","description":"The webhook's id.","required":true,"in":"path","type":"string","index$":2}]},"DELETE /repositories/{workspace}/{repo_slug}":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1},{"name":"redirect_to","in":"query","description":"If a repository has been moved to a new location, use this parameter to\nshow users a friendly message in the Bitbucket UI that the repository\nhas moved to a new location. However, a GET to this endpoint will still\nreturn a 404.\n","required":false,"type":"string","index$":2}]},"PUT /repositories/{workspace}/{repo_slug}":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1},{"name":"_body","in":"body","description":"The repository that is to be updated.\n\nNote that the elements \"owner\" and \"full_name\" are ignored since the\nURL implies them.\n","required":false,"schema":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{"type":{"type":"string","key$":"type"}},"required":["type"],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Repository","description":"A Bitbucket repository.","properties":{"links":{"type":"object","properties":{"self":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"html":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"avatar":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"pullrequests":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"commits":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"forks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"watchers":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"downloads":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false},"clone":{"type":"array","items":{}},"hooks":{"type":"object","title":"Link","description":"A link to a resource related to this object.","properties":{},"additionalProperties":false}},"additionalProperties":false,"key$":"links"},"uuid":{"type":"string","description":"The repository's immutable id. This can be used as a substitute for the slug segment in URLs. Doing this guarantees your URLs will survive renaming of the repository by its owner, or even transfer of the repository to a different user.","key$":"uuid"},"full_name":{"type":"string","description":"The concatenation of the repository owner's username and the slugified name, e.g. \"evzijst/interruptingcow\". This is the same string used in Bitbucket URLs.","key$":"full_name"},"is_private":{"type":"boolean","key$":"is_private"},"parent":{"allOf":"[Circular *paths./repositories/{workspace}.get.responses.200.schema.properties.values.items.allOf]","x-ref":"#/definitions/repository","key$":"parent"},"scm":{"type":"string","enum":["git"],"key$":"scm"},"owner":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"owner"},"name":{"type":"string","key$":"name"},"description":{"type":"string","key$":"description"},"created_on":{"type":"string","format":"date-time","key$":"created_on"},"updated_on":{"type":"string","format":"date-time","key$":"updated_on"},"size":{"type":"integer","key$":"size"},"language":{"type":"string","key$":"language"},"has_issues":{"type":"boolean","description":"\nThe issue tracker for this repository is enabled. Issue Tracker\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_issues"},"has_wiki":{"type":"boolean","description":"\nThe wiki for this repository is enabled. Wiki\nfeatures are not supported for repositories in workspaces\nadministered through admin.atlassian.com.\n","key$":"has_wiki"},"fork_policy":{"type":"string","description":"\nControls the rules for forking this repository.\n\n* **allow_forks**: unrestricted forking\n* **no_public_forks**: restrict forking to private forks (forks cannot\n  be made public later)\n* **no_forks**: deny all forking\n","enum":["allow_forks","no_public_forks","no_forks"],"key$":"fork_policy"},"project":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Project","description":"A Bitbucket project.\n            Projects are used by teams to organize repositories.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/project","key$":"project"},"mainbranch":{"allOf":[{"type":"object","title":"Ref","description":"A ref object, representing a branch or tag in a repository.","properties":{},"required":[],"additionalProperties":true,"x-ref":"#/definitions/ref"},{"type":"object","title":"Branch","description":"A branch object, representing a branch in a repository.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/branch","key$":"mainbranch"}},"additionalProperties":true}],"x-ref":"#/definitions/repository","index$":1},"index$":2}]},"PUT /repositories/{workspace}/{repo_slug}/override-settings":{"protocol":"http","parameters":[{"name":"repo_slug","in":"path","description":"This can either be the repository slug or the UUID of the repository,\nsurrounded by curly-braces, for example: `{repository UUID}`.\n","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const repository_ref01_ent = client.Repository()
+    let repository_ref01_data = setup.data.new.repository['repository_ref01']
+    repository_ref01_data['repo_slug'] = setup.idmap['repo_slug01']
+    repository_ref01_data['workspace'] = setup.idmap['workspace01']
+
+    repository_ref01_data = (await repository_ref01_ent.create(repository_ref01_data)).data()
+    assert(null != repository_ref01_data.id)
+
+
+    // UPDATE
+    const repository_ref01_data_up0: any = {}
+    repository_ref01_data_up0.id = repository_ref01_data.id
+    repository_ref01_data_up0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+
+    const repository_ref01_markdef_up0 = { name: 'created_on', value: 'Mark01-repository_ref01_' + setup.now }
+    ;(repository_ref01_data_up0 as any)[repository_ref01_markdef_up0.name] = repository_ref01_markdef_up0.value
+
+    const repository_ref01_resdata_up0 = (await repository_ref01_ent.update(repository_ref01_data_up0)).data()
+    assert(repository_ref01_resdata_up0.id === repository_ref01_data_up0.id)
+
+    assert((repository_ref01_resdata_up0 as any)[repository_ref01_markdef_up0.name] === repository_ref01_markdef_up0.value)
+
+
+    // LOAD
+    const repository_ref01_match_dt0: any = {}
+    repository_ref01_match_dt0.id = repository_ref01_data.id
+    repository_ref01_match_dt0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+    const repository_ref01_data_dt0 = (await repository_ref01_ent.load(repository_ref01_match_dt0)).data()
+    assert(repository_ref01_data_dt0.id === repository_ref01_data.id)
+
+
+    // REMOVE
+    const repository_ref01_match_rm0: any = { id: repository_ref01_data.id }
+    repository_ref01_match_rm0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+    await repository_ref01_ent.remove(repository_ref01_match_rm0)
+  
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/repository/RepositoryTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = BitbucketSdkSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['repository01','repository02','repository03','user01','user02','user03','repo_slug01','workspace01'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'BITBUCKET_SDK_TEST_REPOSITORY_ENTID': idmap,
+    'BITBUCKET_SDK_TEST_LIVE': 'FALSE',
+    'BITBUCKET_SDK_TEST_EXPLAIN': 'FALSE',
+    'BITBUCKET_SDK_APIKEY': '',
+  })
+
+  idmap = env['BITBUCKET_SDK_TEST_REPOSITORY_ENTID']
+
+  const live = 'TRUE' === env.BITBUCKET_SDK_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['BITBUCKET_SDK_TEST_REPOSITORY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new BitbucketSdkSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.BITBUCKET_SDK_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.BITBUCKET_SDK_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

@@ -1,0 +1,53 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "support@bitbucket.org"
+        name: "Bitbucket Support"
+        url: "https://support.atlassian.com/bitbucket-cloud/"
+      }
+      description: "Code against the Bitbucket API to automate simple tasks, embed Bitbucket data into your own site, build mobile or desktop apps, or even add custom UI add-ons into Bitbucket itself using the Connect framework."
+      security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Basic"
+              scheme: "basic"
+              type: "basic"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: ""
+              scheme: "api_key"
+              type: "apiKey"
+            }
+          ]
+        ]
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "oauth2"
+        type: "oauth2"
+      }
+      servers: [
+        {
+          url: "https://api.bitbucket.org/2.0"
+        }
+      ]
+      summary: "Code against the Bitbucket API to automate simple tasks, embed Bitbucket data into your own site, build mobile or desktop apps, or even add custom UI add-ons into Bitbucket itself using the Connect framework."
+      termsOfService: "https://www.atlassian.com/legal/customer-agreement"
+      title: "Bitbucket API"
+      version: "2.0"
+      website: "https://bitbucket.org"
+    }
+  }
+}
+

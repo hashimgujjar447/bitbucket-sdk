@@ -1,0 +1,68 @@
+# BasicSshAccountKeyFlow
+
+main: kit: flow: BasicSshAccountKeyFlow:
+{
+  entity: "ssh_account_key",
+  kind: "basic",
+  name: "BasicSshAccountKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "ssh_account_key_ref01"
+      }
+
+      m: {
+        selected_user: "selected_user01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        selected_user: "selected_user01"
+      }
+
+      i: {
+        ref: "ssh_account_key_ref01",
+        srcdatavar: "ssh_account_key_ref01_data",
+        suffix: "_up0",
+        textfield: "comment"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ssh_account_key_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ssh_account_key_ref01",
+        srcdatavar: "ssh_account_key_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ssh_account_key01",
+        selected_user: "selected_user01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ssh_account_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSshAccountKeyFlow"
+}

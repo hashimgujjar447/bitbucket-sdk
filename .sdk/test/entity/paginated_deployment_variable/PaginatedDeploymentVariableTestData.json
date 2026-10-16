@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "paginated_deployment_variable": {
+      "PAGINATED_DEPLOYMENT_VARIABLE00": {
+        "key": "s32",
+        "secured": false,
+        "type": "s34",
+        "uuid": "s35",
+        "value": "s36",
+        "environment_id": "ENVIRONMENT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_DEPLOYMENT_VARIABLE01": {
+        "key": "s64",
+        "secured": false,
+        "type": "s66",
+        "uuid": "s67",
+        "value": "s68",
+        "environment_id": "ENVIRONMENT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_DEPLOYMENT_VARIABLE02": {
+        "key": "s96",
+        "secured": false,
+        "type": "s98",
+        "uuid": "s99",
+        "value": "s9a",
+        "environment_id": "ENVIRONMENT01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_deployment_variable": {
+      "paginated_deployment_variable_ref01": {
+        "key": "sc8",
+        "secured": false,
+        "type": "sca",
+        "uuid": "scb",
+        "value": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

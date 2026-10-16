@@ -1,0 +1,27 @@
+# BasicPaginatedSnippetCommitFlow
+
+main: kit: flow: BasicPaginatedSnippetCommitFlow:
+{
+  entity: "paginated_snippet_commit",
+  kind: "basic",
+  name: "BasicPaginatedSnippetCommitFlow",
+  step: [
+    {
+      m: {
+        encoded_id: "encoded01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_snippet_commit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedSnippetCommitFlow"
+}

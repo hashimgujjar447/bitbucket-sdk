@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "pipelines_config": {
+      "PIPELINES_CONFIG00": {
+        "enabled": true,
+        "repository": "s1f",
+        "type": "s20",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINES_CONFIG00"
+      },
+      "PIPELINES_CONFIG01": {
+        "enabled": true,
+        "repository": "s3d",
+        "type": "s3e",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINES_CONFIG01"
+      },
+      "PIPELINES_CONFIG02": {
+        "enabled": true,
+        "repository": "s5b",
+        "type": "s5c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINES_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "pipelines_config": {
+      "pipelines_config_ref01": {
+        "enabled": true,
+        "repository": "s79",
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pipelines_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,1298 @@
+# Entity: snippet
+
+main: kit: entity: snippet: {
+
+  alias: field: {}
+
+  alias: {
+    field: {
+      "bitbucket-sdk_id": "id"
+    }
+  }
+
+  fields: {
+    "bitbucket-sdk_id": {
+      h: "Bitbucket Sdk Id"
+      n: "bitbucket-sdk_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      t: "`$STRING`"
+    }
+    creator: {
+      h: "Creator"
+      n: "creator"
+      r: false
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    is_private: {
+      h: "Is Private"
+      n: "is_private"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: false
+      t: "`$ANY`"
+    }
+    scm: {
+      h: "Scm"
+      n: "scm"
+      r: false
+      sh: "The DVCS used to store the snippet."
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_on: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updated_on"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "workspace"
+      "encoded_id"
+      "node_id"
+    ]
+    sep: "/"
+  }
+
+  name: "snippet"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "created_on"
+            "creator"
+            "id"
+            "is_private"
+            "owner"
+            "scm"
+            "title"
+            "type"
+            "updated_on"
+          ]
+          co: {
+            id: "POST /snippets/{workspace}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/snippets/{workspace}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "created_on"
+            "creator"
+            "id"
+            "is_private"
+            "owner"
+            "scm"
+            "title"
+            "type"
+            "updated_on"
+          ]
+          co: {
+            id: "POST /snippets"
+            source: "swagger2"
+            version: 2
+          }
+          m: "POST"
+          o: "/snippets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/{node_id}/files/{path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "node_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/{node_id}/files/{path}"
+          q: {
+            exist: [
+              "encoded_id"
+              "node_id"
+              "path"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/{node_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "node_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/{node_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "node_id"
+              "workspace"
+            ]
+          }
+          rs: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/related"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "node_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/files/{path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/files/{path}"
+          q: {
+            exist: [
+              "encoded_id"
+              "path"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/{revision}/diff"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "revision"
+                or: "revision"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "path"
+                or: "path"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/{revision}/diff"
+          q: {
+            exist: [
+              "encoded_id"
+              "revision"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "revision"
+            }
+            {
+              lit: "diff"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/{revision}/patch"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "revision"
+                or: "revision"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/{revision}/patch"
+          q: {
+            exist: [
+              "encoded_id"
+              "revision"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "revision"
+            }
+            {
+              lit: "patch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          rs: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/related"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/watch"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/watch"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "watch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /snippets/{workspace}/{encoded_id}/comments/{comment_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "comment_id"
+                or: "comment_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/snippets/{workspace}/{encoded_id}/comments/{comment_id}"
+          q: {
+            exist: [
+              "comment_id"
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "comments"
+            }
+            {
+              var: "comment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /snippets/{workspace}/{encoded_id}/{node_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "node_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/snippets/{workspace}/{encoded_id}/{node_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "node_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "node_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /snippets/{workspace}/{encoded_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/snippets/{workspace}/{encoded_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /snippets/{workspace}/{encoded_id}/watch"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/snippets/{workspace}/{encoded_id}/watch"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "watch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /snippets/{workspace}/{encoded_id}/{node_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "node_id"
+                or: "node_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/snippets/{workspace}/{encoded_id}/{node_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "node_id"
+              "workspace"
+            ]
+          }
+          rs: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/related"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              var: "node_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /snippets/{workspace}/{encoded_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/snippets/{workspace}/{encoded_id}"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          rs: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+              {
+                fields: [
+                  {
+                    name: "created_on"
+                  }
+                  {
+                    name: "creator"
+                  }
+                  {
+                    name: "id"
+                  }
+                  {
+                    name: "is_private"
+                  }
+                  {
+                    name: "owner"
+                  }
+                  {
+                    name: "scm"
+                  }
+                  {
+                    name: "title"
+                  }
+                  {
+                    name: "type"
+                  }
+                  {
+                    name: "updated_on"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/related"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /snippets/{workspace}/{encoded_id}/watch"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/snippets/{workspace}/{encoded_id}/watch"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "watch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

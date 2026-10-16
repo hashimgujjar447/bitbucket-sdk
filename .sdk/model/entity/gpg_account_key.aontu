@@ -1,0 +1,231 @@
+# Entity: gpg_account_key
+
+main: kit: entity: gpg_account_key: {
+
+  alias: field: {}
+
+  fields: {
+    added_on: {
+      fo: "date-time"
+      h: "Added On"
+      n: "added_on"
+      r: false
+      t: "`$STRING`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      t: "`$STRING`"
+    }
+    expires_on: {
+      fo: "date-time"
+      h: "Expires On"
+      n: "expires_on"
+      r: false
+      t: "`$STRING`"
+    }
+    fingerprint: {
+      h: "Fingerprint"
+      n: "fingerprint"
+      r: false
+      sh: "The GPG key fingerprint."
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "The GPG key value in X format."
+      t: "`$STRING`"
+    }
+    key_id: {
+      h: "Key Id"
+      n: "key_id"
+      r: false
+      sh: "The unique identifier for the GPG key"
+      t: "`$STRING`"
+    }
+    last_used: {
+      fo: "date-time"
+      h: "Last Used"
+      n: "last_used"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The user-defined label for the GPG key"
+      t: "`$STRING`"
+    }
+    owner: {
+      h: "Owner"
+      n: "owner"
+      r: false
+      t: "`$ANY`"
+    }
+    parent_fingerprint: {
+      h: "Parent Fingerprint"
+      n: "parent_fingerprint"
+      r: false
+      sh: "The fingerprint of the parent key."
+      t: "`$STRING`"
+    }
+    subkeys: {
+      h: "Subkeys"
+      n: "subkeys"
+      r: false
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "gpg_account_key"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "added_on"
+            "created_on"
+            "expires_on"
+            "fingerprint"
+            "key"
+            "key_id"
+            "last_used"
+            "links"
+            "name"
+            "owner"
+            "parent_fingerprint"
+            "subkeys"
+            "type"
+          ]
+          co: {
+            id: "POST /users/{selected_user}/gpg-keys"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/users/{selected_user}/gpg-keys"
+          q: {
+            exist: [
+              "selected_user"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "gpg-keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /users/{selected_user}/gpg-keys/{fingerprint}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "fingerprint"
+                or: "fingerprint"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{selected_user}/gpg-keys/{fingerprint}"
+          q: {
+            exist: [
+              "fingerprint"
+              "selected_user"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "gpg-keys"
+            }
+            {
+              var: "fingerprint"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

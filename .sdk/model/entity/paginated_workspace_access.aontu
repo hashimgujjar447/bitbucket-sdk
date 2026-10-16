@@ -1,0 +1,83 @@
+# Entity: paginated_workspace_access
+
+main: kit: entity: paginated_workspace_access: {
+
+  alias: field: {}
+
+  fields: {
+    administrator: {
+      h: "Administrator"
+      n: "administrator"
+      r: false
+      sh: "The permission level the user has for the workspace."
+      t: "`$BOOLEAN`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    workspace: {
+      h: "Workspace"
+      n: "workspace"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "paginated_workspace_access"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /user/workspaces"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "administrator"
+                or: "administrator"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/user/workspaces"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "user"
+            }
+            {
+              lit: "workspaces"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

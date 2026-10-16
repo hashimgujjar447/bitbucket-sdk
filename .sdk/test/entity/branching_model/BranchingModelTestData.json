@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "branching_model": {
+      "BRANCHING_MODEL00": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s2b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCHING_MODEL01": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s53",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCHING_MODEL02": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "s7b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "branching_model": {
+      "branching_model_ref01": {
+        "branch_types": [],
+        "development": {},
+        "production": {},
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/branching-model": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

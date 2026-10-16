@@ -1,0 +1,27 @@
+# BasicProjectBranchingModelFlow
+
+main: kit: flow: BasicProjectBranchingModelFlow:
+{
+  entity: "project_branching_model",
+  kind: "basic",
+  name: "BasicProjectBranchingModelFlow",
+  step: [
+    {
+      m: {
+        project_key: "project_key01",
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_branching_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectBranchingModelFlow"
+}

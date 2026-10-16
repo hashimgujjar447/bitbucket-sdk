@@ -1,0 +1,27 @@
+# BasicPaginatedPipelineKnownHostFlow
+
+main: kit: flow: BasicPaginatedPipelineKnownHostFlow:
+{
+  entity: "paginated_pipeline_known_host",
+  kind: "basic",
+  name: "BasicPaginatedPipelineKnownHostFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pipeline_known_host_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPipelineKnownHostFlow"
+}

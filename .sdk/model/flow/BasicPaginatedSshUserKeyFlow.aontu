@@ -1,0 +1,26 @@
+# BasicPaginatedSshUserKeyFlow
+
+main: kit: flow: BasicPaginatedSshUserKeyFlow:
+{
+  entity: "paginated_ssh_user_key",
+  kind: "basic",
+  name: "BasicPaginatedSshUserKeyFlow",
+  step: [
+    {
+      m: {
+        selected_user: "selected_user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_ssh_user_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedSshUserKeyFlow"
+}

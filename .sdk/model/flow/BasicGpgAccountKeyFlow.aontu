@@ -1,0 +1,45 @@
+# BasicGpgAccountKeyFlow
+
+main: kit: flow: BasicGpgAccountKeyFlow:
+{
+  entity: "gpg_account_key",
+  kind: "basic",
+  name: "BasicGpgAccountKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "gpg_account_key_ref01"
+      }
+
+      m: {
+        selected_user: "selected_user01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "gpg_account_key_ref01",
+        srcdatavar: "gpg_account_key_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "gpg_account_key01",
+        selected_user: "selected_user01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gpg_account_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGpgAccountKeyFlow"
+}

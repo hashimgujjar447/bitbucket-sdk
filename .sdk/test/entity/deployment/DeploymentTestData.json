@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "deployment": {
+      "DEPLOYMENT00": {
+        "environment": "s3c",
+        "id": "DEPLOYMENT00",
+        "release": "s3e",
+        "state": "s3f",
+        "type": "s40",
+        "uuid": "s41",
+        "environment_uuid": "ENVIRONMENT_UUID01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "key_id": "KEY01",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "DEPLOYMENT01": {
+        "environment": "s78",
+        "id": "DEPLOYMENT01",
+        "release": "s7a",
+        "state": "s7b",
+        "type": "s7c",
+        "uuid": "s7d",
+        "environment_uuid": "ENVIRONMENT_UUID01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "key_id": "KEY01",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "DEPLOYMENT02": {
+        "environment": "sb4",
+        "id": "DEPLOYMENT02",
+        "release": "sb6",
+        "state": "sb7",
+        "type": "sb8",
+        "uuid": "sb9",
+        "environment_uuid": "ENVIRONMENT_UUID01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "key_id": "KEY01",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "deployment": {
+      "deployment_ref01": {
+        "environment": "sf0",
+        "release": "sf2",
+        "state": "sf3",
+        "type": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/environments/{environment_uuid}/changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/deployments/{deployment_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/environments/{environment_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/projects/{project_key}/deploy-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/deploy-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

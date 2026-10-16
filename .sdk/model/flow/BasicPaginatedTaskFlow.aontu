@@ -1,0 +1,28 @@
+# BasicPaginatedTaskFlow
+
+main: kit: flow: BasicPaginatedTaskFlow:
+{
+  entity: "paginated_task",
+  kind: "basic",
+  name: "BasicPaginatedTaskFlow",
+  step: [
+    {
+      m: {
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_task_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedTaskFlow"
+}

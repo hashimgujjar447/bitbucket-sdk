@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "paginated_pipeline_variable": {
+      "PAGINATED_PIPELINE_VARIABLE00": {
+        "key": "s32",
+        "secured": false,
+        "type": "s34",
+        "uuid": "s35",
+        "value": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_VARIABLE01": {
+        "key": "s64",
+        "secured": false,
+        "type": "s66",
+        "uuid": "s67",
+        "value": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_VARIABLE02": {
+        "key": "s96",
+        "secured": false,
+        "type": "s98",
+        "uuid": "s99",
+        "value": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline_variable": {
+      "paginated_pipeline_variable_ref01": {
+        "key": "sc8",
+        "secured": false,
+        "type": "sca",
+        "uuid": "scb",
+        "value": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{selected_user}/pipelines_config/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /teams/{username}/pipelines_config/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/pipelines-config/variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "paginated_pipeline": {
+      "PAGINATED_PIPELINE00": {
+        "build_number": 140,
+        "build_seconds_used": 141,
+        "completed_on": "s8e",
+        "configuration_sources": [],
+        "created_on": "s90",
+        "creator": "s91",
+        "links": "s92",
+        "repository": "s93",
+        "state": "s94",
+        "target": "s95",
+        "trigger": "s96",
+        "type": "s97",
+        "uuid": "s98",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE01": {
+        "build_number": 280,
+        "build_seconds_used": 281,
+        "completed_on": "s11a",
+        "configuration_sources": [],
+        "created_on": "s11c",
+        "creator": "s11d",
+        "links": "s11e",
+        "repository": "s11f",
+        "state": "s120",
+        "target": "s121",
+        "trigger": "s122",
+        "type": "s123",
+        "uuid": "s124",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE02": {
+        "build_number": 420,
+        "build_seconds_used": 421,
+        "completed_on": "s1a6",
+        "configuration_sources": [],
+        "created_on": "s1a8",
+        "creator": "s1a9",
+        "links": "s1aa",
+        "repository": "s1ab",
+        "state": "s1ac",
+        "target": "s1ad",
+        "trigger": "s1ae",
+        "type": "s1af",
+        "uuid": "s1b0",
+        "variables": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline": {
+      "paginated_pipeline_ref01": {
+        "build_number": 560,
+        "build_seconds_used": 561,
+        "completed_on": "s232",
+        "configuration_sources": [],
+        "created_on": "s234",
+        "creator": "s235",
+        "links": "s236",
+        "repository": "s237",
+        "state": "s238",
+        "target": "s239",
+        "trigger": "s23a",
+        "type": "s23b",
+        "uuid": "s23c",
+        "variables": []
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

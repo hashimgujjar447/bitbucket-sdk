@@ -1,0 +1,28 @@
+# BasicPullrequestMergeabilityCheckFlow
+
+main: kit: flow: BasicPullrequestMergeabilityCheckFlow:
+{
+  entity: "pullrequest_mergeability_check",
+  kind: "basic",
+  name: "BasicPullrequestMergeabilityCheckFlow",
+  step: [
+    {
+      m: {
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pullrequest_mergeability_check_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPullrequestMergeabilityCheckFlow"
+}

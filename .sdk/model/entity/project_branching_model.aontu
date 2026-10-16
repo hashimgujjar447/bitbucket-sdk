@@ -1,0 +1,112 @@
+# Entity: project_branching_model
+
+main: kit: entity: project_branching_model: {
+
+  alias: field: {}
+
+  fields: {
+    branch_types: {
+      h: "Branch Types"
+      n: "branch_types"
+      r: false
+      sh: "The active branch types."
+      t: "`$ARRAY`"
+    }
+    development: {
+      h: "Development"
+      n: "development"
+      r: true
+      t: "`$OBJECT`"
+    }
+    production: {
+      h: "Production"
+      n: "production"
+      r: true
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "project_branching_model"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/projects/{project_key}/branching-model"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_key"
+                or: "project_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/projects/{project_key}/branching-model"
+          q: {
+            exist: [
+              "project_key"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_key"
+            }
+            {
+              lit: "branching-model"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.workspace") path("$.main.kit.entity.project")]
+  ]
+
+}

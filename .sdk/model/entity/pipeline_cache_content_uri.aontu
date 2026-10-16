@@ -1,0 +1,109 @@
+# Entity: pipeline_cache_content_uri
+
+main: kit: entity: pipeline_cache_content_uri: {
+
+  alias: field: {}
+
+  fields: {
+    uri: {
+      fo: "uri"
+      h: "Uri"
+      n: "uri"
+      r: false
+      sh: "The uri for pipeline cache content."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "pipeline_cache_content_uri"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}/content-uri"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_id"
+                or: "cache_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}/content-uri"
+          q: {
+            exist: [
+              "cache_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              cache_uuid: "cache_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pipelines-config"
+            }
+            {
+              lit: "caches"
+            }
+            {
+              var: "cache_id"
+            }
+            {
+              lit: "content-uri"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

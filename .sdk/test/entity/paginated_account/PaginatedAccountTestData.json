@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "paginated_account": {
+      "PAGINATED_ACCOUNT00": {
+        "created_on": "s32",
+        "display_name": "s33",
+        "links": {},
+        "type": "s35",
+        "uuid": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ACCOUNT01": {
+        "created_on": "s64",
+        "display_name": "s65",
+        "links": {},
+        "type": "s67",
+        "uuid": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ACCOUNT02": {
+        "created_on": "s96",
+        "display_name": "s97",
+        "links": {},
+        "type": "s99",
+        "uuid": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_account": {
+      "paginated_account_ref01": {
+        "created_on": "sc8",
+        "display_name": "sc9",
+        "links": {},
+        "type": "scb",
+        "uuid": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/default-reviewers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

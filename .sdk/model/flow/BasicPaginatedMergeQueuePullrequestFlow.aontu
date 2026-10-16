@@ -1,0 +1,28 @@
+# BasicPaginatedMergeQueuePullrequestFlow
+
+main: kit: flow: BasicPaginatedMergeQueuePullrequestFlow:
+{
+  entity: "paginated_merge_queue_pullrequest",
+  kind: "basic",
+  name: "BasicPaginatedMergeQueuePullrequestFlow",
+  step: [
+    {
+      m: {
+        merge_queue_id: "merge_queue01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_merge_queue_pullrequest_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedMergeQueuePullrequestFlow"
+}

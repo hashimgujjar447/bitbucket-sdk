@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "pipeline_ssh_key_pair": {
+      "PIPELINE_SSH_KEY_PAIR00": {
+        "private_key": "s1e",
+        "public_key": "s1f",
+        "type": "s20",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_SSH_KEY_PAIR00"
+      },
+      "PIPELINE_SSH_KEY_PAIR01": {
+        "private_key": "s3c",
+        "public_key": "s3d",
+        "type": "s3e",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_SSH_KEY_PAIR01"
+      },
+      "PIPELINE_SSH_KEY_PAIR02": {
+        "private_key": "s5a",
+        "public_key": "s5b",
+        "type": "s5c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_SSH_KEY_PAIR02"
+      }
+    }
+  },
+  "new": {
+    "pipeline_ssh_key_pair": {
+      "pipeline_ssh_key_pair_ref01": {
+        "private_key": "s78",
+        "public_key": "s79",
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/key_pair": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/key_pair": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

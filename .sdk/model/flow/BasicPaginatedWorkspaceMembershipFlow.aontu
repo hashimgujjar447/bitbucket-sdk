@@ -1,0 +1,26 @@
+# BasicPaginatedWorkspaceMembershipFlow
+
+main: kit: flow: BasicPaginatedWorkspaceMembershipFlow:
+{
+  entity: "paginated_workspace_membership",
+  kind: "basic",
+  name: "BasicPaginatedWorkspaceMembershipFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_workspace_membership_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedWorkspaceMembershipFlow"
+}

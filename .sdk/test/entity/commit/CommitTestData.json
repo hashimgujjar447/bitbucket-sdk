@@ -1,0 +1,169 @@
+{
+  "existing": {
+    "commit": {
+      "COMMIT00": {
+        "author": "sc8",
+        "commit": "sc9",
+        "committer": "sca",
+        "content": {},
+        "created_on": "scc",
+        "date": "scd",
+        "deleted": true,
+        "hash": "scf",
+        "id": "COMMIT00",
+        "inline": {},
+        "links": {},
+        "message": "sd3",
+        "parent": "sd4",
+        "parents": [],
+        "participants": [],
+        "repository": "sd7",
+        "summary": {},
+        "type": "sd9",
+        "updated_on": "sda",
+        "user": "sdb",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "comment_id": "COMMENT01",
+        "revspec": "REVSPEC01",
+        "spec": "SPEC01"
+      },
+      "COMMIT01": {
+        "author": "s190",
+        "commit": "s191",
+        "committer": "s192",
+        "content": {},
+        "created_on": "s194",
+        "date": "s195",
+        "deleted": true,
+        "hash": "s197",
+        "id": "COMMIT01",
+        "inline": {},
+        "links": {},
+        "message": "s19b",
+        "parent": "s19c",
+        "parents": [],
+        "participants": [],
+        "repository": "s19f",
+        "summary": {},
+        "type": "s1a1",
+        "updated_on": "s1a2",
+        "user": "s1a3",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "comment_id": "COMMENT01",
+        "revspec": "REVSPEC01",
+        "spec": "SPEC01"
+      },
+      "COMMIT02": {
+        "author": "s258",
+        "commit": "s259",
+        "committer": "s25a",
+        "content": {},
+        "created_on": "s25c",
+        "date": "s25d",
+        "deleted": true,
+        "hash": "s25f",
+        "id": "COMMIT02",
+        "inline": {},
+        "links": {},
+        "message": "s263",
+        "parent": "s264",
+        "parents": [],
+        "participants": [],
+        "repository": "s267",
+        "summary": {},
+        "type": "s269",
+        "updated_on": "s26a",
+        "user": "s26b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "comment_id": "COMMENT01",
+        "revspec": "REVSPEC01",
+        "spec": "SPEC01"
+      }
+    }
+  },
+  "new": {
+    "commit": {
+      "commit_ref01": {
+        "author": "s320",
+        "commit": "s321",
+        "committer": "s322",
+        "content": {},
+        "created_on": "s324",
+        "date": "s325",
+        "deleted": true,
+        "hash": "s327",
+        "inline": {},
+        "links": {},
+        "message": "s32b",
+        "parent": "s32c",
+        "parents": [],
+        "participants": [],
+        "repository": "s32f",
+        "summary": {},
+        "type": "s331",
+        "updated_on": "s332",
+        "user": "s333"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/commit/{commit}/approve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/merge-base/{revspec}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/diff/{spec}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/patch/{spec}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/approve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

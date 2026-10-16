@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "pipeline_cache_content_uri": {
+      "PIPELINE_CACHE_CONTENT_URI00": {
+        "uri": "sa",
+        "cache_id": "CACHE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_CACHE_CONTENT_URI00"
+      },
+      "PIPELINE_CACHE_CONTENT_URI01": {
+        "uri": "s14",
+        "cache_id": "CACHE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_CACHE_CONTENT_URI01"
+      },
+      "PIPELINE_CACHE_CONTENT_URI02": {
+        "uri": "s1e",
+        "cache_id": "CACHE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "PIPELINE_CACHE_CONTENT_URI02"
+      }
+    }
+  },
+  "new": {
+    "pipeline_cache_content_uri": {
+      "pipeline_cache_content_uri_ref01": {
+        "uri": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}/content-uri": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

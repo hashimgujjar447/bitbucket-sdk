@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "paginated_file_conflict": {
+      "PAGINATED_FILE_CONFLICT00": {
+        "id": "PAGINATED_FILE_CONFLICT00",
+        "next": "s47",
+        "page": 72,
+        "pagelen": 73,
+        "previous": "s4a",
+        "size": 75,
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_FILE_CONFLICT01": {
+        "id": "PAGINATED_FILE_CONFLICT01",
+        "next": "s8d",
+        "page": 142,
+        "pagelen": 143,
+        "previous": "s90",
+        "size": 145,
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_FILE_CONFLICT02": {
+        "id": "PAGINATED_FILE_CONFLICT02",
+        "next": "sd3",
+        "page": 212,
+        "pagelen": 213,
+        "previous": "sd6",
+        "size": 215,
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_file_conflict": {
+      "paginated_file_conflict_ref01": {
+        "next": "s119",
+        "page": 282,
+        "pagelen": 283,
+        "previous": "s11c",
+        "size": 285,
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/file-conflicts/{spec}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "merge_queue": {
+      "MERGE_QUEUE00": {
+        "id": "MERGE_QUEUE00",
+        "name": "s33",
+        "state": "s34",
+        "type": "s35",
+        "uuid": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01"
+      },
+      "MERGE_QUEUE01": {
+        "id": "MERGE_QUEUE01",
+        "name": "s65",
+        "state": "s66",
+        "type": "s67",
+        "uuid": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01"
+      },
+      "MERGE_QUEUE02": {
+        "id": "MERGE_QUEUE02",
+        "name": "s97",
+        "state": "s98",
+        "type": "s99",
+        "uuid": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01"
+      }
+    }
+  },
+  "new": {
+    "merge_queue": {
+      "merge_queue_ref01": {
+        "name": "sc9",
+        "state": "sca",
+        "type": "scb",
+        "uuid": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue/{pullrequest_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

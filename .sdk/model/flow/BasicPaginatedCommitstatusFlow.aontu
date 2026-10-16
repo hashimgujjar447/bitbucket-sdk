@@ -1,0 +1,28 @@
+# BasicPaginatedCommitstatusFlow
+
+main: kit: flow: BasicPaginatedCommitstatusFlow:
+{
+  entity: "paginated_commitstatus",
+  kind: "basic",
+  name: "BasicPaginatedCommitstatusFlow",
+  step: [
+    {
+      m: {
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_commitstatus_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedCommitstatusFlow"
+}

@@ -1,0 +1,71 @@
+# BasicSnippetCommentFlow
+
+main: kit: flow: BasicSnippetCommentFlow:
+{
+  entity: "snippet_comment",
+  kind: "basic",
+  name: "BasicSnippetCommentFlow",
+  step: [
+    {
+      i: {
+        ref: "snippet_comment_ref01"
+      }
+
+      m: {
+        encoded_id: "encoded01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        encoded_id: "encoded01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "snippet_comment_ref01",
+        srcdatavar: "snippet_comment_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snippet_comment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "snippet_comment_ref01",
+        srcdatavar: "snippet_comment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        encoded_id: "encoded01",
+        id: "snippet_comment01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snippet_comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSnippetCommentFlow"
+}

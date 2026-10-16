@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "gpg_account_key": {
+      "GPG_ACCOUNT_KEY00": {
+        "added_on": "s82",
+        "created_on": "s83",
+        "expires_on": "s84",
+        "fingerprint": "s85",
+        "key": "s86",
+        "key_id": "KEY01",
+        "last_used": "s88",
+        "links": {},
+        "name": "s8a",
+        "owner": "s8b",
+        "parent_fingerprint": "s8c",
+        "subkeys": [],
+        "type": "s8e",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG_ACCOUNT_KEY00"
+      },
+      "GPG_ACCOUNT_KEY01": {
+        "added_on": "s104",
+        "created_on": "s105",
+        "expires_on": "s106",
+        "fingerprint": "s107",
+        "key": "s108",
+        "key_id": "KEY01",
+        "last_used": "s10a",
+        "links": {},
+        "name": "s10c",
+        "owner": "s10d",
+        "parent_fingerprint": "s10e",
+        "subkeys": [],
+        "type": "s110",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG_ACCOUNT_KEY01"
+      },
+      "GPG_ACCOUNT_KEY02": {
+        "added_on": "s186",
+        "created_on": "s187",
+        "expires_on": "s188",
+        "fingerprint": "s189",
+        "key": "s18a",
+        "key_id": "KEY01",
+        "last_used": "s18c",
+        "links": {},
+        "name": "s18e",
+        "owner": "s18f",
+        "parent_fingerprint": "s190",
+        "subkeys": [],
+        "type": "s192",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG_ACCOUNT_KEY02"
+      }
+    }
+  },
+  "new": {
+    "gpg_account_key": {
+      "gpg_account_key_ref01": {
+        "added_on": "s208",
+        "created_on": "s209",
+        "expires_on": "s20a",
+        "fingerprint": "s20b",
+        "key": "s20c",
+        "key_id": "KEY01",
+        "last_used": "s20e",
+        "links": {},
+        "name": "s210",
+        "owner": "s211",
+        "parent_fingerprint": "s212",
+        "subkeys": [],
+        "type": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /users/{selected_user}/gpg-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{selected_user}/gpg-keys/{fingerprint}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

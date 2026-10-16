@@ -1,0 +1,26 @@
+# BasicPaginatedPipelineRunnerFlow
+
+main: kit: flow: BasicPaginatedPipelineRunnerFlow:
+{
+  entity: "paginated_pipeline_runner",
+  kind: "basic",
+  name: "BasicPaginatedPipelineRunnerFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pipeline_runner_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPipelineRunnerFlow"
+}

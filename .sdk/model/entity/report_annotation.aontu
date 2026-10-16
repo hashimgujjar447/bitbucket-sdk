@@ -1,0 +1,456 @@
+# Entity: report_annotation
+
+main: kit: entity: report_annotation: {
+
+  alias: field: {}
+
+  fields: {
+    annotation_type: {
+      h: "Annotation Type"
+      n: "annotation_type"
+      r: false
+      sh: "The type of the report."
+      t: "`$STRING`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      sh: "The timestamp when the report was created."
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      sh: "The details to show to users when clicking on the annotation."
+      t: "`$STRING`"
+    }
+    external_id: {
+      h: "External Id"
+      n: "external_id"
+      r: false
+      sh: "ID of the annotation provided by the annotation creator."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    line: {
+      h: "Line"
+      n: "line"
+      r: false
+      sh: "The line number that the annotation should belong to."
+      t: "`$INTEGER`"
+    }
+    link: {
+      fo: "uri"
+      h: "Link"
+      n: "link"
+      r: false
+      sh: "A URL linking to the annotation in an external tool."
+      t: "`$STRING`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: false
+      sh: "The path of the file on which this annotation should be placed."
+      t: "`$STRING`"
+    }
+    report_annotations: {
+      h: "Report Annotations"
+      n: "report_annotations"
+      r: false
+      sh: "The annotations to create or update"
+      t: "`$ARRAY`"
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: false
+      sh: "The state of the report."
+      t: "`$STRING`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: false
+      sh: "The severity of the annotation."
+      t: "`$STRING`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: false
+      sh: "The message to display to users."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_on: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updated_on"
+      r: false
+      sh: "The timestamp when the report was updated."
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID that can be used to identify the annotation."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "report_annotation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "report_annotations"
+          ]
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "reportId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations"
+          q: {
+            exist: [
+              "commit_id"
+              "id"
+              "repo_slug"
+              "report_annotations"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              commit: "commit_id"
+              reportId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "reports"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "annotations"
+            }
+          ]
+          t: {
+            req: "`reqdata.report_annotations`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "annotationId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "report_id"
+                or: "reportId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}"
+          q: {
+            exist: [
+              "commit_id"
+              "id"
+              "repo_slug"
+              "report_id"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              annotationId: "id"
+              commit: "commit_id"
+              reportId: "report_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "reports"
+            }
+            {
+              var: "report_id"
+            }
+            {
+              lit: "annotations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "annotation_type"
+            "created_on"
+            "details"
+            "external_id"
+            "line"
+            "link"
+            "path"
+            "result"
+            "severity"
+            "summary"
+            "type"
+            "updated_on"
+            "uuid"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "annotationId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "report_id"
+                or: "reportId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}"
+          q: {
+            exist: [
+              "commit_id"
+              "id"
+              "repo_slug"
+              "report_id"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              annotationId: "id"
+              commit: "commit_id"
+              reportId: "report_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "reports"
+            }
+            {
+              var: "report_id"
+            }
+            {
+              lit: "annotations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit") path("$.main.kit.entity.report")]
+  ]
+
+}

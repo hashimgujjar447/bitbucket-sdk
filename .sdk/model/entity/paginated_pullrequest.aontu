@@ -1,0 +1,453 @@
+# Entity: paginated_pullrequest
+
+main: kit: entity: paginated_pullrequest: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: false
+      t: "`$ANY`"
+    }
+    close_source_branch: {
+      h: "Close Source Branch"
+      n: "close_source_branch"
+      r: false
+      sh: "A boolean flag indicating if merging the pull request closes the source branch."
+      t: "`$BOOLEAN`"
+    }
+    closed_by: {
+      h: "Closed By"
+      n: "closed_by"
+      r: false
+      t: "`$ANY`"
+    }
+    comment_count: {
+      h: "Comment Count"
+      n: "comment_count"
+      r: false
+      sh: "The number of comments for a specific pull request."
+      t: "`$INTEGER`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      sh: "The ISO8601 timestamp the request was created."
+      t: "`$STRING`"
+    }
+    destination: {
+      h: "Destination"
+      n: "destination"
+      r: false
+      t: "`$OBJECT`"
+    }
+    draft: {
+      h: "Draft"
+      n: "draft"
+      r: false
+      sh: "A boolean flag indicating whether the pull request is a draft."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The pull request's unique ID."
+      t: "`$INTEGER`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    merge_commit: {
+      h: "Merge Commit"
+      n: "merge_commit"
+      r: false
+      t: "`$OBJECT`"
+    }
+    next: {
+      fo: "uri"
+      h: "Next"
+      n: "next"
+      r: false
+      sh: "Link to the next page if it exists."
+      t: "`$STRING`"
+    }
+    page: {
+      h: "Page"
+      n: "page"
+      r: false
+      sh: "Page number of the current results."
+      t: "`$INTEGER`"
+    }
+    pagelen: {
+      h: "Pagelen"
+      n: "pagelen"
+      r: false
+      sh: "Current number of objects on the existing page."
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "The list of users that are collaborating on this pull request."
+      t: "`$ARRAY`"
+    }
+    previous: {
+      fo: "uri"
+      h: "Previous"
+      n: "previous"
+      r: false
+      sh: "Link to previous page if it exists."
+      t: "`$STRING`"
+    }
+    queued: {
+      h: "Queued"
+      n: "queued"
+      r: false
+      sh: "A boolean flag indicating whether the pull request is queued"
+      t: "`$BOOLEAN`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      sh: "Explains why a pull request was declined."
+      t: "`$STRING`"
+    }
+    rendered: {
+      h: "Rendered"
+      n: "rendered"
+      r: false
+      sh: "User provided pull request text, interpreted in a markup language and rendered in HTML"
+      t: "`$OBJECT`"
+    }
+    reviewers: {
+      h: "Reviewers"
+      n: "reviewers"
+      r: false
+      sh: "The list of users that were added as reviewers on this pull request when it was created."
+      t: "`$ARRAY`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      sh: "Total number of objects in the response."
+      t: "`$INTEGER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      t: "`$OBJECT`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "The pull request's current status."
+      t: "`$STRING`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: false
+      t: "`$OBJECT`"
+    }
+    task_count: {
+      h: "Task Count"
+      n: "task_count"
+      r: false
+      sh: "The number of open tasks for a specific pull request."
+      t: "`$INTEGER`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the pull request."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_on: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updated_on"
+      r: false
+      sh: "The ISO8601 timestamp the request was last updated."
+      t: "`$STRING`"
+    }
+    values: {
+      h: "Values"
+      n: "values"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "paginated_pullrequest"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/pullrequests"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 30
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/pullrequests"
+          q: {
+            exist: [
+              "commit_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              commit: "commit_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "pullrequests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pullrequests"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pullrequests"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pullrequests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/pullrequests/{selected_user}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/pullrequests/{selected_user}"
+          q: {
+            exist: [
+              "id"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              selected_user: "id"
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "pullrequests"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+    [path("$.main.kit.entity.workspace")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+  ]
+
+}

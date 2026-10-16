@@ -1,0 +1,286 @@
+# Entity: search_result_page
+
+main: kit: entity: search_result_page: {
+
+  alias: field: {}
+
+  fields: {
+    content_match_count: {
+      fo: "int64"
+      h: "Content Match Count"
+      n: "content_match_count"
+      r: false
+      ro: true
+      t: "`$INTEGER`"
+    }
+    content_matches: {
+      h: "Content Matches"
+      n: "content_matches"
+      r: false
+      ro: true
+      t: "`$ARRAY`"
+    }
+    file: {
+      h: "File"
+      n: "file"
+      r: true
+      ro: true
+      sh: "A file object, representing a file at a commit in a repository"
+      t: "`$OBJECT`"
+    }
+    path_matches: {
+      h: "Path Matches"
+      n: "path_matches"
+      r: false
+      ro: true
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "search_result_page"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{selected_user}/search/code"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search_query"
+                or: "search_query"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{selected_user}/search/code"
+          q: {
+            exist: [
+              "search_query"
+              "selected_user"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "search"
+            }
+            {
+              lit: "code"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+        {
+          co: {
+            id: "GET /teams/{username}/search/code"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search_query"
+                or: "search_query"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/teams/{username}/search/code"
+          q: {
+            exist: [
+              "search_query"
+              "username"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "teams"
+            }
+            {
+              var: "username"
+            }
+            {
+              lit: "search"
+            }
+            {
+              lit: "code"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/search/code"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search_query"
+                or: "search_query"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/search/code"
+          q: {
+            exist: [
+              "search_query"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "search"
+            }
+            {
+              lit: "code"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+    [path("$.main.kit.entity.workspace")]
+  ]
+
+}

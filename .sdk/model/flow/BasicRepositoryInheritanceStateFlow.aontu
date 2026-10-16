@@ -1,0 +1,33 @@
+# BasicRepositoryInheritanceStateFlow
+
+main: kit: flow: BasicRepositoryInheritanceStateFlow:
+{
+  entity: "repository_inheritance_state",
+  kind: "basic",
+  name: "BasicRepositoryInheritanceStateFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_inheritance_state_ref01",
+        srcdatavar: "repository_inheritance_state_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_inheritance_state01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_inheritance_state_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryInheritanceStateFlow"
+}

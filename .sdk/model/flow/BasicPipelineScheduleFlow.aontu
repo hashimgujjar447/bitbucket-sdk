@@ -1,0 +1,71 @@
+# BasicPipelineScheduleFlow
+
+main: kit: flow: BasicPipelineScheduleFlow:
+{
+  entity: "pipeline_schedule",
+  kind: "basic",
+  name: "BasicPipelineScheduleFlow",
+  step: [
+    {
+      i: {
+        ref: "pipeline_schedule_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "pipeline_schedule_ref01",
+        srcdatavar: "pipeline_schedule_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_schedule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pipeline_schedule_ref01",
+        srcdatavar: "pipeline_schedule_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipeline_schedule01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_schedule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineScheduleFlow"
+}

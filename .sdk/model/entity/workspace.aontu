@@ -1,0 +1,265 @@
+# Entity: workspace
+
+main: kit: entity: workspace: {
+
+  alias: field: {}
+
+  fields: {
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      t: "`$STRING`"
+    }
+    forking_mode: {
+      h: "Forking Mode"
+      n: "forking_mode"
+      r: false
+      sh: "Controls the rules for forking repositories within this workspace."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    is_personal: {
+      h: "Is Personal"
+      n: "is_personal"
+      r: false
+      sh: "Indicates whether the workspace belongs to an individual user."
+      t: "`$BOOLEAN`"
+    }
+    is_privacy_enforced: {
+      h: "Is Privacy Enforced"
+      n: "is_privacy_enforced"
+      r: false
+      sh: "Indicates whether the workspace enforces private content, or whether it allows public content."
+      t: "`$BOOLEAN`"
+    }
+    is_private: {
+      h: "Is Private"
+      n: "is_private"
+      r: false
+      sh: "Indicates whether the workspace is publicly accessible, or whether it is private to the members and consequently only visible to members."
+      t: "`$BOOLEAN`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the workspace."
+      t: "`$STRING`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      sh: "The short label that identifies this workspace."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_on: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updated_on"
+      r: false
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The workspace's immutable id."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "workspace"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/settings/gpg/public-key"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/settings/gpg/public-key"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "id"
+            }
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "settings"
+            }
+            {
+              lit: "gpg"
+            }
+            {
+              lit: "public-key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /workspaces/{workspace}/hooks/{uid}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "uid"
+                or: "uid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/workspaces/{workspace}/hooks/{uid}"
+          q: {
+            exist: [
+              "id"
+              "uid"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "id"
+            }
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "uid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

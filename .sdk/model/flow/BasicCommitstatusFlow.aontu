@@ -1,0 +1,74 @@
+# BasicCommitstatusFlow
+
+main: kit: flow: BasicCommitstatusFlow:
+{
+  entity: "commitstatus",
+  kind: "basic",
+  name: "BasicCommitstatusFlow",
+  step: [
+    {
+      i: {
+        ref: "commitstatus_ref01"
+      }
+
+      m: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "commitstatus_ref01",
+        srcdatavar: "commitstatus_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commitstatus_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "commitstatus_ref01",
+        srcdatavar: "commitstatus_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit_id: "commit01",
+        id: "commitstatus01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commitstatus_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommitstatusFlow"
+}

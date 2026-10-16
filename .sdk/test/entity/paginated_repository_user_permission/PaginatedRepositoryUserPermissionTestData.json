@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "paginated_repository_user_permission": {
+      "PAGINATED_REPOSITORY_USER_PERMISSION00": {
+        "links": {},
+        "permission": "s33",
+        "repository": "s34",
+        "type": "s35",
+        "user": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPOSITORY_USER_PERMISSION01": {
+        "links": {},
+        "permission": "s65",
+        "repository": "s66",
+        "type": "s67",
+        "user": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REPOSITORY_USER_PERMISSION02": {
+        "links": {},
+        "permission": "s97",
+        "repository": "s98",
+        "type": "s99",
+        "user": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_repository_user_permission": {
+      "paginated_repository_user_permission_ref01": {
+        "links": {},
+        "permission": "sc9",
+        "repository": "sca",
+        "type": "scb",
+        "user": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/permissions-config/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

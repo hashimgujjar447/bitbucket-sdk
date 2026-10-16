@@ -1,0 +1,9 @@
+# BasicRefFlow
+
+main: kit: flow: BasicRefFlow:
+{
+  entity: "ref",
+  kind: "basic",
+  name: "BasicRefFlow",
+  "key$": "BasicRefFlow"
+}

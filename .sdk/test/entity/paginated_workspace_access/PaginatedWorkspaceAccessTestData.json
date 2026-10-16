@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "paginated_workspace_access": {
+      "PAGINATED_WORKSPACE_ACCESS00": {
+        "administrator": true,
+        "type": "s1f",
+        "workspace": "s20"
+      },
+      "PAGINATED_WORKSPACE_ACCESS01": {
+        "administrator": true,
+        "type": "s3d",
+        "workspace": "s3e"
+      },
+      "PAGINATED_WORKSPACE_ACCESS02": {
+        "administrator": true,
+        "type": "s5b",
+        "workspace": "s5c"
+      }
+    }
+  },
+  "new": {
+    "paginated_workspace_access": {
+      "paginated_workspace_access_ref01": {
+        "administrator": true,
+        "type": "s79",
+        "workspace": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /user/workspaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

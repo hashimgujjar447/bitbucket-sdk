@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "paginated_task": {
+      "PAGINATED_TASK00": {
+        "comment": "s6e",
+        "content": {},
+        "created_on": "s70",
+        "creator": "s71",
+        "id": "PAGINATED_TASK00",
+        "links": {},
+        "pending": true,
+        "resolved_by": "s75",
+        "resolved_on": "s76",
+        "state": "s77",
+        "updated_on": "s78",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TASK01": {
+        "comment": "sdc",
+        "content": {},
+        "created_on": "sde",
+        "creator": "sdf",
+        "id": "PAGINATED_TASK01",
+        "links": {},
+        "pending": true,
+        "resolved_by": "se3",
+        "resolved_on": "se4",
+        "state": "se5",
+        "updated_on": "se6",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TASK02": {
+        "comment": "s14a",
+        "content": {},
+        "created_on": "s14c",
+        "creator": "s14d",
+        "id": "PAGINATED_TASK02",
+        "links": {},
+        "pending": true,
+        "resolved_by": "s151",
+        "resolved_on": "s152",
+        "state": "s153",
+        "updated_on": "s154",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_task": {
+      "paginated_task_ref01": {
+        "comment": "s1b8",
+        "content": {},
+        "created_on": "s1ba",
+        "creator": "s1bb",
+        "links": {},
+        "pending": true,
+        "resolved_by": "s1bf",
+        "resolved_on": "s1c0",
+        "state": "s1c1",
+        "updated_on": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

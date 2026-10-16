@@ -1,0 +1,58 @@
+# BasicProjectUserPermissionFlow
+
+main: kit: flow: BasicProjectUserPermissionFlow:
+{
+  entity: "project_user_permission",
+  kind: "basic",
+  name: "BasicProjectUserPermissionFlow",
+  step: [
+    {
+      d: {
+        project_id: "project01",
+        workspace_id: "workspace01"
+      }
+
+      i: {
+        ref: "project_user_permission_ref01",
+        srcdatavar: "project_user_permission_ref01_data",
+        suffix: "_up0",
+        textfield: "permission"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_user_permission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "project_user_permission_ref01",
+        srcdatavar: "project_user_permission_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_user_permission01",
+        project_id: "project01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_user_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectUserPermissionFlow"
+}

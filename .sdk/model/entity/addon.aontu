@@ -1,0 +1,108 @@
+# Entity: addon
+
+main: kit: entity: addon: {
+
+  alias: field: {}
+
+  name: "addon"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /addon/{addon_key}/client-key"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "addon_key"
+                or: "addon_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/addon/{addon_key}/client-key"
+          q: {
+            "$action": "client_key"
+            exist: [
+              "addon_key"
+            ]
+          }
+          s: [
+            {
+              lit: "addon"
+            }
+            {
+              var: "addon_key"
+            }
+            {
+              lit: "client-key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /addon"
+            source: "swagger2"
+            version: 2
+          }
+          m: "DELETE"
+          o: "/addon"
+          s: [
+            {
+              lit: "addon"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /addon"
+            source: "swagger2"
+            version: 2
+          }
+          m: "PUT"
+          o: "/addon"
+          s: [
+            {
+              lit: "addon"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

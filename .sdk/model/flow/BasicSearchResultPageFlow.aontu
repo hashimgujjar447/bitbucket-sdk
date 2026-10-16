@@ -1,0 +1,26 @@
+# BasicSearchResultPageFlow
+
+main: kit: flow: BasicSearchResultPageFlow:
+{
+  entity: "search_result_page",
+  kind: "basic",
+  name: "BasicSearchResultPageFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "search_result_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSearchResultPageFlow"
+}

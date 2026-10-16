@@ -1,0 +1,84 @@
+# BasicSnippetFlow
+
+main: kit: flow: BasicSnippetFlow:
+{
+  entity: "snippet",
+  kind: "basic",
+  name: "BasicSnippetFlow",
+  step: [
+    {
+      i: {
+        ref: "snippet_ref01"
+      }
+
+      m: {
+        encoded_id: "encoded01",
+        node_id: "node01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "snippet_ref01",
+        srcdatavar: "snippet_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snippet_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "snippet_ref01",
+        srcdatavar: "snippet_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "snippet01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snippet_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "snippet_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "snippet01",
+        workspace: "workspace01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicSnippetFlow"
+}

@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "ssh_account_key": {
+      "SSH_ACCOUNT_KEY00": {
+        "comment": "s6e",
+        "created_on": "s6f",
+        "expires_on": "s70",
+        "fingerprint": "s71",
+        "key": "s72",
+        "label": "s73",
+        "last_used": "s74",
+        "links": {},
+        "owner": "s76",
+        "type": "s77",
+        "uuid": "s78",
+        "selected_user": "SELECTED_USER01",
+        "key_id": "KEY01",
+        "id": "SSH_ACCOUNT_KEY00"
+      },
+      "SSH_ACCOUNT_KEY01": {
+        "comment": "sdc",
+        "created_on": "sdd",
+        "expires_on": "sde",
+        "fingerprint": "sdf",
+        "key": "se0",
+        "label": "se1",
+        "last_used": "se2",
+        "links": {},
+        "owner": "se4",
+        "type": "se5",
+        "uuid": "se6",
+        "selected_user": "SELECTED_USER01",
+        "key_id": "KEY01",
+        "id": "SSH_ACCOUNT_KEY01"
+      },
+      "SSH_ACCOUNT_KEY02": {
+        "comment": "s14a",
+        "created_on": "s14b",
+        "expires_on": "s14c",
+        "fingerprint": "s14d",
+        "key": "s14e",
+        "label": "s14f",
+        "last_used": "s150",
+        "links": {},
+        "owner": "s152",
+        "type": "s153",
+        "uuid": "s154",
+        "selected_user": "SELECTED_USER01",
+        "key_id": "KEY01",
+        "id": "SSH_ACCOUNT_KEY02"
+      }
+    }
+  },
+  "new": {
+    "ssh_account_key": {
+      "ssh_account_key_ref01": {
+        "comment": "s1b8",
+        "created_on": "s1b9",
+        "expires_on": "s1ba",
+        "fingerprint": "s1bb",
+        "key": "s1bc",
+        "label": "s1bd",
+        "last_used": "s1be",
+        "links": {},
+        "owner": "s1c0",
+        "type": "s1c1",
+        "uuid": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /users/{selected_user}/ssh-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{selected_user}/ssh-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /users/{selected_user}/ssh-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

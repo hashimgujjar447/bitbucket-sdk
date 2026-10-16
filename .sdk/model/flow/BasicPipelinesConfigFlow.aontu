@@ -1,0 +1,56 @@
+# BasicPipelinesConfigFlow
+
+main: kit: flow: BasicPipelinesConfigFlow:
+{
+  entity: "pipelines_config",
+  kind: "basic",
+  name: "BasicPipelinesConfigFlow",
+  step: [
+    {
+      d: {
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "pipelines_config_ref01",
+        srcdatavar: "pipelines_config_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipelines_config_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pipelines_config_ref01",
+        srcdatavar: "pipelines_config_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipelines_config01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipelines_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelinesConfigFlow"
+}

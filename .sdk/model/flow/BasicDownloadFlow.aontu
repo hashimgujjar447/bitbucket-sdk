@@ -1,0 +1,61 @@
+# BasicDownloadFlow
+
+main: kit: flow: BasicDownloadFlow:
+{
+  entity: "download",
+  kind: "basic",
+  name: "BasicDownloadFlow",
+  step: [
+    {
+      i: {
+        ref: "download_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "download_ref01",
+        srcdatavar: "download_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "download01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-download_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "download_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "download01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicDownloadFlow"
+}

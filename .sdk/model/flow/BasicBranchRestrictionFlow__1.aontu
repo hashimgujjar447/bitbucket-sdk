@@ -1,0 +1,9 @@
+# BasicBranchRestrictionFlow
+
+main: kit: flow: BasicBranchRestrictionFlow:
+{
+  entity: "branch_restriction",
+  kind: "basic",
+  name: "BasicBranchRestrictionFlow",
+  "key$": "BasicBranchRestrictionFlow"
+}

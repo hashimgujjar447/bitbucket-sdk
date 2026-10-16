@@ -1,0 +1,75 @@
+# Entity: ssh
+
+main: kit: entity: ssh: {
+
+  alias: field: {}
+
+  name: "ssh"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /users/{selected_user}/ssh-keys/{key_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "key_id"
+                or: "key_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/users/{selected_user}/ssh-keys/{key_id}"
+          q: {
+            exist: [
+              "key_id"
+              "selected_user"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "ssh-keys"
+            }
+            {
+              var: "key_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

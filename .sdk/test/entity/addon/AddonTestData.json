@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "addon": {
+      "ADDON00": {
+        "addon_key": "ADDON_KEY01",
+        "id": "ADDON00"
+      },
+      "ADDON01": {
+        "addon_key": "ADDON_KEY01",
+        "id": "ADDON01"
+      },
+      "ADDON02": {
+        "addon_key": "ADDON_KEY01",
+        "id": "ADDON02"
+      }
+    }
+  },
+  "new": {
+    "addon": {
+      "addon_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /addon/{addon_key}/client-key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /addon": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /addon": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "effective_default_reviewer": {
+      "EFFECTIVE_DEFAULT_REVIEWER00": {
+        "reviewer_type": "s1e",
+        "type": "s1f",
+        "user": "s20",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "EFFECTIVE_DEFAULT_REVIEWER01": {
+        "reviewer_type": "s3c",
+        "type": "s3d",
+        "user": "s3e",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "EFFECTIVE_DEFAULT_REVIEWER02": {
+        "reviewer_type": "s5a",
+        "type": "s5b",
+        "user": "s5c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "effective_default_reviewer": {
+      "effective_default_reviewer_ref01": {
+        "reviewer_type": "s78",
+        "type": "s79",
+        "user": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/effective-default-reviewers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

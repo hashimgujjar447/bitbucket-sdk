@@ -1,0 +1,27 @@
+# BasicPaginatedProjectUserPermissionFlow
+
+main: kit: flow: BasicPaginatedProjectUserPermissionFlow:
+{
+  entity: "paginated_project_user_permission",
+  kind: "basic",
+  name: "BasicPaginatedProjectUserPermissionFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01",
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_project_user_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedProjectUserPermissionFlow"
+}

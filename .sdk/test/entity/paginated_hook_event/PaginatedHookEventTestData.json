@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "paginated_hook_event": {
+      "PAGINATED_HOOK_EVENT00": {
+        "id": "PAGINATED_HOOK_EVENT00",
+        "next": "s5b",
+        "page": 92,
+        "pagelen": 93,
+        "previous": "s5e",
+        "repository": {},
+        "size": 96,
+        "values": [],
+        "workspace": {}
+      },
+      "PAGINATED_HOOK_EVENT01": {
+        "id": "PAGINATED_HOOK_EVENT01",
+        "next": "sb5",
+        "page": 182,
+        "pagelen": 183,
+        "previous": "sb8",
+        "repository": {},
+        "size": 186,
+        "values": [],
+        "workspace": {}
+      },
+      "PAGINATED_HOOK_EVENT02": {
+        "id": "PAGINATED_HOOK_EVENT02",
+        "next": "s10f",
+        "page": 272,
+        "pagelen": 273,
+        "previous": "s112",
+        "repository": {},
+        "size": 276,
+        "values": [],
+        "workspace": {}
+      }
+    }
+  },
+  "new": {
+    "paginated_hook_event": {
+      "paginated_hook_event_ref01": {
+        "next": "s169",
+        "page": 362,
+        "pagelen": 363,
+        "previous": "s16c",
+        "repository": {},
+        "size": 366,
+        "values": [],
+        "workspace": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /hook_events/{subject_type}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /hook_events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

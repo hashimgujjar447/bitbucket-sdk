@@ -1,0 +1,28 @@
+# BasicPaginatedReportFlow
+
+main: kit: flow: BasicPaginatedReportFlow:
+{
+  entity: "paginated_report",
+  kind: "basic",
+  name: "BasicPaginatedReportFlow",
+  step: [
+    {
+      m: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_report_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedReportFlow"
+}

@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "paginated_annotation": {
+      "PAGINATED_ANNOTATION00": {
+        "annotation_type": "s82",
+        "created_on": "s83",
+        "details": "s84",
+        "external_id": "EXTERNAL01",
+        "line": 134,
+        "link": "s87",
+        "path": "s88",
+        "result": "s89",
+        "severity": "s8a",
+        "summary": "s8b",
+        "type": "s8c",
+        "updated_on": "s8d",
+        "uuid": "s8e",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "report_id": "REPORT01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ANNOTATION01": {
+        "annotation_type": "s104",
+        "created_on": "s105",
+        "details": "s106",
+        "external_id": "EXTERNAL01",
+        "line": 264,
+        "link": "s109",
+        "path": "s10a",
+        "result": "s10b",
+        "severity": "s10c",
+        "summary": "s10d",
+        "type": "s10e",
+        "updated_on": "s10f",
+        "uuid": "s110",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "report_id": "REPORT01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_ANNOTATION02": {
+        "annotation_type": "s186",
+        "created_on": "s187",
+        "details": "s188",
+        "external_id": "EXTERNAL01",
+        "line": 394,
+        "link": "s18b",
+        "path": "s18c",
+        "result": "s18d",
+        "severity": "s18e",
+        "summary": "s18f",
+        "type": "s190",
+        "updated_on": "s191",
+        "uuid": "s192",
+        "commit_id": "COMMIT01",
+        "repo_slug": "REPO_SLUG01",
+        "report_id": "REPORT01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_annotation": {
+      "paginated_annotation_ref01": {
+        "annotation_type": "s208",
+        "created_on": "s209",
+        "details": "s20a",
+        "external_id": "EXTERNAL01",
+        "line": 524,
+        "link": "s20d",
+        "path": "s20e",
+        "result": "s20f",
+        "severity": "s210",
+        "summary": "s211",
+        "type": "s212",
+        "updated_on": "s213",
+        "uuid": "s214"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

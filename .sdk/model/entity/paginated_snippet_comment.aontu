@@ -1,0 +1,97 @@
+# Entity: paginated_snippet_comment
+
+main: kit: entity: paginated_snippet_comment: {
+
+  alias: field: {}
+
+  fields: {
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    snippet: {
+      h: "Snippet"
+      n: "snippet"
+      r: false
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_snippet_comment"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /snippets/{workspace}/{encoded_id}/comments"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "encoded_id"
+                or: "encoded_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/snippets/{workspace}/{encoded_id}/comments"
+          q: {
+            exist: [
+              "encoded_id"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "snippets"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "encoded_id"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.snippet")]
+  ]
+
+}

@@ -1,0 +1,28 @@
+# BasicPaginatedHookEventFlow
+
+main: kit: flow: BasicPaginatedHookEventFlow:
+{
+  entity: "paginated_hook_event",
+  kind: "basic",
+  name: "BasicPaginatedHookEventFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_hook_event_ref01",
+        srcdatavar: "paginated_hook_event_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_hook_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedHookEventFlow"
+}

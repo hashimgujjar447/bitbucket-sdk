@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "paginated_default_reviewer_and_type": {
+      "PAGINATED_DEFAULT_REVIEWER_AND_TYPE00": {
+        "reviewer_type": "s1e",
+        "type": "s1f",
+        "user": "s20",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_DEFAULT_REVIEWER_AND_TYPE01": {
+        "reviewer_type": "s3c",
+        "type": "s3d",
+        "user": "s3e",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_DEFAULT_REVIEWER_AND_TYPE02": {
+        "reviewer_type": "s5a",
+        "type": "s5b",
+        "user": "s5c",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_default_reviewer_and_type": {
+      "paginated_default_reviewer_and_type_ref01": {
+        "reviewer_type": "s78",
+        "type": "s79",
+        "user": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/default-reviewers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

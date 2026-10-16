@@ -1,0 +1,25 @@
+# BasicCommentResolutionFlow
+
+main: kit: flow: BasicCommentResolutionFlow:
+{
+  entity: "comment_resolution",
+  kind: "basic",
+  name: "BasicCommentResolutionFlow",
+  step: [
+    {
+      i: {
+        ref: "comment_resolution_ref01"
+      }
+
+      m: {
+        comment_id: "comment01",
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCommentResolutionFlow"
+}

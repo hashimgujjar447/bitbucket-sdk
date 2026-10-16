@@ -1,0 +1,33 @@
+# BasicPropertyFlow
+
+main: kit: flow: BasicPropertyFlow:
+{
+  entity: "property",
+  kind: "basic",
+  name: "BasicPropertyFlow",
+  step: [
+    {
+      d: {
+        app_key: "app_key01",
+        selected_user: "selected_user01"
+      }
+
+      i: {
+        ref: "property_ref01",
+        srcdatavar: "property_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-property_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPropertyFlow"
+}

@@ -1,0 +1,72 @@
+# BasicPipelineVariableFlow
+
+main: kit: flow: BasicPipelineVariableFlow:
+{
+  entity: "pipeline_variable",
+  kind: "basic",
+  name: "BasicPipelineVariableFlow",
+  step: [
+    {
+      i: {
+        ref: "pipeline_variable_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        selected_user: "selected_user01",
+        username: "username01",
+        workspace: "workspace01",
+        workspace_id: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        workspace_id: "workspace01"
+      }
+
+      i: {
+        ref: "pipeline_variable_ref01",
+        srcdatavar: "pipeline_variable_ref01_data",
+        suffix: "_up0",
+        textfield: "key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_variable_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pipeline_variable_ref01",
+        srcdatavar: "pipeline_variable_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipeline_variable01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineVariableFlow"
+}

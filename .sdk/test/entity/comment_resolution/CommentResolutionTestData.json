@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "comment_resolution": {
+      "COMMENT_RESOLUTION00": {
+        "created_on": "s28",
+        "id": "COMMENT_RESOLUTION00",
+        "type": "s2a",
+        "user": "s2b",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "COMMENT_RESOLUTION01": {
+        "created_on": "s50",
+        "id": "COMMENT_RESOLUTION01",
+        "type": "s52",
+        "user": "s53",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "COMMENT_RESOLUTION02": {
+        "created_on": "s78",
+        "id": "COMMENT_RESOLUTION02",
+        "type": "s7a",
+        "user": "s7b",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "comment_resolution": {
+      "comment_resolution_ref01": {
+        "created_on": "sa0",
+        "type": "sa2",
+        "user": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}/resolve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

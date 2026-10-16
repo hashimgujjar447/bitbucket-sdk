@@ -1,0 +1,28 @@
+# BasicPaginatedPullrequestCommentFlow
+
+main: kit: flow: BasicPaginatedPullrequestCommentFlow:
+{
+  entity: "paginated_pullrequest_comment",
+  kind: "basic",
+  name: "BasicPaginatedPullrequestCommentFlow",
+  step: [
+    {
+      m: {
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pullrequest_comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPullrequestCommentFlow"
+}

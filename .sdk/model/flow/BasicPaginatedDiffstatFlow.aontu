@@ -1,0 +1,34 @@
+# BasicPaginatedDiffstatFlow
+
+main: kit: flow: BasicPaginatedDiffstatFlow:
+{
+  entity: "paginated_diffstat",
+  kind: "basic",
+  name: "BasicPaginatedDiffstatFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_diffstat_ref01",
+        srcdatavar: "paginated_diffstat_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_diffstat01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_diffstat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedDiffstatFlow"
+}

@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "pipeline_known_host": {
+      "PIPELINE_KNOWN_HOST00": {
+        "hostname": "s32",
+        "id": "PIPELINE_KNOWN_HOST00",
+        "public_key": "s34",
+        "type": "s35",
+        "uuid": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_KNOWN_HOST01": {
+        "hostname": "s64",
+        "id": "PIPELINE_KNOWN_HOST01",
+        "public_key": "s66",
+        "type": "s67",
+        "uuid": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_KNOWN_HOST02": {
+        "hostname": "s96",
+        "id": "PIPELINE_KNOWN_HOST02",
+        "public_key": "s98",
+        "type": "s99",
+        "uuid": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "pipeline_known_host": {
+      "pipeline_known_host_ref01": {
+        "hostname": "sc8",
+        "public_key": "sca",
+        "type": "scb",
+        "uuid": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts/{known_host_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts/{known_host_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

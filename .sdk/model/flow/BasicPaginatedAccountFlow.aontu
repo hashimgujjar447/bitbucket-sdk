@@ -1,0 +1,27 @@
+# BasicPaginatedAccountFlow
+
+main: kit: flow: BasicPaginatedAccountFlow:
+{
+  entity: "paginated_account",
+  kind: "basic",
+  name: "BasicPaginatedAccountFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedAccountFlow"
+}

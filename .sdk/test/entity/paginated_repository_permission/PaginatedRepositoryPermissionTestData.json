@@ -1,0 +1,84 @@
+{
+  "existing": {
+    "paginated_repository_permission": {
+      "PAGINATED_REPOSITORY_PERMISSION00": {
+        "next": "s64",
+        "page": 101,
+        "pagelen": 102,
+        "permission": "s67",
+        "previous": "s68",
+        "repository": "s69",
+        "size": 106,
+        "type": "s6b",
+        "user": "s6c",
+        "values": [],
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "id": "PAGINATED_REPOSITORY_PERMISSION00"
+      },
+      "PAGINATED_REPOSITORY_PERMISSION01": {
+        "next": "sc8",
+        "page": 201,
+        "pagelen": 202,
+        "permission": "scb",
+        "previous": "scc",
+        "repository": "scd",
+        "size": 206,
+        "type": "scf",
+        "user": "sd0",
+        "values": [],
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "id": "PAGINATED_REPOSITORY_PERMISSION01"
+      },
+      "PAGINATED_REPOSITORY_PERMISSION02": {
+        "next": "s12c",
+        "page": 301,
+        "pagelen": 302,
+        "permission": "s12f",
+        "previous": "s130",
+        "repository": "s131",
+        "size": 306,
+        "type": "s133",
+        "user": "s134",
+        "values": [],
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "id": "PAGINATED_REPOSITORY_PERMISSION02"
+      }
+    }
+  },
+  "new": {
+    "paginated_repository_permission": {
+      "paginated_repository_permission_ref01": {
+        "next": "s190",
+        "page": 401,
+        "pagelen": 402,
+        "permission": "s193",
+        "previous": "s194",
+        "repository": "s195",
+        "size": 406,
+        "type": "s197",
+        "user": "s198",
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "GET /user/workspaces/{workspace}/permissions/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/permissions/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/permissions/repositories/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

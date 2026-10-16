@@ -1,0 +1,9 @@
+# BasicSshFlow
+
+main: kit: flow: BasicSshFlow:
+{
+  entity: "ssh",
+  kind: "basic",
+  name: "BasicSshFlow",
+  "key$": "BasicSshFlow"
+}

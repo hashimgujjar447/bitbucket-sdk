@@ -1,0 +1,77 @@
+# BasicReportAnnotationFlow
+
+main: kit: flow: BasicReportAnnotationFlow:
+{
+  entity: "report_annotation",
+  kind: "basic",
+  name: "BasicReportAnnotationFlow",
+  step: [
+    {
+      i: {
+        ref: "report_annotation_ref01"
+      }
+
+      m: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        report_id: "report01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        report_id: "report01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "report_annotation_ref01",
+        srcdatavar: "report_annotation_ref01_data",
+        suffix: "_up0",
+        textfield: "annotation_type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-report_annotation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "report_annotation_ref01",
+        srcdatavar: "report_annotation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit_id: "commit01",
+        id: "report_annotation01",
+        repo_slug: "repo_slug01",
+        report_id: "report01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-report_annotation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicReportAnnotationFlow"
+}

@@ -1,0 +1,28 @@
+# BasicPaginatedPipelineStepFlow
+
+main: kit: flow: BasicPaginatedPipelineStepFlow:
+{
+  entity: "paginated_pipeline_step",
+  kind: "basic",
+  name: "BasicPaginatedPipelineStepFlow",
+  step: [
+    {
+      m: {
+        pipeline_id: "pipeline01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pipeline_step_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPipelineStepFlow"
+}

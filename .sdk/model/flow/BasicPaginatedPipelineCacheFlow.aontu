@@ -1,0 +1,27 @@
+# BasicPaginatedPipelineCacheFlow
+
+main: kit: flow: BasicPaginatedPipelineCacheFlow:
+{
+  entity: "paginated_pipeline_cache",
+  kind: "basic",
+  name: "BasicPaginatedPipelineCacheFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pipeline_cache_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPipelineCacheFlow"
+}

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "workspace_membership": {
+      "WORKSPACE_MEMBERSHIP00": {
+        "id": "WORKSPACE_MEMBERSHIP00",
+        "links": {},
+        "type": "s34",
+        "user": "s35",
+        "workspace": "s36",
+        "member": "MEMBER01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "WORKSPACE_MEMBERSHIP01": {
+        "id": "WORKSPACE_MEMBERSHIP01",
+        "links": {},
+        "type": "s66",
+        "user": "s67",
+        "workspace": "s68",
+        "member": "MEMBER01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "WORKSPACE_MEMBERSHIP02": {
+        "id": "WORKSPACE_MEMBERSHIP02",
+        "links": {},
+        "type": "s98",
+        "user": "s99",
+        "workspace": "s9a",
+        "member": "MEMBER01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "workspace_membership": {
+      "workspace_membership_ref01": {
+        "links": {},
+        "type": "sca",
+        "user": "scb",
+        "workspace": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/members/{member}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /user/workspaces/{workspace}/permission": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

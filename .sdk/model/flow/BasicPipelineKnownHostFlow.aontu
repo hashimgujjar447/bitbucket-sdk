@@ -1,0 +1,71 @@
+# BasicPipelineKnownHostFlow
+
+main: kit: flow: BasicPipelineKnownHostFlow:
+{
+  entity: "pipeline_known_host",
+  kind: "basic",
+  name: "BasicPipelineKnownHostFlow",
+  step: [
+    {
+      i: {
+        ref: "pipeline_known_host_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "pipeline_known_host_ref01",
+        srcdatavar: "pipeline_known_host_ref01_data",
+        suffix: "_up0",
+        textfield: "hostname"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_known_host_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pipeline_known_host_ref01",
+        srcdatavar: "pipeline_known_host_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipeline_known_host01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_known_host_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineKnownHostFlow"
+}

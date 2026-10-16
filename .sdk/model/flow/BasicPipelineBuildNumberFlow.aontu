@@ -1,0 +1,33 @@
+# BasicPipelineBuildNumberFlow
+
+main: kit: flow: BasicPipelineBuildNumberFlow:
+{
+  entity: "pipeline_build_number",
+  kind: "basic",
+  name: "BasicPipelineBuildNumberFlow",
+  step: [
+    {
+      d: {
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "pipeline_build_number_ref01",
+        srcdatavar: "pipeline_build_number_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_build_number_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineBuildNumberFlow"
+}

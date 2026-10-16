@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "paginated_branch": {
+      "PAGINATED_BRANCH00": {
+        "default_merge_strategy": "s3c",
+        "links": {},
+        "merge_strategies": [],
+        "name": "s3f",
+        "target": "s40",
+        "type": "s41",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_BRANCH01": {
+        "default_merge_strategy": "s78",
+        "links": {},
+        "merge_strategies": [],
+        "name": "s7b",
+        "target": "s7c",
+        "type": "s7d",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_BRANCH02": {
+        "default_merge_strategy": "sb4",
+        "links": {},
+        "merge_strategies": [],
+        "name": "sb7",
+        "target": "sb8",
+        "type": "sb9",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_branch": {
+      "paginated_branch_ref01": {
+        "default_merge_strategy": "sf0",
+        "links": {},
+        "merge_strategies": [],
+        "name": "sf3",
+        "target": "sf4",
+        "type": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/refs/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "pipeline_schedule": {
+      "PIPELINE_SCHEDULE00": {
+        "created_on": "s50",
+        "cron_pattern": "s51",
+        "enabled": true,
+        "id": "PIPELINE_SCHEDULE00",
+        "target": "s54",
+        "type": "s55",
+        "updated_on": "s56",
+        "uuid": "s57",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_SCHEDULE01": {
+        "created_on": "sa0",
+        "cron_pattern": "sa1",
+        "enabled": true,
+        "id": "PIPELINE_SCHEDULE01",
+        "target": "sa4",
+        "type": "sa5",
+        "updated_on": "sa6",
+        "uuid": "sa7",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_SCHEDULE02": {
+        "created_on": "sf0",
+        "cron_pattern": "sf1",
+        "enabled": true,
+        "id": "PIPELINE_SCHEDULE02",
+        "target": "sf4",
+        "type": "sf5",
+        "updated_on": "sf6",
+        "uuid": "sf7",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "pipeline_schedule": {
+      "pipeline_schedule_ref01": {
+        "created_on": "s140",
+        "cron_pattern": "s141",
+        "enabled": true,
+        "target": "s144",
+        "type": "s145",
+        "updated_on": "s146",
+        "uuid": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pipelines_config/schedules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

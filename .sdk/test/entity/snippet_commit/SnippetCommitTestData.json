@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "snippet_commit": {
+      "SNIPPET_COMMIT00": {
+        "author": "s6e",
+        "committer": "s6f",
+        "date": "s70",
+        "hash": "s71",
+        "id": "SNIPPET_COMMIT00",
+        "links": {},
+        "message": "s74",
+        "parents": [],
+        "snippet": "s76",
+        "summary": {},
+        "type": "s78",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "SNIPPET_COMMIT01": {
+        "author": "sdc",
+        "committer": "sdd",
+        "date": "sde",
+        "hash": "sdf",
+        "id": "SNIPPET_COMMIT01",
+        "links": {},
+        "message": "se2",
+        "parents": [],
+        "snippet": "se4",
+        "summary": {},
+        "type": "se6",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "SNIPPET_COMMIT02": {
+        "author": "s14a",
+        "committer": "s14b",
+        "date": "s14c",
+        "hash": "s14d",
+        "id": "SNIPPET_COMMIT02",
+        "links": {},
+        "message": "s150",
+        "parents": [],
+        "snippet": "s152",
+        "summary": {},
+        "type": "s154",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "snippet_commit": {
+      "snippet_commit_ref01": {
+        "author": "s1b8",
+        "committer": "s1b9",
+        "date": "s1ba",
+        "hash": "s1bb",
+        "links": {},
+        "message": "s1be",
+        "parents": [],
+        "snippet": "s1c0",
+        "summary": {},
+        "type": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /snippets/{workspace}/{encoded_id}/commits/{revision}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

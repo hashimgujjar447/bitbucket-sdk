@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "repository_user_permission": {
+      "REPOSITORY_USER_PERMISSION00": {
+        "links": {},
+        "permission": "s33",
+        "repository": "s34",
+        "type": "s35",
+        "user": "s36",
+        "repo_slug": "REPO_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_USER_PERMISSION00"
+      },
+      "REPOSITORY_USER_PERMISSION01": {
+        "links": {},
+        "permission": "s65",
+        "repository": "s66",
+        "type": "s67",
+        "user": "s68",
+        "repo_slug": "REPO_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_USER_PERMISSION01"
+      },
+      "REPOSITORY_USER_PERMISSION02": {
+        "links": {},
+        "permission": "s97",
+        "repository": "s98",
+        "type": "s99",
+        "user": "s9a",
+        "repo_slug": "REPO_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_USER_PERMISSION02"
+      }
+    }
+  },
+  "new": {
+    "repository_user_permission": {
+      "repository_user_permission_ref01": {
+        "links": {},
+        "permission": "sc9",
+        "repository": "sca",
+        "type": "scb",
+        "user": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

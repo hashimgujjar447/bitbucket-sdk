@@ -1,0 +1,27 @@
+# BasicPaginatedRepositoryGroupPermissionFlow
+
+main: kit: flow: BasicPaginatedRepositoryGroupPermissionFlow:
+{
+  entity: "paginated_repository_group_permission",
+  kind: "basic",
+  name: "BasicPaginatedRepositoryGroupPermissionFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_repository_group_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedRepositoryGroupPermissionFlow"
+}

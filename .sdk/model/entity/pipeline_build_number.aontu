@@ -1,0 +1,99 @@
+# Entity: pipeline_build_number
+
+main: kit: entity: pipeline_build_number: {
+
+  alias: field: {}
+
+  fields: {
+    next: {
+      h: "Next"
+      n: "next"
+      r: false
+      sh: "The next number that will be used as build number."
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "pipeline_build_number"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "next"
+            "type"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/pipelines_config/build_number"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/pipelines_config/build_number"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pipelines_config"
+            }
+            {
+              lit: "build_number"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

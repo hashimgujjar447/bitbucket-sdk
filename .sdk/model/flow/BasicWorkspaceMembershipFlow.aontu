@@ -1,0 +1,32 @@
+# BasicWorkspaceMembershipFlow
+
+main: kit: flow: BasicWorkspaceMembershipFlow:
+{
+  entity: "workspace_membership",
+  kind: "basic",
+  name: "BasicWorkspaceMembershipFlow",
+  step: [
+    {
+      i: {
+        ref: "workspace_membership_ref01",
+        srcdatavar: "workspace_membership_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "workspace_membership01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-workspace_membership_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkspaceMembershipFlow"
+}

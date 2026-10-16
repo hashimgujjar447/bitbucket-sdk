@@ -1,0 +1,24 @@
+# BasicApproveFlow
+
+main: kit: flow: BasicApproveFlow:
+{
+  entity: "approve",
+  kind: "basic",
+  name: "BasicApproveFlow",
+  step: [
+    {
+      i: {
+        ref: "approve_ref01"
+      }
+
+      m: {
+        pullrequest_id: "pullrequest01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApproveFlow"
+}

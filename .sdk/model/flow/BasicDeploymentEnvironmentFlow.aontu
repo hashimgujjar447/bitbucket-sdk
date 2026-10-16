@@ -1,0 +1,47 @@
+# BasicDeploymentEnvironmentFlow
+
+main: kit: flow: BasicDeploymentEnvironmentFlow:
+{
+  entity: "deployment_environment",
+  kind: "basic",
+  name: "BasicDeploymentEnvironmentFlow",
+  step: [
+    {
+      i: {
+        ref: "deployment_environment_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "deployment_environment_ref01",
+        srcdatavar: "deployment_environment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "deployment_environment01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deployment_environment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentEnvironmentFlow"
+}

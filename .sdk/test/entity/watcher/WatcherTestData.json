@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "watcher": {
+      "WATCHER00": {
+        "created_on": "s32",
+        "display_name": "s33",
+        "links": {},
+        "type": "s35",
+        "uuid": "s36",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01"
+      },
+      "WATCHER01": {
+        "created_on": "s64",
+        "display_name": "s65",
+        "links": {},
+        "type": "s67",
+        "uuid": "s68",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01"
+      },
+      "WATCHER02": {
+        "created_on": "s96",
+        "display_name": "s97",
+        "links": {},
+        "type": "s99",
+        "uuid": "s9a",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01"
+      }
+    }
+  },
+  "new": {
+    "watcher": {
+      "watcher_ref01": {
+        "created_on": "sc8",
+        "display_name": "sc9",
+        "links": {},
+        "type": "scb",
+        "uuid": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /snippets/{workspace}/{encoded_id}/watchers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/watchers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

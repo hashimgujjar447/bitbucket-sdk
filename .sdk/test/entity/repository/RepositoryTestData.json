@@ -1,0 +1,159 @@
+{
+  "existing": {
+    "repository": {
+      "REPOSITORY00": {
+        "created_on": "sc8",
+        "description": "sc9",
+        "fork_policy": "sca",
+        "full_name": "scb",
+        "has_issues": true,
+        "has_wiki": false,
+        "id": "REPOSITORY00",
+        "is_private": false,
+        "language": "sd0",
+        "links": {},
+        "mainbranch": "sd2",
+        "name": "sd3",
+        "owner": "sd4",
+        "parent": "sd5",
+        "project": "sd6",
+        "scm": "sd7",
+        "size": 216,
+        "type": "sd9",
+        "updated_on": "sda",
+        "uuid": "sdb",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "uid": "UID01"
+      },
+      "REPOSITORY01": {
+        "created_on": "s190",
+        "description": "s191",
+        "fork_policy": "s192",
+        "full_name": "s193",
+        "has_issues": true,
+        "has_wiki": false,
+        "id": "REPOSITORY01",
+        "is_private": false,
+        "language": "s198",
+        "links": {},
+        "mainbranch": "s19a",
+        "name": "s19b",
+        "owner": "s19c",
+        "parent": "s19d",
+        "project": "s19e",
+        "scm": "s19f",
+        "size": 416,
+        "type": "s1a1",
+        "updated_on": "s1a2",
+        "uuid": "s1a3",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "uid": "UID01"
+      },
+      "REPOSITORY02": {
+        "created_on": "s258",
+        "description": "s259",
+        "fork_policy": "s25a",
+        "full_name": "s25b",
+        "has_issues": true,
+        "has_wiki": false,
+        "id": "REPOSITORY02",
+        "is_private": false,
+        "language": "s260",
+        "links": {},
+        "mainbranch": "s262",
+        "name": "s263",
+        "owner": "s264",
+        "parent": "s265",
+        "project": "s266",
+        "scm": "s267",
+        "size": 616,
+        "type": "s269",
+        "updated_on": "s26a",
+        "uuid": "s26b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "selected_user_id": "SELECTED_USER01",
+        "uid": "UID01"
+      }
+    }
+  },
+  "new": {
+    "repository": {
+      "repository_ref01": {
+        "created_on": "s320",
+        "description": "s321",
+        "fork_policy": "s322",
+        "full_name": "s323",
+        "has_issues": true,
+        "has_wiki": false,
+        "is_private": false,
+        "language": "s328",
+        "links": {},
+        "mainbranch": "s32a",
+        "name": "s32b",
+        "owner": "s32c",
+        "parent": "s32d",
+        "project": "s32e",
+        "scm": "s32f",
+        "size": 816,
+        "type": "s331",
+        "updated_on": "s332",
+        "uuid": "s333"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/forks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/override-settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# BasicProjectDeployKeyFlow
+
+main: kit: flow: BasicProjectDeployKeyFlow:
+{
+  entity: "project_deploy_key",
+  kind: "basic",
+  name: "BasicProjectDeployKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "project_deploy_key_ref01"
+      }
+
+      m: {
+        project_key: "project_key01",
+        workspace_id: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "project_deploy_key_ref01",
+        srcdatavar: "project_deploy_key_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_deploy_key01",
+        project_key: "project_key01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_deploy_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectDeployKeyFlow"
+}

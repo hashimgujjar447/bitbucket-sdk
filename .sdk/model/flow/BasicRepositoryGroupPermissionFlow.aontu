@@ -1,0 +1,58 @@
+# BasicRepositoryGroupPermissionFlow
+
+main: kit: flow: BasicRepositoryGroupPermissionFlow:
+{
+  entity: "repository_group_permission",
+  kind: "basic",
+  name: "BasicRepositoryGroupPermissionFlow",
+  step: [
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "repository_group_permission_ref01",
+        srcdatavar: "repository_group_permission_ref01_data",
+        suffix: "_up0",
+        textfield: "permission"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_group_permission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repository_group_permission_ref01",
+        srcdatavar: "repository_group_permission_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_group_permission01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_group_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryGroupPermissionFlow"
+}

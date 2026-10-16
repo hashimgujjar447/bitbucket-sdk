@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "branching_model_setting": {
+      "BRANCHING_MODEL_SETTING00": {
+        "branch_types": [],
+        "development": {},
+        "links": {},
+        "production": {},
+        "type": "s36",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "BRANCHING_MODEL_SETTING00"
+      },
+      "BRANCHING_MODEL_SETTING01": {
+        "branch_types": [],
+        "development": {},
+        "links": {},
+        "production": {},
+        "type": "s68",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "BRANCHING_MODEL_SETTING01"
+      },
+      "BRANCHING_MODEL_SETTING02": {
+        "branch_types": [],
+        "development": {},
+        "links": {},
+        "production": {},
+        "type": "s9a",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "BRANCHING_MODEL_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "branching_model_setting": {
+      "branching_model_setting_ref01": {
+        "branch_types": [],
+        "development": {},
+        "links": {},
+        "production": {},
+        "type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/branching-model/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/branching-model/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /workspaces/{workspace}/projects/{project_key}/branching-model/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/branching-model/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

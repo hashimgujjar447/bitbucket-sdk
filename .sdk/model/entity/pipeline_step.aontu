@@ -1,0 +1,178 @@
+# Entity: pipeline_step
+
+main: kit: entity: pipeline_step: {
+
+  alias: field: {}
+
+  fields: {
+    completed_on: {
+      fo: "date-time"
+      h: "Completed On"
+      n: "completed_on"
+      r: false
+      sh: "The timestamp when the step execution was completed."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "The Docker image used as the build container for the step."
+      t: "`$OBJECT`"
+    }
+    script_commands: {
+      h: "Script Commands"
+      n: "script_commands"
+      r: false
+      sh: "The list of build commands."
+      t: "`$ARRAY`"
+    }
+    setup_commands: {
+      h: "Setup Commands"
+      n: "setup_commands"
+      r: false
+      sh: "The list of commands that are executed as part of the setup phase of the build."
+      t: "`$ARRAY`"
+    }
+    started_on: {
+      fo: "date-time"
+      h: "Started On"
+      n: "started_on"
+      r: false
+      sh: "The timestamp when the step execution was started."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "The current state of the step"
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID identifying the step."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "pipeline_step"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "step_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}"
+          q: {
+            exist: [
+              "id"
+              "pipeline_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              pipeline_uuid: "pipeline_id"
+              step_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "steps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.pipeline")]
+  ]
+
+}

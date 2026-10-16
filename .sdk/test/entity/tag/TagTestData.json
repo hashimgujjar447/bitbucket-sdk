@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "tag": {
+      "TAG00": {
+        "date": "s50",
+        "id": "TAG00",
+        "links": {},
+        "message": "s53",
+        "name": "s54",
+        "tagger": "s55",
+        "target": "s56",
+        "type": "s57",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "TAG01": {
+        "date": "sa0",
+        "id": "TAG01",
+        "links": {},
+        "message": "sa3",
+        "name": "sa4",
+        "tagger": "sa5",
+        "target": "sa6",
+        "type": "sa7",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "TAG02": {
+        "date": "sf0",
+        "id": "TAG02",
+        "links": {},
+        "message": "sf3",
+        "name": "sf4",
+        "tagger": "sf5",
+        "target": "sf6",
+        "type": "sf7",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "tag": {
+      "tag_ref01": {
+        "date": "s140",
+        "links": {},
+        "message": "s143",
+        "name": "s144",
+        "tagger": "s145",
+        "target": "s146",
+        "type": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/refs/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/refs/tags/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

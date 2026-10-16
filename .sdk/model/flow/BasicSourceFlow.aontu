@@ -1,0 +1,23 @@
+# BasicSourceFlow
+
+main: kit: flow: BasicSourceFlow:
+{
+  entity: "source",
+  kind: "basic",
+  name: "BasicSourceFlow",
+  step: [
+    {
+      i: {
+        ref: "source_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSourceFlow"
+}

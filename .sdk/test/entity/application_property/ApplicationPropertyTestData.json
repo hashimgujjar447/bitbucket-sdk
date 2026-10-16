@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "application_property": {
+      "APPLICATION_PROPERTY00": {
+        "attributes": [],
+        "id": "APPLICATION_PROPERTY00",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      },
+      "APPLICATION_PROPERTY01": {
+        "attributes": [],
+        "id": "APPLICATION_PROPERTY01",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      },
+      "APPLICATION_PROPERTY02": {
+        "attributes": [],
+        "id": "APPLICATION_PROPERTY02",
+        "app_key": "APP_KEY01",
+        "commit": "COMMIT01",
+        "property_name": "PROPERTY_NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "pullrequest_id": "PULLREQUEST01",
+        "selected_user": "SELECTED_USER01"
+      }
+    }
+  },
+  "new": {
+    "application_property": {
+      "application_property_ref01": {
+        "attributes": []
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{selected_user}/properties/{app_key}/{property_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

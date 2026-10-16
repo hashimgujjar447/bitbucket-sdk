@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "paginated_project_group_permission": {
+      "PAGINATED_PROJECT_GROUP_PERMISSION00": {
+        "group": "s32",
+        "links": {},
+        "permission": "s34",
+        "project": "s35",
+        "type": "s36",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT_GROUP_PERMISSION01": {
+        "group": "s64",
+        "links": {},
+        "permission": "s66",
+        "project": "s67",
+        "type": "s68",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT_GROUP_PERMISSION02": {
+        "group": "s96",
+        "links": {},
+        "permission": "s98",
+        "project": "s99",
+        "type": "s9a",
+        "project_id": "PROJECT01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_project_group_permission": {
+      "paginated_project_group_permission_ref01": {
+        "group": "sc8",
+        "links": {},
+        "permission": "sca",
+        "project": "scb",
+        "type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/permissions-config/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

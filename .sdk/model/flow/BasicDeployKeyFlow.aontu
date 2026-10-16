@@ -1,0 +1,71 @@
+# BasicDeployKeyFlow
+
+main: kit: flow: BasicDeployKeyFlow:
+{
+  entity: "deploy_key",
+  kind: "basic",
+  name: "BasicDeployKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "deploy_key_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "deploy_key_ref01",
+        srcdatavar: "deploy_key_ref01_data",
+        suffix: "_up0",
+        textfield: "added_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deploy_key_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "deploy_key_ref01",
+        srcdatavar: "deploy_key_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "deploy_key01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deploy_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeployKeyFlow"
+}

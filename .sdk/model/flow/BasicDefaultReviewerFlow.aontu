@@ -1,0 +1,58 @@
+# BasicDefaultReviewerFlow
+
+main: kit: flow: BasicDefaultReviewerFlow:
+{
+  entity: "default_reviewer",
+  kind: "basic",
+  name: "BasicDefaultReviewerFlow",
+  step: [
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "default_reviewer_ref01",
+        srcdatavar: "default_reviewer_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-default_reviewer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "default_reviewer_ref01",
+        srcdatavar: "default_reviewer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "default_reviewer01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-default_reviewer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDefaultReviewerFlow"
+}

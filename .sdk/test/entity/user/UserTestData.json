@@ -1,0 +1,105 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "account_id": "ACCOUNT01",
+        "account_status": "s6f",
+        "created_on": "s70",
+        "display_name": "s71",
+        "has_2fa_enabled": true,
+        "id": "USER00",
+        "is_staff": true,
+        "links": {},
+        "nickname": "s76",
+        "type": "s77",
+        "uuid": "s78",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "workspace_id": "WORKSPACE01",
+        "email": "EMAIL01"
+      },
+      "USER01": {
+        "account_id": "ACCOUNT01",
+        "account_status": "sdd",
+        "created_on": "sde",
+        "display_name": "sdf",
+        "has_2fa_enabled": true,
+        "id": "USER01",
+        "is_staff": true,
+        "links": {},
+        "nickname": "se4",
+        "type": "se5",
+        "uuid": "se6",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "workspace_id": "WORKSPACE01",
+        "email": "EMAIL01"
+      },
+      "USER02": {
+        "account_id": "ACCOUNT01",
+        "account_status": "s14b",
+        "created_on": "s14c",
+        "display_name": "s14d",
+        "has_2fa_enabled": true,
+        "id": "USER02",
+        "is_staff": true,
+        "links": {},
+        "nickname": "s152",
+        "type": "s153",
+        "uuid": "s154",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "workspace_id": "WORKSPACE01",
+        "email": "EMAIL01"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "account_id": "ACCOUNT01",
+        "account_status": "s1b9",
+        "created_on": "s1ba",
+        "display_name": "s1bb",
+        "has_2fa_enabled": true,
+        "is_staff": true,
+        "links": {},
+        "nickname": "s1c0",
+        "type": "s1c1",
+        "uuid": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /user/emails/{email}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{selected_user}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /user": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /user/emails": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

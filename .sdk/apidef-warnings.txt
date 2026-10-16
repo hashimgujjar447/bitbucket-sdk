@@ -1,0 +1,168 @@
+{
+  point: "warning"
+  note: "Points GET /repositories/{workspace}/{repo_slug}/diff/{spec} and GET /repositories/{workspace}/{repo_slug}/patch/{spec} on entity=commit op=load have the same selector (exist: repo_slug,spec,workspace), so only GET /repositories/{workspace}/{repo_slug}/diff/{spec} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "commit"
+  op: "load"
+  points: [
+    "GET /repositories/{workspace}/{repo_slug}/diff/{spec}"
+    "GET /repositories/{workspace}/{repo_slug}/patch/{spec}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /user/workspaces/{workspace}/permissions/repositories and GET /workspaces/{workspace}/permissions/repositories on entity=paginated_repository_permission op=list have the same selector (exist: workspace_id), so only GET /user/workspaces/{workspace}/permissions/repositories is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "paginated_repository_permission"
+  op: "list"
+  points: [
+    "GET /user/workspaces/{workspace}/permissions/repositories"
+    "GET /workspaces/{workspace}/permissions/repositories"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /workspaces/{workspace}/members and GET /workspaces/{workspace}/permissions on entity=paginated_workspace_membership op=list have the same selector (exist: workspace_id), so only GET /workspaces/{workspace}/members is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "paginated_workspace_membership"
+  op: "list"
+  points: [
+    "GET /workspaces/{workspace}/members"
+    "GET /workspaces/{workspace}/permissions"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/log, GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports and GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases on entity=pipeline op=load have the same selector (exist: id,repo_slug,step_id,workspace), so only GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/log is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "pipeline"
+  op: "load"
+  points: [
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/log"
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports"
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /workspaces/{workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration and GET /workspaces/{workspace}/pipelines-config/identity/oidc/keys.json on entity=pipeline op=load have the same selector (exist: workspace_id), so only GET /workspaces/{workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "pipeline"
+  op: "load"
+  points: [
+    "GET /workspaces/{workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration"
+    "GET /workspaces/{workspace}/pipelines-config/identity/oidc/keys.json"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /repositories/{workspace}/{repo_slug}/refs/branches/{name} and DELETE /repositories/{workspace}/{repo_slug}/refs/tags/{name} on entity=ref op=remove have the same selector (exist: name,repo_slug,workspace), so only DELETE /repositories/{workspace}/{repo_slug}/refs/branches/{name} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "ref"
+  op: "remove"
+  points: [
+    "DELETE /repositories/{workspace}/{repo_slug}/refs/branches/{name}"
+    "DELETE /repositories/{workspace}/{repo_slug}/refs/tags/{name}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /repositories/{workspace}/{repo_slug} and POST /repositories/{workspace}/{repo_slug}/forks on entity=repository op=create have the same selector (exist: repo_slug,workspace), so only POST /repositories/{workspace}/{repo_slug} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "repository"
+  op: "create"
+  points: [
+    "POST /repositories/{workspace}/{repo_slug}"
+    "POST /repositories/{workspace}/{repo_slug}/forks"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PUT /repositories/{workspace}/{repo_slug} and PUT /repositories/{workspace}/{repo_slug}/override-settings on entity=repository op=update have the same selector (exist: repo_slug,workspace), so only PUT /repositories/{workspace}/{repo_slug} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "repository"
+  op: "update"
+  points: [
+    "PUT /repositories/{workspace}/{repo_slug}"
+    "PUT /repositories/{workspace}/{repo_slug}/override-settings"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /snippets/{workspace}/{encoded_id}/{revision}/diff and GET /snippets/{workspace}/{encoded_id}/{revision}/patch on entity=snippet op=load have the same selector (exist: encoded_id,revision,workspace), so only GET /snippets/{workspace}/{encoded_id}/{revision}/diff is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "snippet"
+  op: "load"
+  points: [
+    "GET /snippets/{workspace}/{encoded_id}/{revision}/diff"
+    "GET /snippets/{workspace}/{encoded_id}/{revision}/patch"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /snippets/{workspace}/{encoded_id} and GET /snippets/{workspace}/{encoded_id}/watch on entity=snippet op=load have the same selector (exist: encoded_id,workspace), so only GET /snippets/{workspace}/{encoded_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "snippet"
+  op: "load"
+  points: [
+    "GET /snippets/{workspace}/{encoded_id}"
+    "GET /snippets/{workspace}/{encoded_id}/watch"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /snippets/{workspace}/{encoded_id} and DELETE /snippets/{workspace}/{encoded_id}/watch on entity=snippet op=remove have the same selector (exist: encoded_id,workspace), so only DELETE /snippets/{workspace}/{encoded_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "snippet"
+  op: "remove"
+  points: [
+    "DELETE /snippets/{workspace}/{encoded_id}"
+    "DELETE /snippets/{workspace}/{encoded_id}/watch"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PUT /snippets/{workspace}/{encoded_id} and PUT /snippets/{workspace}/{encoded_id}/watch on entity=snippet op=update have the same selector (exist: encoded_id,workspace), so only PUT /snippets/{workspace}/{encoded_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "snippet"
+  op: "update"
+  points: [
+    "PUT /snippets/{workspace}/{encoded_id}"
+    "PUT /snippets/{workspace}/{encoded_id}/watch"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /workspaces/{workspace} and GET /workspaces/{workspace}/settings/gpg/public-key on entity=workspace op=load have the same selector (exist: id), so only GET /workspaces/{workspace} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "workspace"
+  op: "load"
+  points: [
+    "GET /workspaces/{workspace}"
+    "GET /workspaces/{workspace}/settings/gpg/public-key"
+  ]
+
+}

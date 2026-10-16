@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "paginated_project_deploy_key": {
+      "PAGINATED_PROJECT_DEPLOY_KEY00": {
+        "added_on": "s5a",
+        "comment": "s5b",
+        "created_by": "s5c",
+        "key": "s5d",
+        "label": "s5e",
+        "last_used": "s5f",
+        "links": {},
+        "project": "s61",
+        "type": "s62",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT_DEPLOY_KEY01": {
+        "added_on": "sb4",
+        "comment": "sb5",
+        "created_by": "sb6",
+        "key": "sb7",
+        "label": "sb8",
+        "last_used": "sb9",
+        "links": {},
+        "project": "sbb",
+        "type": "sbc",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "PAGINATED_PROJECT_DEPLOY_KEY02": {
+        "added_on": "s10e",
+        "comment": "s10f",
+        "created_by": "s110",
+        "key": "s111",
+        "label": "s112",
+        "last_used": "s113",
+        "links": {},
+        "project": "s115",
+        "type": "s116",
+        "project_key": "PROJECT_KEY01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_project_deploy_key": {
+      "paginated_project_deploy_key_ref01": {
+        "added_on": "s168",
+        "comment": "s169",
+        "created_by": "s16a",
+        "key": "s16b",
+        "label": "s16c",
+        "last_used": "s16d",
+        "links": {},
+        "project": "s16f",
+        "type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}/projects/{project_key}/deploy-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

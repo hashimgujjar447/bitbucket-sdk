@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "workspace": {
+      "WORKSPACE00": {
+        "created_on": "s78",
+        "forking_mode": "s79",
+        "id": "WORKSPACE00",
+        "is_personal": false,
+        "is_privacy_enforced": true,
+        "is_private": false,
+        "links": {},
+        "name": "s7f",
+        "slug": "s80",
+        "type": "s81",
+        "updated_on": "s82",
+        "uuid": "s83",
+        "uid": "UID01"
+      },
+      "WORKSPACE01": {
+        "created_on": "sf0",
+        "forking_mode": "sf1",
+        "id": "WORKSPACE01",
+        "is_personal": false,
+        "is_privacy_enforced": true,
+        "is_private": false,
+        "links": {},
+        "name": "sf7",
+        "slug": "sf8",
+        "type": "sf9",
+        "updated_on": "sfa",
+        "uuid": "sfb",
+        "uid": "UID01"
+      },
+      "WORKSPACE02": {
+        "created_on": "s168",
+        "forking_mode": "s169",
+        "id": "WORKSPACE02",
+        "is_personal": false,
+        "is_privacy_enforced": true,
+        "is_private": false,
+        "links": {},
+        "name": "s16f",
+        "slug": "s170",
+        "type": "s171",
+        "updated_on": "s172",
+        "uuid": "s173",
+        "uid": "UID01"
+      }
+    }
+  },
+  "new": {
+    "workspace": {
+      "workspace_ref01": {
+        "created_on": "s1e0",
+        "forking_mode": "s1e1",
+        "is_personal": false,
+        "is_privacy_enforced": true,
+        "is_private": false,
+        "links": {},
+        "name": "s1e7",
+        "slug": "s1e8",
+        "type": "s1e9",
+        "updated_on": "s1ea",
+        "uuid": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "GET /workspaces/{workspace}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/settings/gpg/public-key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

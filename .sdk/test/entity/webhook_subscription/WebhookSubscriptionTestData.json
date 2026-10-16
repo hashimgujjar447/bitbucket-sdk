@@ -1,0 +1,113 @@
+{
+  "existing": {
+    "webhook_subscription": {
+      "WEBHOOK_SUBSCRIPTION00": {
+        "active": true,
+        "created_at": "s79",
+        "description": "s7a",
+        "events": [],
+        "links": {},
+        "secret": "s7d",
+        "secret_set": true,
+        "subject": {},
+        "subject_type": "s80",
+        "type": "s81",
+        "url": "s82",
+        "uuid": "s83",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "workspace_id": "WORKSPACE01",
+        "uid": "UID01",
+        "id": "WEBHOOK_SUBSCRIPTION00"
+      },
+      "WEBHOOK_SUBSCRIPTION01": {
+        "active": true,
+        "created_at": "sf1",
+        "description": "sf2",
+        "events": [],
+        "links": {},
+        "secret": "sf5",
+        "secret_set": true,
+        "subject": {},
+        "subject_type": "sf8",
+        "type": "sf9",
+        "url": "sfa",
+        "uuid": "sfb",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "workspace_id": "WORKSPACE01",
+        "uid": "UID01",
+        "id": "WEBHOOK_SUBSCRIPTION01"
+      },
+      "WEBHOOK_SUBSCRIPTION02": {
+        "active": true,
+        "created_at": "s169",
+        "description": "s16a",
+        "events": [],
+        "links": {},
+        "secret": "s16d",
+        "secret_set": true,
+        "subject": {},
+        "subject_type": "s170",
+        "type": "s171",
+        "url": "s172",
+        "uuid": "s173",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "workspace_id": "WORKSPACE01",
+        "uid": "UID01",
+        "id": "WEBHOOK_SUBSCRIPTION02"
+      }
+    }
+  },
+  "new": {
+    "webhook_subscription": {
+      "webhook_subscription_ref01": {
+        "active": true,
+        "created_at": "s1e1",
+        "description": "s1e2",
+        "events": [],
+        "links": {},
+        "secret": "s1e5",
+        "secret_set": true,
+        "subject": {},
+        "subject_type": "s1e8",
+        "type": "s1e9",
+        "url": "s1ea",
+        "uuid": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/hooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /workspaces/{workspace}/hooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /workspaces/{workspace}/hooks/{uid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

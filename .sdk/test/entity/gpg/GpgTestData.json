@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "gpg": {
+      "GPG00": {
+        "fingerprint": "FINGERPRINT01",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG00"
+      },
+      "GPG01": {
+        "fingerprint": "FINGERPRINT01",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG01"
+      },
+      "GPG02": {
+        "fingerprint": "FINGERPRINT01",
+        "selected_user": "SELECTED_USER01",
+        "id": "GPG02"
+      }
+    }
+  },
+  "new": {
+    "gpg": {
+      "gpg_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /users/{selected_user}/gpg-keys/{fingerprint}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

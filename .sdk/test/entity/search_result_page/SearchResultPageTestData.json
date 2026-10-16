@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "search_result_page": {
+      "SEARCH_RESULT_PAGE00": {
+        "content_match_count": 50,
+        "content_matches": [],
+        "file": {},
+        "path_matches": [],
+        "type": "s36",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "SEARCH_RESULT_PAGE01": {
+        "content_match_count": 100,
+        "content_matches": [],
+        "file": {},
+        "path_matches": [],
+        "type": "s68",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      },
+      "SEARCH_RESULT_PAGE02": {
+        "content_match_count": 150,
+        "content_matches": [],
+        "file": {},
+        "path_matches": [],
+        "type": "s9a",
+        "selected_user": "SELECTED_USER01",
+        "username": "USERNAME01",
+        "workspace_id": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "search_result_page": {
+      "search_result_page_ref01": {
+        "content_match_count": 200,
+        "content_matches": [],
+        "file": {},
+        "path_matches": [],
+        "type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /users/{selected_user}/search/code": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /teams/{username}/search/code": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/search/code": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

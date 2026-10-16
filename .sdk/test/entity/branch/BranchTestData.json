@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "branch": {
+      "BRANCH00": {
+        "default_merge_strategy": "s46",
+        "id": "BRANCH00",
+        "links": {},
+        "merge_strategies": [],
+        "name": "s4a",
+        "target": "s4b",
+        "type": "s4c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCH01": {
+        "default_merge_strategy": "s8c",
+        "id": "BRANCH01",
+        "links": {},
+        "merge_strategies": [],
+        "name": "s90",
+        "target": "s91",
+        "type": "s92",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCH02": {
+        "default_merge_strategy": "sd2",
+        "id": "BRANCH02",
+        "links": {},
+        "merge_strategies": [],
+        "name": "sd6",
+        "target": "sd7",
+        "type": "sd8",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "branch": {
+      "branch_ref01": {
+        "default_merge_strategy": "s118",
+        "links": {},
+        "merge_strategies": [],
+        "name": "s11c",
+        "target": "s11d",
+        "type": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/refs/branches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/refs/branches/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

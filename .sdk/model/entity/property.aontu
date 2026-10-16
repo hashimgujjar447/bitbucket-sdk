@@ -1,0 +1,684 @@
+# Entity: property
+
+main: kit: entity: property: {
+
+  alias: field: {}
+
+  fields: {
+    attributes: {
+      h: "Attributes"
+      n: "attributes"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "app_key"
+      "property_name"
+    ]
+    sep: "/"
+  }
+
+  name: "property"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "commit"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "commit"
+              "property_name"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pullrequest_id"
+                or: "pullrequest_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "pullrequest_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pullrequests"
+            }
+            {
+              var: "pullrequest_id"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /users/{selected_user}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/users/{selected_user}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "selected_user"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "attributes"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "commit"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "commit"
+              "property_name"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "attributes"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "pullrequest_id"
+                or: "pullrequest_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "pullrequest_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pullrequests"
+            }
+            {
+              var: "pullrequest_id"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "attributes"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "attributes"
+          ]
+          co: {
+            id: "PUT /users/{selected_user}/properties/{app_key}/{property_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_key"
+                or: "app_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "property_name"
+                or: "property_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/users/{selected_user}/properties/{app_key}/{property_name}"
+          q: {
+            exist: [
+              "app_key"
+              "property_name"
+              "selected_user"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "properties"
+            }
+            {
+              var: "app_key"
+            }
+            {
+              var: "property_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+    [path("$.main.kit.entity.user")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.pullrequest")]
+  ]
+
+}

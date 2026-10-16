@@ -1,0 +1,75 @@
+# Entity: gpg
+
+main: kit: entity: gpg: {
+
+  alias: field: {}
+
+  name: "gpg"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /users/{selected_user}/gpg-keys/{fingerprint}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "fingerprint"
+                or: "fingerprint"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/users/{selected_user}/gpg-keys/{fingerprint}"
+          q: {
+            exist: [
+              "fingerprint"
+              "selected_user"
+            ]
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "selected_user"
+            }
+            {
+              lit: "gpg-keys"
+            }
+            {
+              var: "fingerprint"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "paginated_deploy_key": {
+      "PAGINATED_DEPLOY_KEY00": {
+        "added_on": "s5a",
+        "comment": "s5b",
+        "key": "s5c",
+        "label": "s5d",
+        "last_used": "s5e",
+        "links": {},
+        "owner": "s60",
+        "repository": "s61",
+        "type": "s62",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_DEPLOY_KEY01": {
+        "added_on": "sb4",
+        "comment": "sb5",
+        "key": "sb6",
+        "label": "sb7",
+        "last_used": "sb8",
+        "links": {},
+        "owner": "sba",
+        "repository": "sbb",
+        "type": "sbc",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_DEPLOY_KEY02": {
+        "added_on": "s10e",
+        "comment": "s10f",
+        "key": "s110",
+        "label": "s111",
+        "last_used": "s112",
+        "links": {},
+        "owner": "s114",
+        "repository": "s115",
+        "type": "s116",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_deploy_key": {
+      "paginated_deploy_key_ref01": {
+        "added_on": "s168",
+        "comment": "s169",
+        "key": "s16a",
+        "label": "s16b",
+        "last_used": "s16c",
+        "links": {},
+        "owner": "s16e",
+        "repository": "s16f",
+        "type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/deploy-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

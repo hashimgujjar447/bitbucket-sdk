@@ -1,0 +1,136 @@
+# Entity: request_change
+
+main: kit: entity: request_change: {
+
+  alias: field: {}
+
+  fields: {
+    approved: {
+      h: "Approved"
+      n: "approved"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    participated_on: {
+      fo: "date-time"
+      h: "Participated On"
+      n: "participated_on"
+      r: false
+      sh: "The ISO8601 timestamp of the participant's action."
+      t: "`$STRING`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: false
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "request_change"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "pullrequest_id"
+                or: "pull_request_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes"
+          q: {
+            exist: [
+              "pullrequest_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              pull_request_id: "pullrequest_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pullrequests"
+            }
+            {
+              var: "pullrequest_id"
+            }
+            {
+              lit: "request-changes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.pullrequest")]
+  ]
+
+}

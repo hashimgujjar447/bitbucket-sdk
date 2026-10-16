@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "paginated_ref": {
+      "PAGINATED_REF00": {
+        "links": {},
+        "name": "s29",
+        "target": "s2a",
+        "type": "s2b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REF01": {
+        "links": {},
+        "name": "s51",
+        "target": "s52",
+        "type": "s53",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_REF02": {
+        "links": {},
+        "name": "s79",
+        "target": "s7a",
+        "type": "s7b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_ref": {
+      "paginated_ref_ref01": {
+        "links": {},
+        "name": "sa1",
+        "target": "sa2",
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/refs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

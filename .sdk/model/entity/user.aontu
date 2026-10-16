@@ -1,0 +1,387 @@
+# Entity: user
+
+main: kit: entity: user: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: false
+      sh: "The user's Atlassian account ID."
+      t: "`$STRING`"
+    }
+    account_status: {
+      h: "Account Status"
+      n: "account_status"
+      r: false
+      sh: "The status of the account."
+      t: "`$STRING`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      t: "`$STRING`"
+    }
+    has_2fa_enabled: {
+      h: "Has 2fa Enabled"
+      n: "has_2fa_enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    is_staff: {
+      h: "Is Staff"
+      n: "is_staff"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "Links related to an Account."
+      t: "`$OBJECT`"
+    }
+    nickname: {
+      h: "Nickname"
+      n: "nickname"
+      r: false
+      sh: "Account name defined by the owner."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}"
+          q: {
+            exist: [
+              "project_id"
+              "selected_user"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              project_key: "project_id"
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "default-reviewers"
+            }
+            {
+              var: "selected_user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /user/emails/{email}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "email"
+                or: "email"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/user/emails/{email}"
+          q: {
+            exist: [
+              "email"
+            ]
+          }
+          s: [
+            {
+              lit: "user"
+            }
+            {
+              lit: "emails"
+            }
+            {
+              var: "email"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /users/{selected_user}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{selected_user}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              selected_user: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /user"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/user"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /user/emails"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/user/emails"
+          q: {
+            "$action": "email"
+          }
+          s: [
+            {
+              lit: "user"
+            }
+            {
+              lit: "emails"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "selected_user"
+                or: "selected_user"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}"
+          q: {
+            exist: [
+              "project_id"
+              "selected_user"
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              project_key: "project_id"
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "default-reviewers"
+            }
+            {
+              var: "selected_user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.workspace") path("$.main.kit.entity.project") path("$.main.kit.entity.default_reviewer")]
+  ]
+
+}

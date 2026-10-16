@@ -1,0 +1,49 @@
+# BasicDeploymentVariableFlow
+
+main: kit: flow: BasicDeploymentVariableFlow:
+{
+  entity: "deployment_variable",
+  kind: "basic",
+  name: "BasicDeploymentVariableFlow",
+  step: [
+    {
+      i: {
+        ref: "deployment_variable_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        environment_id: "environment01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "deployment_variable_ref01",
+        srcdatavar: "deployment_variable_ref01_data",
+        suffix: "_up0",
+        textfield: "key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deployment_variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentVariableFlow"
+}

@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "paginated_pipeline_cache": {
+      "PAGINATED_PIPELINE_CACHE00": {
+        "created_on": "s5a",
+        "file_size_bytes": 91,
+        "key_hash": "s5c",
+        "name": "s5d",
+        "path": "s5e",
+        "pipeline_uuid": "s5f",
+        "step_uuid": "s60",
+        "type": "s61",
+        "uuid": "s62",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_CACHE01": {
+        "created_on": "sb4",
+        "file_size_bytes": 181,
+        "key_hash": "sb6",
+        "name": "sb7",
+        "path": "sb8",
+        "pipeline_uuid": "sb9",
+        "step_uuid": "sba",
+        "type": "sbb",
+        "uuid": "sbc",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_CACHE02": {
+        "created_on": "s10e",
+        "file_size_bytes": 271,
+        "key_hash": "s110",
+        "name": "s111",
+        "path": "s112",
+        "pipeline_uuid": "s113",
+        "step_uuid": "s114",
+        "type": "s115",
+        "uuid": "s116",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline_cache": {
+      "paginated_pipeline_cache_ref01": {
+        "created_on": "s168",
+        "file_size_bytes": 361,
+        "key_hash": "s16a",
+        "name": "s16b",
+        "path": "s16c",
+        "pipeline_uuid": "s16d",
+        "step_uuid": "s16e",
+        "type": "s16f",
+        "uuid": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines-config/caches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

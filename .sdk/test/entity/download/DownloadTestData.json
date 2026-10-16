@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "download": {
+      "DOWNLOAD00": {
+        "id": "DOWNLOAD00",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DOWNLOAD01": {
+        "id": "DOWNLOAD01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DOWNLOAD02": {
+        "id": "DOWNLOAD02",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "download": {
+      "download_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/downloads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/downloads/{filename}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/downloads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/downloads/{filename}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# BasicPaginatedDefaultReviewerAndTypeFlow
+
+main: kit: flow: BasicPaginatedDefaultReviewerAndTypeFlow:
+{
+  entity: "paginated_default_reviewer_and_type",
+  kind: "basic",
+  name: "BasicPaginatedDefaultReviewerAndTypeFlow",
+  step: [
+    {
+      m: {
+        project_key: "project_key01",
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_default_reviewer_and_type_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedDefaultReviewerAndTypeFlow"
+}

@@ -1,0 +1,270 @@
+# Entity: paginated_pipeline
+
+main: kit: entity: paginated_pipeline: {
+
+  alias: field: {}
+
+  fields: {
+    build_number: {
+      h: "Build Number"
+      n: "build_number"
+      r: false
+      sh: "The build number of the pipeline."
+      t: "`$INTEGER`"
+    }
+    build_seconds_used: {
+      h: "Build Seconds Used"
+      n: "build_seconds_used"
+      r: false
+      sh: "The number of build seconds used by this pipeline."
+      t: "`$INTEGER`"
+    }
+    completed_on: {
+      fo: "date-time"
+      h: "Completed On"
+      n: "completed_on"
+      r: false
+      sh: "The timestamp when the Pipeline was completed."
+      t: "`$STRING`"
+    }
+    configuration_sources: {
+      h: "Configuration Sources"
+      n: "configuration_sources"
+      r: false
+      sh: "An ordered list of sources of the pipeline configuration"
+      t: "`$ARRAY`"
+    }
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      sh: "The timestamp when the pipeline was created."
+      t: "`$STRING`"
+    }
+    creator: {
+      h: "Creator"
+      n: "creator"
+      r: false
+      sh: "The Bitbucket account that was used to create the pipeline."
+      t: "`$ANY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$ANY`"
+    }
+    repository: {
+      h: "Repository"
+      n: "repository"
+      r: false
+      t: "`$ANY`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$ANY`"
+    }
+    target: {
+      h: "Target"
+      n: "target"
+      r: false
+      sh: "The target that the pipeline built."
+      t: "`$ANY`"
+    }
+    trigger: {
+      h: "Trigger"
+      n: "trigger"
+      r: false
+      sh: "The trigger used for the pipeline."
+      t: "`$ANY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "The UUID identifying the pipeline."
+      t: "`$STRING`"
+    }
+    variables: {
+      h: "Variables"
+      n: "variables"
+      r: false
+      sh: "The variables for the pipeline."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "paginated_pipeline"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/pipelines"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "created_on"
+                or: "created_on"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "creator_uuid"
+                or: "creator.uuid"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_branch"
+                or: "target.branch"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_commit_hash"
+                or: "target.commit.hash"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_ref_name"
+                or: "target.ref_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_ref_type"
+                or: "target.ref_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_selector_pattern"
+                or: "target.selector.pattern"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "target_selector_type"
+                or: "target.selector.type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "trigger_type"
+                or: "trigger_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/pipelines"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "pipelines"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}

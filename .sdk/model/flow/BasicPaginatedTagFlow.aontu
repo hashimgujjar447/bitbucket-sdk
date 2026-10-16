@@ -1,0 +1,27 @@
+# BasicPaginatedTagFlow
+
+main: kit: flow: BasicPaginatedTagFlow:
+{
+  entity: "paginated_tag",
+  kind: "basic",
+  name: "BasicPaginatedTagFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedTagFlow"
+}

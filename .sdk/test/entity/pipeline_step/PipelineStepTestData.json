@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "pipeline_step": {
+      "PIPELINE_STEP00": {
+        "completed_on": "s5a",
+        "id": "PIPELINE_STEP00",
+        "image": {},
+        "script_commands": [],
+        "setup_commands": [],
+        "started_on": "s5f",
+        "state": "s60",
+        "type": "s61",
+        "uuid": "s62",
+        "pipeline_id": "PIPELINE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_STEP01": {
+        "completed_on": "sb4",
+        "id": "PIPELINE_STEP01",
+        "image": {},
+        "script_commands": [],
+        "setup_commands": [],
+        "started_on": "sb9",
+        "state": "sba",
+        "type": "sbb",
+        "uuid": "sbc",
+        "pipeline_id": "PIPELINE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PIPELINE_STEP02": {
+        "completed_on": "s10e",
+        "id": "PIPELINE_STEP02",
+        "image": {},
+        "script_commands": [],
+        "setup_commands": [],
+        "started_on": "s113",
+        "state": "s114",
+        "type": "s115",
+        "uuid": "s116",
+        "pipeline_id": "PIPELINE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "pipeline_step": {
+      "pipeline_step_ref01": {
+        "completed_on": "s168",
+        "image": {},
+        "script_commands": [],
+        "setup_commands": [],
+        "started_on": "s16d",
+        "state": "s16e",
+        "type": "s16f",
+        "uuid": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

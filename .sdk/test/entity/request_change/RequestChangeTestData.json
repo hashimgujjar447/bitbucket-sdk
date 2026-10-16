@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "request_change": {
+      "REQUEST_CHANGE00": {
+        "approved": true,
+        "participated_on": "s3d",
+        "role": "s3e",
+        "state": "s3f",
+        "type": "s40",
+        "user": "s41",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REQUEST_CHANGE00"
+      },
+      "REQUEST_CHANGE01": {
+        "approved": true,
+        "participated_on": "s79",
+        "role": "s7a",
+        "state": "s7b",
+        "type": "s7c",
+        "user": "s7d",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REQUEST_CHANGE01"
+      },
+      "REQUEST_CHANGE02": {
+        "approved": true,
+        "participated_on": "sb5",
+        "role": "sb6",
+        "state": "sb7",
+        "type": "sb8",
+        "user": "sb9",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REQUEST_CHANGE02"
+      }
+    }
+  },
+  "new": {
+    "request_change": {
+      "request_change_ref01": {
+        "approved": true,
+        "participated_on": "sf1",
+        "role": "sf2",
+        "state": "sf3",
+        "type": "sf4",
+        "user": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

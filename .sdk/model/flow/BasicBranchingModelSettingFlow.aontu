@@ -1,0 +1,50 @@
+# BasicBranchingModelSettingFlow
+
+main: kit: flow: BasicBranchingModelSettingFlow:
+{
+  entity: "branching_model_setting",
+  kind: "basic",
+  name: "BasicBranchingModelSettingFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "branching_model_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "branching_model_setting_ref01",
+        srcdatavar: "branching_model_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-branching_model_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBranchingModelSettingFlow"
+}

@@ -1,0 +1,168 @@
+# Entity: paginated_merge_queue_pullrequest
+
+main: kit: entity: paginated_merge_queue_pullrequest: {
+
+  alias: field: {}
+
+  fields: {
+    last_activity_on: {
+      fo: "date-time"
+      h: "Last Activity On"
+      n: "last_activity_on"
+      r: false
+      t: "`$STRING`"
+    }
+    merge_queue: {
+      h: "Merge Queue"
+      n: "merge_queue"
+      r: false
+      sh: "A reference to the merge queue holding a pullrequest."
+      t: "`$OBJECT`"
+    }
+    pipeline: {
+      h: "Pipeline"
+      n: "pipeline"
+      r: false
+      t: "`$ANY`"
+    }
+    pullrequest: {
+      h: "Pullrequest"
+      n: "pullrequest"
+      r: false
+      t: "`$ANY`"
+    }
+    queued_on: {
+      fo: "date-time"
+      h: "Queued On"
+      n: "queued_on"
+      r: false
+      t: "`$STRING`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      sh: "The one-based position of the pullrequest in the merge queue."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_merge_queue_pullrequest"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_queue_id"
+                or: "merge_queue_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "pagelen"
+                or: "pagelen"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue"
+          q: {
+            exist: [
+              "merge_queue_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              merge_queue_uuid: "merge_queue_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "merge-queues"
+            }
+            {
+              var: "merge_queue_id"
+            }
+            {
+              lit: "queue"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.merge_queue")]
+  ]
+
+}

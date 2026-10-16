@@ -1,0 +1,27 @@
+# BasicPaginatedSnippetCommentFlow
+
+main: kit: flow: BasicPaginatedSnippetCommentFlow:
+{
+  entity: "paginated_snippet_comment",
+  kind: "basic",
+  name: "BasicPaginatedSnippetCommentFlow",
+  step: [
+    {
+      m: {
+        encoded_id: "encoded01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_snippet_comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedSnippetCommentFlow"
+}

@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "paginated_pipeline_schedule": {
+      "PAGINATED_PIPELINE_SCHEDULE00": {
+        "created_on": "s46",
+        "cron_pattern": "s47",
+        "enabled": true,
+        "target": "s49",
+        "type": "s4a",
+        "updated_on": "s4b",
+        "uuid": "s4c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_SCHEDULE01": {
+        "created_on": "s8c",
+        "cron_pattern": "s8d",
+        "enabled": true,
+        "target": "s8f",
+        "type": "s90",
+        "updated_on": "s91",
+        "uuid": "s92",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_SCHEDULE02": {
+        "created_on": "sd2",
+        "cron_pattern": "sd3",
+        "enabled": true,
+        "target": "sd5",
+        "type": "sd6",
+        "updated_on": "sd7",
+        "uuid": "sd8",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline_schedule": {
+      "paginated_pipeline_schedule_ref01": {
+        "created_on": "s118",
+        "cron_pattern": "s119",
+        "enabled": true,
+        "target": "s11b",
+        "type": "s11c",
+        "updated_on": "s11d",
+        "uuid": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/schedules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

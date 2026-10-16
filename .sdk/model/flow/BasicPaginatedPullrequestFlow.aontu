@@ -1,0 +1,50 @@
+# BasicPaginatedPullrequestFlow
+
+main: kit: flow: BasicPaginatedPullrequestFlow:
+{
+  entity: "paginated_pullrequest",
+  kind: "basic",
+  name: "BasicPaginatedPullrequestFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pullrequest_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "paginated_pullrequest_ref01",
+        srcdatavar: "paginated_pullrequest_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_pullrequest01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_pullrequest_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPullrequestFlow"
+}

@@ -1,0 +1,70 @@
+# BasicWebhookSubscriptionFlow
+
+main: kit: flow: BasicWebhookSubscriptionFlow:
+{
+  entity: "webhook_subscription",
+  kind: "basic",
+  name: "BasicWebhookSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "webhook_subscription_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01",
+        workspace_id: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        workspace_id: "workspace01"
+      }
+
+      i: {
+        ref: "webhook_subscription_ref01",
+        srcdatavar: "webhook_subscription_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webhook_subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "webhook_subscription_ref01",
+        srcdatavar: "webhook_subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "webhook_subscription01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webhook_subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebhookSubscriptionFlow"
+}

@@ -1,0 +1,35 @@
+# BasicPaginatedFileFlow
+
+main: kit: flow: BasicPaginatedFileFlow:
+{
+  entity: "paginated_file",
+  kind: "basic",
+  name: "BasicPaginatedFileFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_file_ref01",
+        srcdatavar: "paginated_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        commit: "commit01",
+        id: "paginated_file01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedFileFlow"
+}

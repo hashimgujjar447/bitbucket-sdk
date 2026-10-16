@@ -1,0 +1,219 @@
+# Entity: paginated_webhook_subscription
+
+main: kit: entity: paginated_webhook_subscription: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: false
+      sh: "Whether or not the webhook subscription is enabled."
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "The timestamp when the webhook subscription was created."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A user-defined description of the webhook."
+      t: "`$STRING`"
+    }
+    events: {
+      h: "Events"
+      n: "events"
+      r: false
+      sh: "The events this webhook is subscribed to."
+      t: "`$ARRAY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "A link to a resource related to this object."
+      t: "`$OBJECT`"
+    }
+    secret: {
+      h: "Secret"
+      n: "secret"
+      r: false
+      sh: "The secret to associate with the hook."
+      t: "`$STRING`"
+    }
+    secret_set: {
+      h: "Secret Set"
+      n: "secret_set"
+      r: false
+      ro: true
+      sh: "Indicates whether or not the hook has an associated secret."
+      t: "`$BOOLEAN`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      r: true
+      ro: true
+      sh: "Base type for most resource objects."
+      t: "`$OBJECT`"
+    }
+    subject_type: {
+      h: "Subject Type"
+      n: "subject_type"
+      r: false
+      ro: true
+      sh: "The type of entity."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The URL events get delivered to."
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      ro: true
+      sh: "The webhook's id."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "paginated_webhook_subscription"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/hooks"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/hooks"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "hooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+        {
+          co: {
+            id: "GET /workspaces/{workspace}/hooks"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "workspace_id"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/workspaces/{workspace}/hooks"
+          q: {
+            exist: [
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              workspace: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "hooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+    [path("$.main.kit.entity.workspace")]
+  ]
+
+}

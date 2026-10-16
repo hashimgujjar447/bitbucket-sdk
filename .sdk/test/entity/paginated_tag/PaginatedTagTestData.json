@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "paginated_tag": {
+      "PAGINATED_TAG00": {
+        "date": "s46",
+        "links": {},
+        "message": "s48",
+        "name": "s49",
+        "tagger": "s4a",
+        "target": "s4b",
+        "type": "s4c",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TAG01": {
+        "date": "s8c",
+        "links": {},
+        "message": "s8e",
+        "name": "s8f",
+        "tagger": "s90",
+        "target": "s91",
+        "type": "s92",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TAG02": {
+        "date": "sd2",
+        "links": {},
+        "message": "sd4",
+        "name": "sd5",
+        "tagger": "sd6",
+        "target": "sd7",
+        "type": "sd8",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_tag": {
+      "paginated_tag_ref01": {
+        "date": "s118",
+        "links": {},
+        "message": "s11a",
+        "name": "s11b",
+        "tagger": "s11c",
+        "target": "s11d",
+        "type": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/refs/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

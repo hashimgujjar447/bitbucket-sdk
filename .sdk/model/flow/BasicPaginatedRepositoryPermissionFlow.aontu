@@ -1,0 +1,49 @@
+# BasicPaginatedRepositoryPermissionFlow
+
+main: kit: flow: BasicPaginatedRepositoryPermissionFlow:
+{
+  entity: "paginated_repository_permission",
+  kind: "basic",
+  name: "BasicPaginatedRepositoryPermissionFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_repository_permission_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "paginated_repository_permission_ref01",
+        srcdatavar: "paginated_repository_permission_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_repository_permission01",
+        workspace_id: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_repository_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedRepositoryPermissionFlow"
+}

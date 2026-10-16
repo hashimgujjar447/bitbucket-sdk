@@ -1,0 +1,22 @@
+# BasicPaginatedWorkspaceAccessFlow
+
+main: kit: flow: BasicPaginatedWorkspaceAccessFlow:
+{
+  entity: "paginated_workspace_access",
+  kind: "basic",
+  name: "BasicPaginatedWorkspaceAccessFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_workspace_access_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedWorkspaceAccessFlow"
+}

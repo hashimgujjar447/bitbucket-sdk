@@ -1,0 +1,29 @@
+# BasicPaginatedAnnotationFlow
+
+main: kit: flow: BasicPaginatedAnnotationFlow:
+{
+  entity: "paginated_annotation",
+  kind: "basic",
+  name: "BasicPaginatedAnnotationFlow",
+  step: [
+    {
+      m: {
+        commit_id: "commit01",
+        repo_slug: "repo_slug01",
+        report_id: "report01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_annotation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedAnnotationFlow"
+}

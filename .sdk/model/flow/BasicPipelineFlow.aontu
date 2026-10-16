@@ -1,0 +1,64 @@
+# BasicPipelineFlow
+
+main: kit: flow: BasicPipelineFlow:
+{
+  entity: "pipeline",
+  kind: "basic",
+  name: "BasicPipelineFlow",
+  step: [
+    {
+      i: {
+        ref: "pipeline_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        repo_slug: "repo_slug01",
+        selected_user: "selected_user01",
+        step_id: "step01",
+        username: "username01",
+        workspace: "workspace01",
+        workspace_id: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "pipeline_ref01",
+        srcdatavar: "pipeline_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipeline01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pipeline_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "pipeline01",
+        workspace_id: "workspace01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicPipelineFlow"
+}

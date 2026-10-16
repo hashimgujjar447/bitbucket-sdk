@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "branchrestriction": {
+      "BRANCHRESTRICTION00": {
+        "branch_match_kind": "s6e",
+        "branch_type": "s6f",
+        "groups": [],
+        "id": "BRANCHRESTRICTION00",
+        "kind": "s72",
+        "links": {},
+        "pattern": "s74",
+        "pipelines_source_branches": [],
+        "type": "s76",
+        "users": [],
+        "value": 120,
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCHRESTRICTION01": {
+        "branch_match_kind": "sdc",
+        "branch_type": "sdd",
+        "groups": [],
+        "id": "BRANCHRESTRICTION01",
+        "kind": "se0",
+        "links": {},
+        "pattern": "se2",
+        "pipelines_source_branches": [],
+        "type": "se4",
+        "users": [],
+        "value": 230,
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "BRANCHRESTRICTION02": {
+        "branch_match_kind": "s14a",
+        "branch_type": "s14b",
+        "groups": [],
+        "id": "BRANCHRESTRICTION02",
+        "kind": "s14e",
+        "links": {},
+        "pattern": "s150",
+        "pipelines_source_branches": [],
+        "type": "s152",
+        "users": [],
+        "value": 340,
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "branchrestriction": {
+      "branchrestriction_ref01": {
+        "branch_match_kind": "s1b8",
+        "branch_type": "s1b9",
+        "groups": [],
+        "kind": "s1bc",
+        "links": {},
+        "pattern": "s1be",
+        "pipelines_source_branches": [],
+        "type": "s1c0",
+        "users": [],
+        "value": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/branch-restrictions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/branch-restrictions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/branch-restrictions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/branch-restrictions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

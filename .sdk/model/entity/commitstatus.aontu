@@ -1,0 +1,380 @@
+# Entity: commitstatus
+
+main: kit: entity: commitstatus: {
+
+  alias: field: {}
+
+  fields: {
+    created_on: {
+      fo: "date-time"
+      h: "Created On"
+      n: "created_on"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A description of the build (e.g."
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      sh: "An identifier for the status that's unique to its type (current \"build\" is the only supported type) and the vendor, e.g."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "An identifier for the build itself, e.g."
+      t: "`$STRING`"
+    }
+    refname: {
+      h: "Refname"
+      n: "refname"
+      r: false
+      sh: "The name of the ref that pointed to this commit at the time the status object was created."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "Provides some indication of the status of this commit"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_on: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updated_on"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "A URL linking back to the vendor or build system, for providing more information about whatever process produced this status."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "commitstatus"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "created_on"
+            "description"
+            "key"
+            "links"
+            "name"
+            "refname"
+            "state"
+            "type"
+            "updated_on"
+            "url"
+          ]
+          co: {
+            id: "POST /repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build"
+          q: {
+            exist: [
+              "commit_id"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              commit: "commit_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "statuses"
+            }
+            {
+              lit: "build"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build/{key}"
+          q: {
+            exist: [
+              "commit_id"
+              "key"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              commit: "commit_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "statuses"
+            }
+            {
+              lit: "build"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "created_on"
+            "description"
+            "key"
+            "links"
+            "name"
+            "refname"
+            "state"
+            "type"
+            "updated_on"
+            "url"
+          ]
+          co: {
+            id: "PUT /repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "commit_id"
+                or: "commit"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build/{key}"
+          q: {
+            exist: [
+              "commit_id"
+              "key"
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          r: {
+            param: {
+              commit: "commit_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "commit"
+            }
+            {
+              var: "commit_id"
+            }
+            {
+              lit: "statuses"
+            }
+            {
+              lit: "build"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+    [path("$.main.kit.entity.repository") path("$.main.kit.entity.commit")]
+  ]
+
+}

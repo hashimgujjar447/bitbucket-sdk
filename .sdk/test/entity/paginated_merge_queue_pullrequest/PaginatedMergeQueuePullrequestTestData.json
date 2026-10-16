@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "paginated_merge_queue_pullrequest": {
+      "PAGINATED_MERGE_QUEUE_PULLREQUEST00": {
+        "last_activity_on": "s50",
+        "merge_queue": {},
+        "pipeline": "s52",
+        "pullrequest": "s53",
+        "queued_on": "s54",
+        "rank": 85,
+        "status": "s56",
+        "type": "s57",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_MERGE_QUEUE_PULLREQUEST01": {
+        "last_activity_on": "sa0",
+        "merge_queue": {},
+        "pipeline": "sa2",
+        "pullrequest": "sa3",
+        "queued_on": "sa4",
+        "rank": 165,
+        "status": "sa6",
+        "type": "sa7",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_MERGE_QUEUE_PULLREQUEST02": {
+        "last_activity_on": "sf0",
+        "merge_queue": {},
+        "pipeline": "sf2",
+        "pullrequest": "sf3",
+        "queued_on": "sf4",
+        "rank": 245,
+        "status": "sf6",
+        "type": "sf7",
+        "merge_queue_id": "MERGE_QUEUE01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_merge_queue_pullrequest": {
+      "paginated_merge_queue_pullrequest_ref01": {
+        "last_activity_on": "s140",
+        "merge_queue": {},
+        "pipeline": "s142",
+        "pullrequest": "s143",
+        "queued_on": "s144",
+        "rank": 325,
+        "status": "s146",
+        "type": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

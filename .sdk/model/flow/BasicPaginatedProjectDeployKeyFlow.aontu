@@ -1,0 +1,27 @@
+# BasicPaginatedProjectDeployKeyFlow
+
+main: kit: flow: BasicPaginatedProjectDeployKeyFlow:
+{
+  entity: "paginated_project_deploy_key",
+  kind: "basic",
+  name: "BasicPaginatedProjectDeployKeyFlow",
+  step: [
+    {
+      m: {
+        project_key: "project_key01",
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_project_deploy_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedProjectDeployKeyFlow"
+}

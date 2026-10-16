@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "ref": {
+      "REF00": {
+        "name": "NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REF00"
+      },
+      "REF01": {
+        "name": "NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REF01"
+      },
+      "REF02": {
+        "name": "NAME01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REF02"
+      }
+    }
+  },
+  "new": {
+    "ref": {
+      "ref_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /repositories/{workspace}/{repo_slug}/refs/branches/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/refs/tags/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

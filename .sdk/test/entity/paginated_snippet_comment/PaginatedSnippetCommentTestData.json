@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "paginated_snippet_comment": {
+      "PAGINATED_SNIPPET_COMMENT00": {
+        "links": {},
+        "snippet": "s1f",
+        "type": "s20",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_SNIPPET_COMMENT01": {
+        "links": {},
+        "snippet": "s3d",
+        "type": "s3e",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_SNIPPET_COMMENT02": {
+        "links": {},
+        "snippet": "s5b",
+        "type": "s5c",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_snippet_comment": {
+      "paginated_snippet_comment_ref01": {
+        "links": {},
+        "snippet": "s79",
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /snippets/{workspace}/{encoded_id}/comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

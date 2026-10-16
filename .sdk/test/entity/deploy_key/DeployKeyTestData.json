@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "deploy_key": {
+      "DEPLOY_KEY00": {
+        "added_on": "s64",
+        "comment": "s65",
+        "id": "DEPLOY_KEY00",
+        "key": "s67",
+        "label": "s68",
+        "last_used": "s69",
+        "links": {},
+        "owner": "s6b",
+        "repository": "s6c",
+        "type": "s6d",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEPLOY_KEY01": {
+        "added_on": "sc8",
+        "comment": "sc9",
+        "id": "DEPLOY_KEY01",
+        "key": "scb",
+        "label": "scc",
+        "last_used": "scd",
+        "links": {},
+        "owner": "scf",
+        "repository": "sd0",
+        "type": "sd1",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEPLOY_KEY02": {
+        "added_on": "s12c",
+        "comment": "s12d",
+        "id": "DEPLOY_KEY02",
+        "key": "s12f",
+        "label": "s130",
+        "last_used": "s131",
+        "links": {},
+        "owner": "s133",
+        "repository": "s134",
+        "type": "s135",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "deploy_key": {
+      "deploy_key_ref01": {
+        "added_on": "s190",
+        "comment": "s191",
+        "key": "s193",
+        "label": "s194",
+        "last_used": "s195",
+        "links": {},
+        "owner": "s197",
+        "repository": "s198",
+        "type": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/deploy-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/deploy-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/deploy-keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

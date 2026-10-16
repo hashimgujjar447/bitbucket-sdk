@@ -1,0 +1,26 @@
+# BasicPaginatedGpgUserKeyFlow
+
+main: kit: flow: BasicPaginatedGpgUserKeyFlow:
+{
+  entity: "paginated_gpg_user_key",
+  kind: "basic",
+  name: "BasicPaginatedGpgUserKeyFlow",
+  step: [
+    {
+      m: {
+        selected_user: "selected_user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_gpg_user_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedGpgUserKeyFlow"
+}

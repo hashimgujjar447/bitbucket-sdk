@@ -1,0 +1,32 @@
+# BasicPaginatedSnippetFlow
+
+main: kit: flow: BasicPaginatedSnippetFlow:
+{
+  entity: "paginated_snippet",
+  kind: "basic",
+  name: "BasicPaginatedSnippetFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_snippet_ref01",
+        srcdatavar: "paginated_snippet_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_snippet01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_snippet_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedSnippetFlow"
+}

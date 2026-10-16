@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "repository_inheritance_state": {
+      "REPOSITORY_INHERITANCE_STATE00": {
+        "override_settings": {},
+        "type": "s15",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_INHERITANCE_STATE00"
+      },
+      "REPOSITORY_INHERITANCE_STATE01": {
+        "override_settings": {},
+        "type": "s29",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_INHERITANCE_STATE01"
+      },
+      "REPOSITORY_INHERITANCE_STATE02": {
+        "override_settings": {},
+        "type": "s3d",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "id": "REPOSITORY_INHERITANCE_STATE02"
+      }
+    }
+  },
+  "new": {
+    "repository_inheritance_state": {
+      "repository_inheritance_state_ref01": {
+        "override_settings": {},
+        "type": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/override-settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

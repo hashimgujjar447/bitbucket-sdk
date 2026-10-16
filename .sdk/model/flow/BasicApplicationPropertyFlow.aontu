@@ -1,0 +1,34 @@
+# BasicApplicationPropertyFlow
+
+main: kit: flow: BasicApplicationPropertyFlow:
+{
+  entity: "application_property",
+  kind: "basic",
+  name: "BasicApplicationPropertyFlow",
+  step: [
+    {
+      i: {
+        ref: "application_property_ref01",
+        srcdatavar: "application_property_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_key: "app_key01",
+        id: "application_property01",
+        selected_user: "selected_user01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-application_property_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApplicationPropertyFlow"
+}

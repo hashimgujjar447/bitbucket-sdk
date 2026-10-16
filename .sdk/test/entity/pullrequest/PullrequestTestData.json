@@ -1,0 +1,212 @@
+{
+  "existing": {
+    "pullrequest": {
+      "PULLREQUEST00": {
+        "author": "sdc",
+        "close_source_branch": false,
+        "closed_by": "sde",
+        "comment_count": 223,
+        "created_on": "se0",
+        "destination": {},
+        "draft": true,
+        "id": "PULLREQUEST00",
+        "links": {},
+        "merge_commit": {},
+        "participants": [],
+        "queued": false,
+        "reason": "se8",
+        "rendered": {},
+        "reviewers": [],
+        "source": {},
+        "state": "sec",
+        "summary": {},
+        "task_count": 238,
+        "title": "sef",
+        "type": "sf0",
+        "updated_on": "sf1",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "task_id": "TASK01",
+        "comment_id": "COMMENT01",
+        "target_username": "TARGET_USERNAME01"
+      },
+      "PULLREQUEST01": {
+        "author": "s1b8",
+        "close_source_branch": false,
+        "closed_by": "s1ba",
+        "comment_count": 443,
+        "created_on": "s1bc",
+        "destination": {},
+        "draft": true,
+        "id": "PULLREQUEST01",
+        "links": {},
+        "merge_commit": {},
+        "participants": [],
+        "queued": false,
+        "reason": "s1c4",
+        "rendered": {},
+        "reviewers": [],
+        "source": {},
+        "state": "s1c8",
+        "summary": {},
+        "task_count": 458,
+        "title": "s1cb",
+        "type": "s1cc",
+        "updated_on": "s1cd",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "task_id": "TASK01",
+        "comment_id": "COMMENT01",
+        "target_username": "TARGET_USERNAME01"
+      },
+      "PULLREQUEST02": {
+        "author": "s294",
+        "close_source_branch": false,
+        "closed_by": "s296",
+        "comment_count": 663,
+        "created_on": "s298",
+        "destination": {},
+        "draft": true,
+        "id": "PULLREQUEST02",
+        "links": {},
+        "merge_commit": {},
+        "participants": [],
+        "queued": false,
+        "reason": "s2a0",
+        "rendered": {},
+        "reviewers": [],
+        "source": {},
+        "state": "s2a4",
+        "summary": {},
+        "task_count": 678,
+        "title": "s2a7",
+        "type": "s2a8",
+        "updated_on": "s2a9",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01",
+        "task_id": "TASK01",
+        "comment_id": "COMMENT01",
+        "target_username": "TARGET_USERNAME01"
+      }
+    }
+  },
+  "new": {
+    "pullrequest": {
+      "pullrequest_ref01": {
+        "author": "s370",
+        "close_source_branch": false,
+        "closed_by": "s372",
+        "comment_count": 883,
+        "created_on": "s374",
+        "destination": {},
+        "draft": true,
+        "links": {},
+        "merge_commit": {},
+        "participants": [],
+        "queued": false,
+        "reason": "s37c",
+        "rendered": {},
+        "reviewers": [],
+        "source": {},
+        "state": "s380",
+        "summary": {},
+        "task_count": 898,
+        "title": "s383",
+        "type": "s384",
+        "updated_on": "s385"
+      }
+    }
+  },
+  "requests": {
+    "POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/decline": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/merge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /repositories/{workspace}/{repo_slug}/pullrequests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/merge/task-status/{task_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/commits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/conflicts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/diff": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/diffstat": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/patch": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks/{task_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/approve": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /repositories/{workspace}/{repo_slug}/default-reviewers/{target_username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

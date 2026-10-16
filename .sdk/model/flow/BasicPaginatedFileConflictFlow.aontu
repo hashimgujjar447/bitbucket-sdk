@@ -1,0 +1,34 @@
+# BasicPaginatedFileConflictFlow
+
+main: kit: flow: BasicPaginatedFileConflictFlow:
+{
+  entity: "paginated_file_conflict",
+  kind: "basic",
+  name: "BasicPaginatedFileConflictFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_file_conflict_ref01",
+        srcdatavar: "paginated_file_conflict_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_file_conflict01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_file_conflict_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedFileConflictFlow"
+}

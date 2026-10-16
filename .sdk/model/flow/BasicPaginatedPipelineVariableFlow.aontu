@@ -1,0 +1,26 @@
+# BasicPaginatedPipelineVariableFlow
+
+main: kit: flow: BasicPaginatedPipelineVariableFlow:
+{
+  entity: "paginated_pipeline_variable",
+  kind: "basic",
+  name: "BasicPaginatedPipelineVariableFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_pipeline_variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedPipelineVariableFlow"
+}

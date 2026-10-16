@@ -1,0 +1,127 @@
+# BasicCommitFlow
+
+main: kit: flow: BasicCommitFlow:
+{
+  entity: "commit",
+  kind: "basic",
+  name: "BasicCommitFlow",
+  step: [
+    {
+      i: {
+        ref: "commit_ref01"
+      }
+
+      m: {
+        commit: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        commit: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "commit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      i: {
+        ref: "commit_ref01",
+        srcdatavar: "commit_ref01_data",
+        suffix: "_up0",
+        textfield: "created_on"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "commit_ref01",
+        srcdatavar: "commit_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "commit_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        commit: "commit01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "commit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommitFlow"
+}

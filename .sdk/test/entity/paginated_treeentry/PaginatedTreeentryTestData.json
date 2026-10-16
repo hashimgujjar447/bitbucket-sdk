@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "paginated_treeentry": {
+      "PAGINATED_TREEENTRY00": {
+        "commit": "s64",
+        "id": "PAGINATED_TREEENTRY00",
+        "next": "s66",
+        "page": 103,
+        "pagelen": 104,
+        "path": "s69",
+        "previous": "s6a",
+        "size": 107,
+        "type": "s6c",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TREEENTRY01": {
+        "commit": "sc8",
+        "id": "PAGINATED_TREEENTRY01",
+        "next": "sca",
+        "page": 203,
+        "pagelen": 204,
+        "path": "scd",
+        "previous": "sce",
+        "size": 207,
+        "type": "sd0",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_TREEENTRY02": {
+        "commit": "s12c",
+        "id": "PAGINATED_TREEENTRY02",
+        "next": "s12e",
+        "page": 303,
+        "pagelen": 304,
+        "path": "s131",
+        "previous": "s132",
+        "size": 307,
+        "type": "s134",
+        "values": [],
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_treeentry": {
+      "paginated_treeentry_ref01": {
+        "commit": "s190",
+        "next": "s192",
+        "page": 403,
+        "pagelen": 404,
+        "path": "s195",
+        "previous": "s196",
+        "size": 407,
+        "type": "s198",
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/src": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /repositories/{workspace}/{repo_slug}/src/{commit}/{path}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

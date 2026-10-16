@@ -1,0 +1,35 @@
+# BasicMergeQueuePullrequestFlow
+
+main: kit: flow: BasicMergeQueuePullrequestFlow:
+{
+  entity: "merge_queue_pullrequest",
+  kind: "basic",
+  name: "BasicMergeQueuePullrequestFlow",
+  step: [
+    {
+      i: {
+        ref: "merge_queue_pullrequest_ref01",
+        srcdatavar: "merge_queue_pullrequest_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "merge_queue_pullrequest01",
+        merge_queue_id: "merge_queue01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-merge_queue_pullrequest_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMergeQueuePullrequestFlow"
+}

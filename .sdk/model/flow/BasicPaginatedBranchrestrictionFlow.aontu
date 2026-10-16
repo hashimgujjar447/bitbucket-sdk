@@ -1,0 +1,27 @@
+# BasicPaginatedBranchrestrictionFlow
+
+main: kit: flow: BasicPaginatedBranchrestrictionFlow:
+{
+  entity: "paginated_branchrestriction",
+  kind: "basic",
+  name: "BasicPaginatedBranchrestrictionFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_branchrestriction_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedBranchrestrictionFlow"
+}

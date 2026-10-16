@@ -1,0 +1,35 @@
+# BasicPipelineStepFlow
+
+main: kit: flow: BasicPipelineStepFlow:
+{
+  entity: "pipeline_step",
+  kind: "basic",
+  name: "BasicPipelineStepFlow",
+  step: [
+    {
+      i: {
+        ref: "pipeline_step_ref01",
+        srcdatavar: "pipeline_step_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pipeline_step01",
+        pipeline_id: "pipeline01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pipeline_step_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPipelineStepFlow"
+}

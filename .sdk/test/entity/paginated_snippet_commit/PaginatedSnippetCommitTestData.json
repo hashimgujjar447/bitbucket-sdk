@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "paginated_snippet_commit": {
+      "PAGINATED_SNIPPET_COMMIT00": {
+        "author": "s64",
+        "committer": "s65",
+        "date": "s66",
+        "hash": "s67",
+        "links": {},
+        "message": "s69",
+        "parents": [],
+        "snippet": "s6b",
+        "summary": {},
+        "type": "s6d",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_SNIPPET_COMMIT01": {
+        "author": "sc8",
+        "committer": "sc9",
+        "date": "sca",
+        "hash": "scb",
+        "links": {},
+        "message": "scd",
+        "parents": [],
+        "snippet": "scf",
+        "summary": {},
+        "type": "sd1",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_SNIPPET_COMMIT02": {
+        "author": "s12c",
+        "committer": "s12d",
+        "date": "s12e",
+        "hash": "s12f",
+        "links": {},
+        "message": "s131",
+        "parents": [],
+        "snippet": "s133",
+        "summary": {},
+        "type": "s135",
+        "encoded_id": "ENCODED01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_snippet_commit": {
+      "paginated_snippet_commit_ref01": {
+        "author": "s190",
+        "committer": "s191",
+        "date": "s192",
+        "hash": "s193",
+        "links": {},
+        "message": "s195",
+        "parents": [],
+        "snippet": "s197",
+        "summary": {},
+        "type": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /snippets/{workspace}/{encoded_id}/commits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

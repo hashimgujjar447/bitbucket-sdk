@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "default_reviewer": {
+      "DEFAULT_REVIEWER00": {
+        "created_on": "s3c",
+        "display_name": "s3d",
+        "id": "DEFAULT_REVIEWER00",
+        "links": {},
+        "type": "s40",
+        "uuid": "s41",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEFAULT_REVIEWER01": {
+        "created_on": "s78",
+        "display_name": "s79",
+        "id": "DEFAULT_REVIEWER01",
+        "links": {},
+        "type": "s7c",
+        "uuid": "s7d",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "DEFAULT_REVIEWER02": {
+        "created_on": "sb4",
+        "display_name": "sb5",
+        "id": "DEFAULT_REVIEWER02",
+        "links": {},
+        "type": "sb8",
+        "uuid": "sb9",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "default_reviewer": {
+      "default_reviewer_ref01": {
+        "created_on": "sf0",
+        "display_name": "sf1",
+        "links": {},
+        "type": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/default-reviewers/{target_username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /repositories/{workspace}/{repo_slug}/default-reviewers/{target_username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

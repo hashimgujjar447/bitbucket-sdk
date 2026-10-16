@@ -1,0 +1,27 @@
+# BasicEffectiveRepoBranchingModelFlow
+
+main: kit: flow: BasicEffectiveRepoBranchingModelFlow:
+{
+  entity: "effective_repo_branching_model",
+  kind: "basic",
+  name: "BasicEffectiveRepoBranchingModelFlow",
+  step: [
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "effective_repo_branching_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEffectiveRepoBranchingModelFlow"
+}

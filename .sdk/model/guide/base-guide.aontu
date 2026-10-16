@@ -1,0 +1,1371 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 112
+  metrics: count: path: 175
+  metrics: count: method: 299
+
+  entity: addon: {
+    path: "/addon": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/addon/{addon_key}/client-key": {
+      action: "client_key": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: application_property: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}": {
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}": {
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}": {
+      op: load: method: *GET
+    }
+    path: "/users/{selected_user}/properties/{app_key}/{property_name}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: approve: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/approve": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: branch: {
+    path: "/repositories/{workspace}/{repo_slug}/refs/branches": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/refs/branches/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: branch_restriction: {
+    path: "/repositories/{workspace}/{repo_slug}/branch-restrictions/{id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: branching_model: {
+    path: "/repositories/{workspace}/{repo_slug}/branching-model": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: branching_model_setting: {
+    path: "/repositories/{workspace}/{repo_slug}/branching-model/settings": {
+      op: list: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/branching-model/settings": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: branchrestriction: {
+    path: "/repositories/{workspace}/{repo_slug}/branch-restrictions": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/branch-restrictions/{id}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: comment_resolution: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}/resolve": {
+      action: "resolve": {}
+      rename: param: "comment_id": *"id"
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: commit: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}": {
+      rename: param: "commit": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/approve": {
+      action: "approve": {}
+      rename: param: "commit": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments": {
+      action: "comment": {}
+      rename: param: "commit": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/comments/{comment_id}": {
+      rename: param: "commit": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.commit`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/diff/{spec}": {
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/merge-base/{revspec}": {
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/patch/{spec}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: commitstatus: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build": {
+      rename: param: "commit": *"commit_id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses/build/{key}": {
+      rename: param: "commit": *"commit_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: default_reviewer: {
+    path: "/repositories/{workspace}/{repo_slug}/default-reviewers/{target_username}": {
+      rename: param: "target_username": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: deploy_key: {
+    path: "/repositories/{workspace}/{repo_slug}/deploy-keys": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/deploy-keys/{key_id}": {
+      rename: param: "key_id": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: deployment: {
+    path: "/repositories/{workspace}/{repo_slug}/deploy-keys/{key_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/deployments/{deployment_uuid}": {
+      rename: param: "deployment_uuid": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/environments/{environment_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/environments/{environment_uuid}/changes": {
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/deploy-keys/{key_id}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: deployment_environment: {
+    path: "/repositories/{workspace}/{repo_slug}/environments": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/environments/{environment_uuid}": {
+      rename: param: "environment_uuid": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: deployment_variable: {
+    path: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables": {
+      rename: param: "environment_uuid": *"environment_id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables/{variable_uuid}": {
+      rename: param: "environment_uuid": *"environment_id"
+      rename: param: "variable_uuid": *"id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: download: {
+    path: "/repositories/{workspace}/{repo_slug}/downloads": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/downloads/{filename}": {
+      rename: param: "filename": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: effective_default_reviewer: {
+    path: "/repositories/{workspace}/{repo_slug}/effective-default-reviewers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: effective_repo_branching_model: {
+    path: "/repositories/{workspace}/{repo_slug}/effective-branching-model": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: gpg: {
+    path: "/users/{selected_user}/gpg-keys/{fingerprint}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: gpg_account_key: {
+    path: "/users/{selected_user}/gpg-keys": {
+      op: create: method: *POST
+    }
+    path: "/users/{selected_user}/gpg-keys/{fingerprint}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: merge_queue: {
+    path: "/repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}": {
+      rename: param: "merge_queue_uuid": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue/{pullrequest_id}": {
+      rename: param: "merge_queue_uuid": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: merge_queue_pullrequest: {
+    path: "/repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue/{pullrequest_id}": {
+      rename: param: "merge_queue_uuid": *"merge_queue_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_account: {
+    path: "/repositories/{workspace}/{repo_slug}/default-reviewers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_annotation: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations": {
+      rename: param: "commit": *"commit_id"
+      rename: param: "reportId": *"report_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_branch: {
+    path: "/repositories/{workspace}/{repo_slug}/refs/branches": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_branchrestriction: {
+    path: "/repositories/{workspace}/{repo_slug}/branch-restrictions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_changeset: {
+    path: "/repositories/{workspace}/{repo_slug}/commits": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commits/{revision}": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_commitstatus: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/statuses": {
+      rename: param: "commit": *"commit_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/statuses": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_default_reviewer_and_type: {
+    path: "/workspaces/{workspace}/projects/{project_key}/default-reviewers": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_deploy_key: {
+    path: "/repositories/{workspace}/{repo_slug}/deploy-keys": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_deployment: {
+    path: "/repositories/{workspace}/{repo_slug}/deployments": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_deployment_variable: {
+    path: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables": {
+      rename: param: "environment_uuid": *"environment_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_diffstat: {
+    path: "/repositories/{workspace}/{repo_slug}/diffstat/{spec}": {
+      rename: param: "spec": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_environment: {
+    path: "/repositories/{workspace}/{repo_slug}/environments": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_file: {
+    path: "/repositories/{workspace}/{repo_slug}/filehistory/{commit}/{path}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_file_conflict: {
+    path: "/repositories/{workspace}/{repo_slug}/file-conflicts/{spec}": {
+      rename: param: "spec": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_gpg_user_key: {
+    path: "/users/{selected_user}/gpg-keys": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_hook_event: {
+    path: "/hook_events": {
+      op: load: method: *GET
+    }
+    path: "/hook_events/{subject_type}": {
+      rename: param: "subject_type": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_merge_queue: {
+    path: "/repositories/{workspace}/{repo_slug}/merge-queues": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_merge_queue_pullrequest: {
+    path: "/repositories/{workspace}/{repo_slug}/merge-queues/{merge_queue_uuid}/queue": {
+      rename: param: "merge_queue_uuid": *"merge_queue_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_cache: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/caches": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_known_host: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_runner: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/runners": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/pipelines-config/runners": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_schedule: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/schedules": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_schedule_execution: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}/executions": {
+      rename: param: "schedule_uuid": *"schedule_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_step: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps": {
+      rename: param: "pipeline_uuid": *"pipeline_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pipeline_variable: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/variables": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/teams/{username}/pipelines_config/variables": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/users/{selected_user}/pipelines_config/variables": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/pipelines-config/variables": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_project: {
+    path: "/workspaces/{workspace}/projects": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_project_deploy_key: {
+    path: "/workspaces/{workspace}/projects/{project_key}/deploy-keys": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_project_group_permission: {
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/groups": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_project_user_permission: {
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/users": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_pullrequest: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/pullrequests": {
+      rename: param: "commit": *"commit_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/pullrequests/{selected_user}": {
+      rename: param: "selected_user": *"id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_pullrequest_comment: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_ref: {
+    path: "/repositories/{workspace}/{repo_slug}/refs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_report: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports": {
+      rename: param: "commit": *"commit_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_repository: {
+    path: "/repositories/{workspace}": {
+      rename: param: "workspace": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/forks": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_repository_group_permission: {
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/groups": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_repository_permission: {
+    path: "/user/workspaces/{workspace}/permissions/repositories": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/permissions/repositories": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/permissions/repositories/{repo_slug}": {
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_repository_user_permission: {
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/users": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_snippet: {
+    path: "/snippets/{workspace}": {
+      rename: param: "workspace": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_snippet_comment: {
+    path: "/snippets/{workspace}/{encoded_id}/comments": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_snippet_commit: {
+    path: "/snippets/{workspace}/{encoded_id}/commits": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_ssh_user_key: {
+    path: "/users/{selected_user}/ssh-keys": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_tag: {
+    path: "/repositories/{workspace}/{repo_slug}/refs/tags": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_task: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_treeentry: {
+    path: "/repositories/{workspace}/{repo_slug}/src": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/repositories/{workspace}/{repo_slug}/src/{commit}/{path}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: paginated_webhook_subscription: {
+    path: "/repositories/{workspace}/{repo_slug}/hooks": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/hooks": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_workspace_access: {
+    path: "/user/workspaces": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: paginated_workspace_membership: {
+    path: "/workspaces/{workspace}/members": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/permissions": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: pipeline: {
+    path: "/repositories/{workspace}/{repo_slug}/deployments_config/environments/{environment_uuid}/variables/{variable_uuid}": {
+      rename: param: "environment_uuid": *"environment_id"
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/caches": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/runners/{runner_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}": {
+      rename: param: "pipeline_uuid": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/log": {
+      rename: param: "pipeline_uuid": *"id"
+      rename: param: "step_uuid": *"step_id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/logs/{log_uuid}": {
+      rename: param: "pipeline_uuid": *"id"
+      rename: param: "step_uuid": *"step_id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports": {
+      rename: param: "pipeline_uuid": *"id"
+      rename: param: "step_uuid": *"step_id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases": {
+      rename: param: "pipeline_uuid": *"id"
+      rename: param: "step_uuid": *"step_id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}/test_reports/test_cases/{test_case_uuid}/test_case_reasons": {
+      rename: param: "pipeline_uuid": *"id"
+      rename: param: "step_uuid": *"step_id"
+      rename: param: "test_case_uuid": *"test_case_id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/stopPipeline": {
+      action: "stop_pipeline": {}
+      rename: param: "pipeline_uuid": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/key_pair": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts/{known_host_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/variables/{variable_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/teams/{username}/pipelines_config/variables/{variable_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/users/{selected_user}/pipelines_config/variables/{variable_uuid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/workspaces/{workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration": {
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+    path: "/workspaces/{workspace}/pipelines-config/identity/oidc/keys.json": {
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+    path: "/workspaces/{workspace}/pipelines-config/runners/{runner_uuid}": {
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+    path: "/workspaces/{workspace}/pipelines-config/variables/{variable_uuid}": {
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: pipeline_build_number: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/build_number": {
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline_cache_content_uri: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/caches/{cache_uuid}/content-uri": {
+      rename: param: "cache_uuid": *"cache_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: pipeline_known_host: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts/{known_host_uuid}": {
+      rename: param: "known_host_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline_runner: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/runners": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines-config/runners/{runner_uuid}": {
+      rename: param: "runner_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/workspaces/{workspace}/pipelines-config/runners": {
+      rename: param: "workspace": *"workspace_id"
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/pipelines-config/runners/{runner_uuid}": {
+      rename: param: "runner_uuid": *"id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline_schedule: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/schedules": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/schedules/{schedule_uuid}": {
+      rename: param: "schedule_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline_ssh_key_pair: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/ssh/key_pair": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipeline_step: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines/{pipeline_uuid}/steps/{step_uuid}": {
+      rename: param: "pipeline_uuid": *"pipeline_id"
+      rename: param: "step_uuid": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: pipeline_variable: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/variables": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config/variables/{variable_uuid}": {
+      rename: param: "variable_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/teams/{username}/pipelines_config/variables": {
+      op: create: method: *POST
+    }
+    path: "/teams/{username}/pipelines_config/variables/{variable_uuid}": {
+      rename: param: "variable_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/users/{selected_user}/pipelines_config/variables": {
+      op: create: method: *POST
+    }
+    path: "/users/{selected_user}/pipelines_config/variables/{variable_uuid}": {
+      rename: param: "variable_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/workspaces/{workspace}/pipelines-config/variables": {
+      rename: param: "workspace": *"workspace_id"
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/pipelines-config/variables/{variable_uuid}": {
+      rename: param: "variable_uuid": *"id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pipelines_config: {
+    path: "/repositories/{workspace}/{repo_slug}/pipelines_config": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: project: {
+    path: "/workspaces/{workspace}/projects": {
+      rename: param: "workspace": *"workspace_id"
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}": {
+      rename: param: "project_key": *"id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/groups/{group_slug}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/users/{selected_user_id}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: project_branching_model: {
+    path: "/workspaces/{workspace}/projects/{project_key}/branching-model": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: project_deploy_key: {
+    path: "/workspaces/{workspace}/projects/{project_key}/deploy-keys": {
+      rename: param: "workspace": *"workspace_id"
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/deploy-keys/{key_id}": {
+      rename: param: "key_id": *"id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: project_group_permission: {
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/groups/{group_slug}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: project_user_permission: {
+    path: "/workspaces/{workspace}/projects/{project_key}/permissions-config/users/{selected_user_id}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: property: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/properties/{app_key}/{property_name}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/properties/{app_key}/{property_name}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pullrequest_id}/properties/{app_key}/{property_name}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/users/{selected_user}/properties/{app_key}/{property_name}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pullrequest: {
+    path: "/repositories/{workspace}/{repo_slug}/default-reviewers/{target_username}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/activity": {
+      action: "activity": {}
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}": {
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/activity": {
+      action: "activity": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/approve": {
+      action: "approve": {}
+      rename: param: "pull_request_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}": {
+      rename: param: "pull_request_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/commits": {
+      action: "commit": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/conflicts": {
+      action: "conflict": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/decline": {
+      action: "decline": {}
+      rename: param: "pull_request_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/diff": {
+      action: "diff": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/diffstat": {
+      action: "diffstat": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/merge": {
+      action: "merge": {}
+      rename: param: "pull_request_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/merge/task-status/{task_id}": {
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/patch": {
+      action: "patch": {}
+      rename: param: "pull_request_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes": {
+      action: "request_change": {}
+      rename: param: "pull_request_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks/{task_id}": {
+      rename: param: "pull_request_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: pullrequest_comment: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments": {
+      rename: param: "pull_request_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}": {
+      rename: param: "comment_id": *"id"
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments/{comment_id}/resolve": {
+      action: "resolve": {}
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: pullrequest_comment_task: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks": {
+      rename: param: "pull_request_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/tasks/{task_id}": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      rename: param: "task_id": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: pullrequest_mergeability_check: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/mergeability/checks": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: ref: {
+    path: "/repositories/{workspace}/{repo_slug}/refs/branches/{name}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/refs/tags/{name}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: report: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}": {
+      rename: param: "commit": *"commit_id"
+      rename: param: "reportId": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}": {
+      rename: param: "annotationId": *"annotation_id"
+      rename: param: "commit": *"commit_id"
+      rename: param: "reportId": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: report_annotation: {
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations": {
+      rename: param: "commit": *"commit_id"
+      rename: param: "reportId": *"id"
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/commit/{commit}/reports/{reportId}/annotations/{annotationId}": {
+      rename: param: "annotationId": *"id"
+      rename: param: "commit": *"commit_id"
+      rename: param: "reportId": *"report_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: repository: {
+    path: "/repositories/{workspace}/{repo_slug}": {
+      op: create: method: *POST
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/forks": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/hooks/{uid}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/override-settings": {
+      op: update: method: *PUT
+    }
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}": {
+      op: remove: method: *DELETE
+    }
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: repository_group_permission: {
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/groups/{group_slug}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: repository_inheritance_state: {
+    path: "/repositories/{workspace}/{repo_slug}/override-settings": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: repository_user_permission: {
+    path: "/repositories/{workspace}/{repo_slug}/permissions-config/users/{selected_user_id}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: request_change: {
+    path: "/repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/request-changes": {
+      rename: param: "pull_request_id": *"pullrequest_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: search_result_page: {
+    path: "/teams/{username}/search/code": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/users/{selected_user}/search/code": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/workspaces/{workspace}/search/code": {
+      rename: param: "workspace": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: snippet: {
+    path: "/snippets": {
+      op: create: method: *POST
+    }
+    path: "/snippets/{workspace}": {
+      rename: param: "workspace": *"id"
+      op: create: method: *POST
+    }
+    path: "/snippets/{workspace}/{encoded_id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/snippets/{workspace}/{encoded_id}/comments/{comment_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/snippets/{workspace}/{encoded_id}/files/{path}": {
+      op: load: method: *GET
+    }
+    path: "/snippets/{workspace}/{encoded_id}/watch": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/snippets/{workspace}/{encoded_id}/{node_id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/snippets/{workspace}/{encoded_id}/{node_id}/files/{path}": {
+      op: load: method: *GET
+    }
+    path: "/snippets/{workspace}/{encoded_id}/{revision}/diff": {
+      op: load: method: *GET
+    }
+    path: "/snippets/{workspace}/{encoded_id}/{revision}/patch": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: snippet_comment: {
+    path: "/snippets/{workspace}/{encoded_id}/comments": {
+      op: create: method: *POST
+    }
+    path: "/snippets/{workspace}/{encoded_id}/comments/{comment_id}": {
+      rename: param: "comment_id": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: snippet_commit: {
+    path: "/snippets/{workspace}/{encoded_id}/commits/{revision}": {
+      rename: param: "revision": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: source: {
+    path: "/repositories/{workspace}/{repo_slug}/src": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: ssh: {
+    path: "/users/{selected_user}/ssh-keys/{key_id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: ssh_account_key: {
+    path: "/users/{selected_user}/ssh-keys": {
+      op: create: method: *POST
+    }
+    path: "/users/{selected_user}/ssh-keys/{key_id}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: tag: {
+    path: "/repositories/{workspace}/{repo_slug}/refs/tags": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/refs/tags/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: user: {
+    path: "/user": {
+      op: load: method: *GET
+    }
+    path: "/user/emails": {
+      action: "email": {}
+      op: load: method: *GET
+    }
+    path: "/user/emails/{email}": {
+      op: load: method: *GET
+    }
+    path: "/users/{selected_user}": {
+      rename: param: "selected_user": *"id"
+      op: load: method: *GET
+    }
+    path: "/workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}": {
+      rename: param: "project_key": *"project_id"
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: watcher: {
+    path: "/repositories/{workspace}/{repo_slug}/watchers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+    path: "/snippets/{workspace}/{encoded_id}/watchers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.values`")|top
+    }
+  }
+
+  entity: webhook_subscription: {
+    path: "/repositories/{workspace}/{repo_slug}/hooks": {
+      op: create: method: *POST
+    }
+    path: "/repositories/{workspace}/{repo_slug}/hooks/{uid}": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/workspaces/{workspace}/hooks": {
+      rename: param: "workspace": *"workspace_id"
+      op: create: method: *POST
+    }
+    path: "/workspaces/{workspace}/hooks/{uid}": {
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: workspace: {
+    path: "/workspaces/{workspace}": {
+      rename: param: "workspace": *"id"
+      op: load: method: *GET
+    }
+    path: "/workspaces/{workspace}/hooks/{uid}": {
+      rename: param: "workspace": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/workspaces/{workspace}/settings/gpg/public-key": {
+      rename: param: "workspace": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: workspace_membership: {
+    path: "/user/workspaces/{workspace}/permission": {
+      action: "permission": {}
+      rename: param: "workspace": *"id"
+      op: load: method: *GET
+    }
+    path: "/workspaces/{workspace}/members/{member}": {
+      rename: param: "workspace": *"workspace_id"
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "paginated_pipeline_known_host": {
+      "PAGINATED_PIPELINE_KNOWN_HOST00": {
+        "hostname": "s28",
+        "public_key": "s29",
+        "type": "s2a",
+        "uuid": "s2b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_KNOWN_HOST01": {
+        "hostname": "s50",
+        "public_key": "s51",
+        "type": "s52",
+        "uuid": "s53",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PAGINATED_PIPELINE_KNOWN_HOST02": {
+        "hostname": "s78",
+        "public_key": "s79",
+        "type": "s7a",
+        "uuid": "s7b",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "paginated_pipeline_known_host": {
+      "paginated_pipeline_known_host_ref01": {
+        "hostname": "sa0",
+        "public_key": "sa1",
+        "type": "sa2",
+        "uuid": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pipelines_config/ssh/known_hosts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

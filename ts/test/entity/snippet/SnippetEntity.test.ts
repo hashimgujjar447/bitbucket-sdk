@@ -1,0 +1,206 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { BitbucketSdkSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('SnippetEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when BITBUCKET_SDK_TEST_LIVE=TRUE.
+  afterEach(liveDelay('BITBUCKET_SDK_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = BitbucketSdkSDK.test()
+    const ent = testsdk.Snippet()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = BitbucketSdkSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Snippet().load({"encoded_id":1,"workspace":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.BITBUCKET_SDK_TEST_LIVE
+    for (const op of ['create', 'update', 'load', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'snippet.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{"bitbucket-sdk_id":"id"}},"fields":{"bitbucket-sdk_id":{"a":true,"h":"Bitbucket Sdk Id","n":"bitbucket-sdk_id","r":false,"t":"`$INTEGER`","key$":"bitbucket-sdk_id","index$":0},"created_on":{"a":true,"fo":"date-time","h":"Created On","n":"created_on","r":false,"t":"`$STRING`","key$":"created_on","index$":1},"creator":{"a":true,"h":"Creator","n":"creator","r":false,"t":"`$ANY`","key$":"creator","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":3},"is_private":{"a":true,"h":"Is Private","n":"is_private","r":false,"t":"`$BOOLEAN`","key$":"is_private","index$":4},"owner":{"a":true,"h":"Owner","n":"owner","r":false,"t":"`$ANY`","key$":"owner","index$":5},"scm":{"a":true,"h":"Scm","n":"scm","r":false,"sh":"The DVCS used to store the snippet.","t":"`$STRING`","key$":"scm","index$":6},"title":{"a":true,"h":"Title","n":"title","r":false,"t":"`$STRING`","key$":"title","index$":7},"type":{"a":true,"h":"Type","n":"type","r":true,"t":"`$STRING`","key$":"type","index$":8},"updated_on":{"a":true,"fo":"date-time","h":"Updated On","n":"updated_on","r":false,"t":"`$STRING`","key$":"updated_on","index$":9}},"id":{"field":"id","name":"id","parts":["workspace","encoded_id","node_id"],"sep":"/"},"name":"snippet","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["created_on","creator","id","is_private","owner","scm","title","type","updated_on"],"co":{"id":"POST /snippets/{workspace}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"workspace","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/snippets/{workspace}","q":{"exist":["id"]},"r":{"param":{"workspace":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"snippets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["created_on","creator","id","is_private","owner","scm","title","type","updated_on"],"co":{"id":"POST /snippets","source":"swagger2","version":2},"g":{},"k":"http","m":"POST","o":"/snippets","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"snippets"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/{node_id}/files/{path}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"node_id","or":"node_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"path","or":"path","r":true,"t":"`$STRING`","index$":2},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":3}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/{node_id}/files/{path}","q":{"exist":["encoded_id","node_id","path","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"node_id"},{"lit":"files"},{"var":"path"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/{node_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"node_id","or":"node_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/{node_id}","q":{"exist":["encoded_id","node_id","workspace"]},"r":{},"rs":{"alternatives":[{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/form-data"},{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/related"}],"kind":"json","media":"application/json"},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"node_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/files/{path}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"path","or":"path","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/files/{path}","q":{"exist":["encoded_id","path","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"lit":"files"},{"var":"path"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/{revision}/diff","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"revision","or":"revision","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}],"query":[{"a":true,"k":"query","n":"path","or":"path","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/{revision}/diff","q":{"exist":["encoded_id","revision","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"revision"},{"lit":"diff"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/{revision}/patch","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"revision","or":"revision","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/{revision}/patch","q":{"exist":["encoded_id","revision","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"revision"},{"lit":"patch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":4},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}","q":{"exist":["encoded_id","workspace"]},"r":{},"rs":{"alternatives":[{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/form-data"},{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/related"}],"kind":"json","media":"application/json"},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":5},{"a":true,"co":{"id":"GET /snippets/{workspace}/{encoded_id}/watch","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/snippets/{workspace}/{encoded_id}/watch","q":{"exist":["encoded_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"lit":"watch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":6}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /snippets/{workspace}/{encoded_id}/comments/{comment_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"comment_id","or":"comment_id","r":true,"t":"`$INTEGER`","index$":0},{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/snippets/{workspace}/{encoded_id}/comments/{comment_id}","q":{"exist":["comment_id","encoded_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"lit":"comments"},{"var":"comment_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /snippets/{workspace}/{encoded_id}/{node_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"node_id","or":"node_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"DELETE","o":"/snippets/{workspace}/{encoded_id}/{node_id}","q":{"exist":["encoded_id","node_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"node_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"DELETE /snippets/{workspace}/{encoded_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/snippets/{workspace}/{encoded_id}","q":{"exist":["encoded_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"DELETE /snippets/{workspace}/{encoded_id}/watch","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/snippets/{workspace}/{encoded_id}/watch","q":{"exist":["encoded_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"lit":"watch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PUT /snippets/{workspace}/{encoded_id}/{node_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"node_id","or":"node_id","r":true,"t":"`$STRING`","index$":1},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"PUT","o":"/snippets/{workspace}/{encoded_id}/{node_id}","q":{"exist":["encoded_id","node_id","workspace"]},"r":{},"rs":{"alternatives":[{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/form-data"},{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/related"}],"kind":"json","media":"application/json"},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"var":"node_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"PUT /snippets/{workspace}/{encoded_id}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"PUT","o":"/snippets/{workspace}/{encoded_id}","q":{"exist":["encoded_id","workspace"]},"r":{},"rs":{"alternatives":[{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/form-data"},{"fields":[{"name":"created_on"},{"name":"creator"},{"name":"id"},{"name":"is_private"},{"name":"owner"},{"name":"scm"},{"name":"title"},{"name":"type"},{"name":"updated_on"}],"kind":"multipart","media":"multipart/related"}],"kind":"json","media":"application/json"},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"PUT /snippets/{workspace}/{encoded_id}/watch","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"encoded_id","or":"encoded_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"workspace","or":"workspace","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"PUT","o":"/snippets/{workspace}/{encoded_id}/watch","q":{"exist":["encoded_id","workspace"]},"r":{},"s":[{"lit":"snippets"},{"var":"workspace"},{"var":"encoded_id"},{"lit":"watch"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"snippet","name__orig":"snippet","Name":"Snippet","name_":"snippet","name-":"snippet","NAME":"SNIPPET","index$":99}, {"active":true,"entity":"snippet","key$":"BasicSnippetFlow","kind":"basic","name":"BasicSnippetFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"snippet_ref01"},"m":{"encoded_id":"encoded01","node_id":"node01","workspace":"workspace01"},"o":"create","s":[],"v":[]},{"a":true,"d":{"workspace":"workspace01"},"i":{"ref":"snippet_ref01","srcdatavar":"snippet_ref01_data","suffix":"_up0","textfield":"created_on"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-snippet_ref01"}}],"v":[]},{"a":true,"d":{},"i":{"ref":"snippet_ref01","srcdatavar":"snippet_ref01_data","suffix":"_dt0"},"m":{"id":"snippet01","workspace":"workspace01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-snippet_ref01"}}]},{"a":true,"d":{},"i":{"ref":"snippet_ref01","suffix":"_rm0"},"m":{"id":"snippet01","workspace":"workspace01"},"o":"remove","s":[],"v":[]}]}, 'Snippet', {"POST /snippets/{workspace}":{"protocol":"http","parameters":[{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":0},{"name":"_body","in":"body","description":"The new snippet object.","required":true,"schema":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{"type":{"type":"string","key$":"type"}},"required":["type"],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Snippet","description":"A snippet object.","properties":{"id":{"type":"integer","minimum":0,"key$":"id"},"title":{"type":"string","key$":"title"},"scm":{"type":"string","description":"The DVCS used to store the snippet.","enum":["git"],"key$":"scm"},"created_on":{"type":"string","format":"date-time","key$":"created_on"},"updated_on":{"type":"string","format":"date-time","key$":"updated_on"},"owner":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"owner"},"creator":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"creator"},"is_private":{"type":"boolean","key$":"is_private"}},"additionalProperties":true}],"x-ref":"#/definitions/snippet","index$":1},"index$":1}]},"POST /snippets":{"protocol":"http","parameters":[{"name":"_body","in":"body","description":"The new snippet object.","required":true,"schema":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{"type":{"type":"string","key$":"type"}},"required":["type"],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Snippet","description":"A snippet object.","properties":{"id":{"type":"integer","minimum":0,"key$":"id"},"title":{"type":"string","key$":"title"},"scm":{"type":"string","description":"The DVCS used to store the snippet.","enum":["git"],"key$":"scm"},"created_on":{"type":"string","format":"date-time","key$":"created_on"},"updated_on":{"type":"string","format":"date-time","key$":"updated_on"},"owner":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"owner"},"creator":{"allOf":[{"type":"object","description":"Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.","properties":{},"required":[],"additionalProperties":true,"discriminator":"type","x-ref":"#/definitions/object"},{"type":"object","title":"Account","description":"An account object.","properties":{},"additionalProperties":true}],"x-ref":"#/definitions/account","key$":"creator"},"is_private":{"type":"boolean","key$":"is_private"}},"additionalProperties":true}],"x-ref":"#/definitions/snippet","index$":1},"index$":0}]},"GET /snippets/{workspace}/{encoded_id}/{node_id}/files/{path}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"node_id","in":"path","description":"A commit revision (SHA1).","required":true,"type":"string","index$":1},{"name":"path","in":"path","description":"Path to the file.","required":true,"type":"string","index$":2},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":3}]},"GET /snippets/{workspace}/{encoded_id}/{node_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"node_id","in":"path","description":"A commit revision (SHA1).","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"GET /snippets/{workspace}/{encoded_id}/files/{path}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"path","in":"path","description":"Path to the file.","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"GET /snippets/{workspace}/{encoded_id}/{revision}/diff":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"revision","in":"path","description":"A revspec expression. This can simply be a commit SHA1, a ref name, or a compare expression like `staging..production`.","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2},{"name":"path","in":"query","description":"When used, only one the diff of the specified file will be returned.","type":"string","index$":3}]},"GET /snippets/{workspace}/{encoded_id}/{revision}/patch":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"revision","in":"path","description":"A revspec expression. This can simply be a commit SHA1, a ref name, or a compare expression like `staging..production`.","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"GET /snippets/{workspace}/{encoded_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"GET /snippets/{workspace}/{encoded_id}/watch":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"DELETE /snippets/{workspace}/{encoded_id}/comments/{comment_id}":{"protocol":"http","parameters":[{"name":"comment_id","in":"path","description":"The id of the comment.","required":true,"type":"integer","format":"int64","index$":0},{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"DELETE /snippets/{workspace}/{encoded_id}/{node_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"node_id","in":"path","description":"A commit revision (SHA1).","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"DELETE /snippets/{workspace}/{encoded_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"DELETE /snippets/{workspace}/{encoded_id}/watch":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"PUT /snippets/{workspace}/{encoded_id}/{node_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"node_id","in":"path","description":"A commit revision (SHA1).","required":true,"type":"string","index$":1},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":2}]},"PUT /snippets/{workspace}/{encoded_id}":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]},"PUT /snippets/{workspace}/{encoded_id}/watch":{"protocol":"http","parameters":[{"name":"encoded_id","in":"path","description":"The snippet id.","required":true,"type":"string","index$":0},{"name":"workspace","in":"path","description":"This can either be the workspace ID (slug) or the workspace UUID\nsurrounded by curly-braces, for example: `{workspace UUID}`.\n","required":true,"type":"string","index$":1}]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const snippet_ref01_ent = client.Snippet()
+    let snippet_ref01_data = setup.data.new.snippet['snippet_ref01']
+    snippet_ref01_data['encoded_id'] = setup.idmap['encoded01']
+    snippet_ref01_data['node_id'] = setup.idmap['node01']
+    snippet_ref01_data['workspace'] = setup.idmap['workspace01']
+
+    snippet_ref01_data = (await snippet_ref01_ent.create(snippet_ref01_data)).data()
+    assert(null != snippet_ref01_data.id)
+
+
+    // UPDATE
+    const snippet_ref01_data_up0: any = {}
+    snippet_ref01_data_up0.id = snippet_ref01_data.id
+    snippet_ref01_data_up0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+
+    const snippet_ref01_markdef_up0 = { name: 'created_on', value: 'Mark01-snippet_ref01_' + setup.now }
+    ;(snippet_ref01_data_up0 as any)[snippet_ref01_markdef_up0.name] = snippet_ref01_markdef_up0.value
+
+    const snippet_ref01_resdata_up0 = (await snippet_ref01_ent.update(snippet_ref01_data_up0)).data()
+    assert(snippet_ref01_resdata_up0.id === snippet_ref01_data_up0.id)
+
+    assert((snippet_ref01_resdata_up0 as any)[snippet_ref01_markdef_up0.name] === snippet_ref01_markdef_up0.value)
+
+
+    // LOAD
+    const snippet_ref01_match_dt0: any = {}
+    snippet_ref01_match_dt0.id = snippet_ref01_data.id
+    snippet_ref01_match_dt0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+    const snippet_ref01_data_dt0 = (await snippet_ref01_ent.load(snippet_ref01_match_dt0)).data()
+    assert(snippet_ref01_data_dt0.id === snippet_ref01_data.id)
+
+
+    // REMOVE
+    const snippet_ref01_match_rm0: any = { id: snippet_ref01_data.id }
+    snippet_ref01_match_rm0['workspace'] = setup.idmap['workspace'] ?? setup.idmap['workspace01']
+    await snippet_ref01_ent.remove(snippet_ref01_match_rm0)
+  
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/snippet/SnippetTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = BitbucketSdkSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['snippet01','snippet02','snippet03','encoded01','node01','workspace01'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'BITBUCKET_SDK_TEST_SNIPPET_ENTID': idmap,
+    'BITBUCKET_SDK_TEST_LIVE': 'FALSE',
+    'BITBUCKET_SDK_TEST_EXPLAIN': 'FALSE',
+    'BITBUCKET_SDK_APIKEY': '',
+  })
+
+  idmap = env['BITBUCKET_SDK_TEST_SNIPPET_ENTID']
+
+  const live = 'TRUE' === env.BITBUCKET_SDK_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['BITBUCKET_SDK_TEST_SNIPPET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new BitbucketSdkSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.BITBUCKET_SDK_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.BITBUCKET_SDK_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

@@ -1,0 +1,26 @@
+# BasicPaginatedProjectFlow
+
+main: kit: flow: BasicPaginatedProjectFlow:
+{
+  entity: "paginated_project",
+  kind: "basic",
+  name: "BasicPaginatedProjectFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedProjectFlow"
+}

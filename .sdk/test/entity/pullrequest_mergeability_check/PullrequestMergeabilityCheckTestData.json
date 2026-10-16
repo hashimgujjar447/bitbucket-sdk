@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "pullrequest_mergeability_check": {
+      "PULLREQUEST_MERGEABILITY_CHECK00": {
+        "blocking": true,
+        "required": false,
+        "status": "s2a",
+        "type": "s2b",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PULLREQUEST_MERGEABILITY_CHECK01": {
+        "blocking": true,
+        "required": false,
+        "status": "s52",
+        "type": "s53",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      },
+      "PULLREQUEST_MERGEABILITY_CHECK02": {
+        "blocking": true,
+        "required": false,
+        "status": "s7a",
+        "type": "s7b",
+        "pullrequest_id": "PULLREQUEST01",
+        "repo_slug": "REPO_SLUG01",
+        "workspace": "WORKSPACE01"
+      }
+    }
+  },
+  "new": {
+    "pullrequest_mergeability_check": {
+      "pullrequest_mergeability_check_ref01": {
+        "blocking": true,
+        "required": false,
+        "status": "sa2",
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/mergeability/checks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

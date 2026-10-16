@@ -1,0 +1,64 @@
+# BasicPaginatedChangesetFlow
+
+main: kit: flow: BasicPaginatedChangesetFlow:
+{
+  entity: "paginated_changeset",
+  kind: "basic",
+  name: "BasicPaginatedChangesetFlow",
+  step: [
+    {
+      i: {
+        ref: "paginated_changeset_ref01"
+      }
+
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paginated_changeset_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "paginated_changeset_ref01",
+        srcdatavar: "paginated_changeset_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "paginated_changeset01",
+        repo_slug: "repo_slug01",
+        workspace: "workspace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-paginated_changeset_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaginatedChangesetFlow"
+}

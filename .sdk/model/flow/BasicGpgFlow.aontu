@@ -1,0 +1,9 @@
+# BasicGpgFlow
+
+main: kit: flow: BasicGpgFlow:
+{
+  entity: "gpg",
+  kind: "basic",
+  name: "BasicGpgFlow",
+  "key$": "BasicGpgFlow"
+}

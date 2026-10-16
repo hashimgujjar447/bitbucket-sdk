@@ -1,0 +1,117 @@
+{
+  "existing": {
+    "project": {
+      "PROJECT00": {
+        "created_on": "s78",
+        "description": "s79",
+        "has_publicly_visible_repos": true,
+        "id": "PROJECT00",
+        "is_private": true,
+        "key": "s7d",
+        "links": {},
+        "name": "s7f",
+        "owner": "s80",
+        "type": "s81",
+        "updated_on": "s82",
+        "uuid": "s83",
+        "workspace_id": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "selected_user_id": "SELECTED_USER01"
+      },
+      "PROJECT01": {
+        "created_on": "sf0",
+        "description": "sf1",
+        "has_publicly_visible_repos": true,
+        "id": "PROJECT01",
+        "is_private": true,
+        "key": "sf5",
+        "links": {},
+        "name": "sf7",
+        "owner": "sf8",
+        "type": "sf9",
+        "updated_on": "sfa",
+        "uuid": "sfb",
+        "workspace_id": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "selected_user_id": "SELECTED_USER01"
+      },
+      "PROJECT02": {
+        "created_on": "s168",
+        "description": "s169",
+        "has_publicly_visible_repos": true,
+        "id": "PROJECT02",
+        "is_private": true,
+        "key": "s16d",
+        "links": {},
+        "name": "s16f",
+        "owner": "s170",
+        "type": "s171",
+        "updated_on": "s172",
+        "uuid": "s173",
+        "workspace_id": "WORKSPACE01",
+        "group_slug": "GROUP_SLUG01",
+        "project_id": "PROJECT01",
+        "selected_user": "SELECTED_USER01",
+        "selected_user_id": "SELECTED_USER01"
+      }
+    }
+  },
+  "new": {
+    "project": {
+      "project_ref01": {
+        "created_on": "s1e0",
+        "description": "s1e1",
+        "has_publicly_visible_repos": true,
+        "is_private": true,
+        "key": "s1e5",
+        "links": {},
+        "name": "s1e7",
+        "owner": "s1e8",
+        "type": "s1e9",
+        "updated_on": "s1ea",
+        "uuid": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /workspaces/{workspace}/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /workspaces/{workspace}/projects/{project_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/projects/{project_key}/permissions-config/groups/{group_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/projects/{project_key}/default-reviewers/{selected_user}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/projects/{project_key}/permissions-config/users/{selected_user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /workspaces/{workspace}/projects/{project_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /workspaces/{workspace}/projects/{project_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

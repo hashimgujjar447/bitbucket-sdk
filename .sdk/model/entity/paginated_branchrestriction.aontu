@@ -1,0 +1,173 @@
+# Entity: paginated_branchrestriction
+
+main: kit: entity: paginated_branchrestriction: {
+
+  alias: field: {}
+
+  fields: {
+    branch_match_kind: {
+      h: "Branch Match Kind"
+      n: "branch_match_kind"
+      r: true
+      sh: "Indicates how the restriction is matched against a branch."
+      t: "`$STRING`"
+    }
+    branch_type: {
+      h: "Branch Type"
+      n: "branch_type"
+      r: false
+      sh: "Apply the restriction to branches of this type."
+      t: "`$STRING`"
+    }
+    groups: {
+      h: "Groups"
+      n: "groups"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The branch restriction status' id."
+      t: "`$INTEGER`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      sh: "The type of restriction that is being applied."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    pattern: {
+      h: "Pattern"
+      n: "pattern"
+      r: true
+      sh: "Apply the restriction to branches that match this pattern."
+      t: "`$STRING`"
+    }
+    pipelines_source_branches: {
+      h: "Pipelines Source Branches"
+      n: "pipelines_source_branches"
+      r: false
+      sh: "List of source branch names allowed to push back to the restricted branch."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    users: {
+      h: "Users"
+      n: "users"
+      r: false
+      t: "`$ARRAY`"
+    }
+    value: {
+      h: "Value"
+      n: "value"
+      r: false
+      sh: "Value with kind-specific semantics: * `require_approvals_to_merge` uses it to require a minimum number of approvals on a PR."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "paginated_branchrestriction"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /repositories/{workspace}/{repo_slug}/branch-restrictions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "repo_slug"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "workspace"
+                or: "workspace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "kind"
+                or: "kind"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "pattern"
+                or: "pattern"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/repositories/{workspace}/{repo_slug}/branch-restrictions"
+          q: {
+            exist: [
+              "repo_slug"
+              "workspace"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "repositories"
+            }
+            {
+              var: "workspace"
+            }
+            {
+              var: "repo_slug"
+            }
+            {
+              lit: "branch-restrictions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.values`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.repository")]
+  ]
+
+}
